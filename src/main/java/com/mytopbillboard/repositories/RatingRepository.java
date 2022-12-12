@@ -2,7 +2,8 @@ package com.mytopbillboard.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
-    Playlist findById(long id);
+public interface RatingRepository extends JpaRepository<Rating, Long> {
+
+    Rating getById(long id);
 
 }
