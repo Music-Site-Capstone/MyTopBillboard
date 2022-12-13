@@ -63,11 +63,28 @@ public class Playlist {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlist")
     private List<Rating> rating;
-    public List<Rating> getRating() {
-        return rating;
-    }
+        public List<Rating> getRating() {
+            return rating;
+        }
 
-    public void setRating(List<Rating> rating) {
-        this.rating = rating;
-    }
+        public void setRating(List<Rating> rating) {
+            this.rating = rating;
+        }
+
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "playlist_song",
+            joinColumns ={@JoinColumn(name="playlist_id")},
+            inverseJoinColumns ={@JoinColumn(name="song_id")}
+    )
+    private List<Song> song;
+        public List<Song> getSong() {
+            return song;
+        }
+
+        public void setSong(List<Song> song) {
+            this.song = song;
+        }
 }
