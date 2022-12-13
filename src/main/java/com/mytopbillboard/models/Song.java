@@ -1,6 +1,6 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 public class Song {
 
@@ -35,7 +35,8 @@ public class Song {
     }
 
     public Song() {}
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long song_id;
         public long getSong_id() {
             return song_id;
@@ -44,7 +45,7 @@ public class Song {
         public void setSong_id(long song_id) {
             this.song_id = song_id;
         }
-
+    @Column(nullable = false)
     private String title;
     public String getTitle() {
         return title;
@@ -53,7 +54,7 @@ public class Song {
     public void setTitle(String title) {
         this.title = title;
     }
-
+    @Column(nullable = false)
     private long artist_id;
         public long getArtist_id() {
             return artist_id;
@@ -62,7 +63,7 @@ public class Song {
         public void setArtist_id(long artist_id) {
             this.artist_id = artist_id;
         }
-
+    @Column(nullable = false)
     private long genre_id;
         public long getGenre_id() {
             return genre_id;
