@@ -1,6 +1,17 @@
 package com.mytopbillboard.models;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+
 public class Artist {
+
+    public Artist(long id, String name, List<Song> songs) {
+        this.id = id;
+        this.name = name;
+        this.songs = songs;
+    }
 
     public Artist(long id, String name) {
         this.id = id;
@@ -26,4 +37,14 @@ public class Artist {
         public void setName(String name) {
             this.name = name;
         }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
+    private List<Song> songs;
+        public List<Song> getSongs() {
+            return songs;
+        }
+        public void setSongs(List<Song> songs) {
+            this.songs = songs;
+        }
+
 }

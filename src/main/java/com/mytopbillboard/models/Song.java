@@ -1,6 +1,16 @@
 package com.mytopbillboard.models;
 
+import jakarta.persistence.ManyToOne;
+
 public class Song {
+
+    public Song(long song_id, String title, long artist_id, long genre_id, Artist artist) {
+        this.song_id = song_id;
+        this.title = title;
+        this.artist_id = artist_id;
+        this.genre_id = genre_id;
+        this.artist = artist;
+    }
 
     public Song(long song_id, String title, long artist_id, long genre_id) {
         this.title = title;
@@ -60,5 +70,14 @@ public class Song {
 
         public void setGenre_id(long genre_id) {
             this.genre_id = genre_id;
+        }
+
+    @ManyToOne
+    private Artist artist;
+        public Artist getArtist() {
+            return artist;
+        }
+        public void setArtist(Artist artist) {
+            this.artist = artist;
         }
 }
