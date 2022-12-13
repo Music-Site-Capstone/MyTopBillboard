@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-hellloooooo nurse
+<form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
+    <button>Logout</button>
+</form>
+<form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
+    <button>Login</button>
+</form>
+<h2>hellloooooo nurse</h2>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </body>
 </html>
