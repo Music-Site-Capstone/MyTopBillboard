@@ -80,4 +80,14 @@ public class Song {
         public void setArtist(Artist artist) {
             this.artist = artist;
         }
+
+    @ManyToOne
+    private Genre genre;
+    public Genre getGenre() {
+        return genre;
+    }
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
 }
