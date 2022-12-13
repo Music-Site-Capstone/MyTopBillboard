@@ -7,6 +7,8 @@ import java.util.List;
 @Entity
 @Table(name = "rating")
 public class Rating {
+
+
     public Rating(long id, long playlist_id, short score, long user_id) {
         this.id = id;
         this.playlist_id = playlist_id;
@@ -77,5 +79,13 @@ public class Rating {
 
         public void setPlaylist(Playlist playlist) {
             this.playlist = playlist;
+        }
+    @ManyToOne
+    private User user;
+        public User getUser() {
+            return user;
+        }
+        public void setUser(User user) {
+            this.user = user;
         }
 }
