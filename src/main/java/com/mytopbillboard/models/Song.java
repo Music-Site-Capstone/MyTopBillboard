@@ -1,6 +1,9 @@
 package com.mytopbillboard.models;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity(name = "Song")
 public class Song {
 
@@ -84,11 +87,21 @@ public class Song {
 
     @ManyToOne
     private Genre genre;
-    public Genre getGenre() {
-        return genre;
-    }
-    public void setGenre(Genre genre) {
+        public Genre getGenre() {
+            return genre;
+        }
+        public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
+
+    @ManyToMany(mappedBy = "song")
+    private List<Playlist> playlist;
+        public List<Playlist> getPlaylist() {
+            return playlist;
+        }
+
+        public void setPlaylist(List<Playlist> playlist) {
+            this.playlist = playlist;
+        }
 }
