@@ -79,4 +79,13 @@ public class User {
         public void setPlaylist(List<Playlist> playlist) {
             this.playlist = playlist;
         }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Rating> ratings;
+        public List<Rating> getRatings() {
+            return ratings;
+        }
+        public void setRatings(List<Rating> ratings) {
+            this.ratings = ratings;
+        }
 }
