@@ -8,6 +8,14 @@ import java.util.List;
 @Table(name = "rating")
 public class Rating {
 
+    public Rating(long id, long playlist_id, short score, long user_id, Playlist playlist, User user) {
+        this.id = id;
+        this.playlist_id = playlist_id;
+        this.score = score;
+        this.user_id = user_id;
+        this.playlist = playlist;
+        this.user = user;
+    }
 
     public Rating(long id, long playlist_id, short score, long user_id) {
         this.id = id;
@@ -80,6 +88,7 @@ public class Rating {
         public void setPlaylist(Playlist playlist) {
             this.playlist = playlist;
         }
+
     @ManyToOne
     private User user;
         public User getUser() {

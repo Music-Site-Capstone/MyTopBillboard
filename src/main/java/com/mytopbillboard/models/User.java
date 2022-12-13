@@ -7,6 +7,16 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User {
+
+    public User(long id, String username, String email, String password, List<Playlist> playlists, List<Rating> ratings) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.playlists = playlists;
+        this.ratings = ratings;
+    }
+
     public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
@@ -32,8 +42,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
         public long getId() {
-                    return id;
-                }
+                        return id;
+                    }
 
         public void setId(long id) {
             this.id = id;
@@ -71,13 +81,13 @@ public class User {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Playlist> playlist;
+    private List<Playlist> playlists;
         public List<Playlist> getPlaylist() {
-            return playlist;
+            return playlists;
         }
 
-        public void setPlaylist(List<Playlist> playlist) {
-            this.playlist = playlist;
+        public void setPlaylist(List<Playlist> playlists) {
+            this.playlists = playlists;
         }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
