@@ -1,5 +1,6 @@
 package com.mytopbillboard.models;
 
+
 public class User {
     public User(long id, String username, String email, String password) {
         this.id = id;
