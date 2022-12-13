@@ -1,7 +1,7 @@
 package com.mytopbillboard.models;
 
 import jakarta.persistence.*;
-
+@Entity(name = "Song")
 public class Song {
 
     public Song(long song_id, String title, long artist_id, long genre_id, Artist artist) {

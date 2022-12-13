@@ -3,7 +3,7 @@ package com.mytopbillboard.models;
 import jakarta.persistence.*;
 
 import java.util.List;
-
+@Entity(name = "Genre")
 public class Genre {
 
     public Genre(long id, String name, List<Song> songs) {
