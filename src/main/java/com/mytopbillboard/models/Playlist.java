@@ -79,12 +79,12 @@ public class Playlist {
             joinColumns ={@JoinColumn(name="playlist_id")},
             inverseJoinColumns ={@JoinColumn(name="song_id")}
     )
-    private List<Song> song;
+    private List<Song> songs;
         public List<Song> getSong() {
-            return song;
+            return songs;
         }
 
-        public void setSong(List<Song> song) {
-            this.song = song;
+        public void setSong(List<Song> songs) {
+            this.songs = songs;
         }
 }

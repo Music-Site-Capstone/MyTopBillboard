@@ -28,6 +28,7 @@ public class Artist {
         public void setId(long id) {
             this.id = id;
     }
+
     @Column(unique = true, length = 75, nullable = false)
     private String name;
         public String getName() {

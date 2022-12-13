@@ -95,13 +95,13 @@ public class Song {
     }
 
 
-    @ManyToMany(mappedBy = "song")
-    private List<Playlist> playlist;
+    @ManyToMany(mappedBy = "songs")
+    private List<Playlist> playlists;
         public List<Playlist> getPlaylist() {
-            return playlist;
+            return playlists;
         }
 
-        public void setPlaylist(List<Playlist> playlist) {
-            this.playlist = playlist;
+        public void setPlaylist(List<Playlist> playlists) {
+            this.playlists = playlists;
         }
 }

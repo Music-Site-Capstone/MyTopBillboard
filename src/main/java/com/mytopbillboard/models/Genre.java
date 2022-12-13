@@ -18,6 +18,7 @@ public class Genre {
     }
 
     public Genre() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -28,6 +29,7 @@ public class Genre {
         public void setId(long id) {
         this.id = id;
     }
+
     @Column(unique = true, length = 75, nullable = false)
     private String name;
         public String getName() {
@@ -40,10 +42,10 @@ public class Genre {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
     private List<Song> songs;
-    public List<Song> getSongs() {
-        return songs;
-    }
-    public void setSongs(List<Song> songs) {
+        public List<Song> getSongs() {
+            return songs;
+        }
+        public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
 }

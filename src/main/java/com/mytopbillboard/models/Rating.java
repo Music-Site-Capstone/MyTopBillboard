@@ -80,6 +80,7 @@ public class Rating {
         public void setPlaylist(Playlist playlist) {
             this.playlist = playlist;
         }
+
     @ManyToOne
     private User user;
         public User getUser() {
