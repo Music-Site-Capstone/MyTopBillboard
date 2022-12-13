@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
+    <button>Logout</button>
+</form>
+<form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
+    <button>Login</button>
+</form>
     <div>You have arrived at the homepage!</div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,7 +1,22 @@
 package com.mytopbillboard.models;
 
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "user")
 public class User {
+
+    public User(long id, String username, String email, String password, List<Playlist> playlists, List<Rating> ratings) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.playlists = playlists;
+        this.ratings = ratings;
+    }
+
     public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
@@ -23,16 +38,18 @@ public class User {
 
     public User(){}
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
         public long getId() {
-                    return id;
-                }
+                        return id;
+                    }
 
         public void setId(long id) {
             this.id = id;
         }
 
+    @Column(nullable = false, unique = true, length = 50)
     private String username;
         public String getUsername() {
             return username;
@@ -42,6 +59,7 @@ public class User {
             this.username = username;
         }
 
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
         public String getEmail() {
             return email;
@@ -51,6 +69,7 @@ public class User {
             this.email = email;
         }
 
+    @Column(nullable = false, length = 50)
     private String password;
         public String getPassword() {
             return password;
@@ -58,5 +77,25 @@ public class User {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Playlist> playlists;
+        public List<Playlist> getPlaylist() {
+            return playlists;
+        }
+
+        public void setPlaylist(List<Playlist> playlists) {
+            this.playlists = playlists;
+        }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Rating> ratings;
+        public List<Rating> getRatings() {
+            return ratings;
+        }
+        public void setRatings(List<Rating> ratings) {
+            this.ratings = ratings;
         }
 }

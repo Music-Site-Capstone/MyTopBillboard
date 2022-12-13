@@ -1,10 +1,9 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
-
+@Entity(name = "Artists")
 public class Artist {
 
     public Artist(long id, String name, List<Song> songs) {
@@ -19,7 +18,8 @@ public class Artist {
     }
 
     public Artist() {}
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
         public long getId() {
             return id;
@@ -29,6 +29,7 @@ public class Artist {
             this.id = id;
     }
 
+    @Column(unique = true, length = 75, nullable = false)
     private String name;
         public String getName() {
             return name;
