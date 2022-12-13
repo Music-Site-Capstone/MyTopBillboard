@@ -7,6 +7,24 @@ import java.util.List;
 @Entity
 @Table(name = "playlist")
 public class Playlist {
+
+    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating, List<Song> songs) {
+        this.id = id;
+        this.user_id = user_id;
+        this.playlistName = playlistName;
+        this.user = user;
+        this.rating = rating;
+        this.songs = songs;
+    }
+
+    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating) {
+        this.id = id;
+        this.user_id = user_id;
+        this.playlistName = playlistName;
+        this.user = user;
+        this.rating = rating;
+    }
+
     public Playlist(long id, long user_id, String playlistName) {
         this.id = id;
         this.user_id = user_id;

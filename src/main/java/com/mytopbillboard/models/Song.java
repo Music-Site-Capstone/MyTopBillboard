@@ -7,6 +7,16 @@ import java.util.List;
 @Entity(name = "Song")
 public class Song {
 
+    public Song(long song_id, String title, long artist_id, long genre_id, Artist artist, Genre genre, List<Playlist> playlists) {
+        this.song_id = song_id;
+        this.title = title;
+        this.artist_id = artist_id;
+        this.genre_id = genre_id;
+        this.artist = artist;
+        this.genre = genre;
+        this.playlists = playlists;
+    }
+
     public Song(long song_id, String title, long artist_id, long genre_id, Artist artist) {
         this.song_id = song_id;
         this.title = title;
