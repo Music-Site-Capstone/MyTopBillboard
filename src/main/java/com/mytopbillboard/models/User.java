@@ -1,6 +1,11 @@
 package com.mytopbillboard.models;
 
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "user")
 public class User {
     public User(long id, String username, String email, String password) {
         this.id = id;
@@ -23,7 +28,8 @@ public class User {
 
     public User(){}
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
         public long getId() {
                     return id;
@@ -33,6 +39,7 @@ public class User {
             this.id = id;
         }
 
+    @Column(nullable = false, unique = true, length = 50)
     private String username;
         public String getUsername() {
             return username;
@@ -42,6 +49,7 @@ public class User {
             this.username = username;
         }
 
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
         public String getEmail() {
             return email;
@@ -51,6 +59,7 @@ public class User {
             this.email = email;
         }
 
+    @Column(nullable = false, length = 50)
     private String password;
         public String getPassword() {
             return password;
@@ -58,5 +67,16 @@ public class User {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Playlist> playlist;
+        public List<Playlist> getPlaylist() {
+            return playlist;
+        }
+
+        public void setPlaylist(List<Playlist> playlist) {
+            this.playlist = playlist;
         }
 }
