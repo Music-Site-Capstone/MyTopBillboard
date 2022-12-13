@@ -1,5 +1,11 @@
 package com.mytopbillboard.models;
 
+import jakarta.persistence.*;
+import java.util.List;
+
+
+@Entity
+@Table(name = "rating")
 public class Rating {
     public Rating(long id, long playlist_id, short score, long user_id) {
         this.id = id;
@@ -22,6 +28,8 @@ public class Rating {
     public Rating(){}
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
         public long getId() {
             return id;
@@ -31,6 +39,7 @@ public class Rating {
             this.id = id;
         }
 
+    @Column(nullable = false)
     private long playlist_id;
         public long getPlaylist_id() {
             return playlist_id;
@@ -40,6 +49,7 @@ public class Rating {
             this.playlist_id = playlist_id;
         }
 
+    @Column(nullable = false)
     private short score;
         public short getScore() {
             return score;
@@ -49,6 +59,7 @@ public class Rating {
             this.score = score;
         }
 
+    @Column(nullable = false)
     private long user_id;
         public long getUser_id() {
             return user_id;
@@ -56,5 +67,15 @@ public class Rating {
 
         public void setUser_id(long user_id) {
             this.user_id = user_id;
+        }
+
+    @ManyToOne
+    private Playlist playlist;
+        public Playlist getPlaylist() {
+            return playlist;
+        }
+
+        public void setPlaylist(Playlist playlist) {
+            this.playlist = playlist;
         }
 }

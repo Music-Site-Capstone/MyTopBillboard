@@ -53,11 +53,21 @@ public class Playlist {
 
     @ManyToOne
     private User user;
-    public User getUser() {
-        return user;
+        public User getUser() {
+            return user;
+        }
+
+        public void setUser(User user) {
+            this.user = user;
+        }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlist")
+    private List<Rating> rating;
+    public List<Rating> getRating() {
+        return rating;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setRating(List<Rating> rating) {
+        this.rating = rating;
     }
 }
