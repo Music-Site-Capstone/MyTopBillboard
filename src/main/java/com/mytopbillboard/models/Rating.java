@@ -3,7 +3,6 @@ package com.mytopbillboard.models;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Table(name = "rating")
 public class Rating {
