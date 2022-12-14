@@ -3,7 +3,8 @@ package com.mytopbillboard.models;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "Artists")
+@Entity
+@Table(name = "artist")
 public class Artist {
 
     public Artist(long id, String name, List<Song> songs) {
