@@ -1,8 +1,8 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
+
 @Entity(name = "Artists")
 public class Artist {
 
