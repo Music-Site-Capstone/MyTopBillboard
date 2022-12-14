@@ -1,7 +1,6 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -69,7 +68,7 @@ public class User {
             this.email = email;
         }
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 250)
     private String password;
         public String getPassword() {
             return password;

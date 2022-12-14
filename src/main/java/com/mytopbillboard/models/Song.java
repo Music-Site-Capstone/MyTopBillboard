@@ -1,10 +1,10 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "Song")
+@Entity
+@Table(name = "song")
 public class Song {
 
     public Song(long song_id, String title, long artist_id, long genre_id, Artist artist, Genre genre, List<Playlist> playlists) {
@@ -48,6 +48,7 @@ public class Song {
     }
 
     public Song() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long song_id;
@@ -58,16 +59,17 @@ public class Song {
         public void setSong_id(long song_id) {
             this.song_id = song_id;
         }
+
     @Column(nullable = false)
     private String title;
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+        public String getTitle() {
+            return title;
+        }
+        public void setTitle(String title) {
         this.title = title;
     }
-    @Column(nullable = false)
+
+    @Column(nullable = false, insertable=false, updatable=false)
     private long artist_id;
         public long getArtist_id() {
             return artist_id;
@@ -76,7 +78,7 @@ public class Song {
         public void setArtist_id(long artist_id) {
             this.artist_id = artist_id;
         }
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long genre_id;
         public long getGenre_id() {
             return genre_id;
@@ -110,7 +112,6 @@ public class Song {
         public List<Playlist> getPlaylist() {
             return playlists;
         }
-
         public void setPlaylist(List<Playlist> playlists) {
             this.playlists = playlists;
         }

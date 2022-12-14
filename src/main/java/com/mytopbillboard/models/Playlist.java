@@ -1,6 +1,6 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -49,7 +49,7 @@ public class Playlist {
             this.id = id;
         }
 
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long user_id;
         public long getUser_id() {
             return user_id;
@@ -94,8 +94,8 @@ public class Playlist {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "playlist_song",
-            joinColumns ={@JoinColumn(name="playlist_id")},
-            inverseJoinColumns ={@JoinColumn(name="song_id")}
+            joinColumns = {@JoinColumn(name="playlist_id")},
+            inverseJoinColumns = {@JoinColumn(name="song_id")}
     )
     private List<Song> songs;
         public List<Song> getSong() {
