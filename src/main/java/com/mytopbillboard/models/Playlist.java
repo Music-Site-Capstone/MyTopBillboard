@@ -1,6 +1,6 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -49,7 +49,7 @@ public class Playlist {
             this.id = id;
         }
 
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long user_id;
         public long getUser_id() {
             return user_id;

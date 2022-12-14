@@ -1,6 +1,6 @@
 package com.mytopbillboard.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -49,7 +49,7 @@ public class Rating {
             this.id = id;
         }
 
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long playlist_id;
         public long getPlaylist_id() {
             return playlist_id;
@@ -69,7 +69,7 @@ public class Rating {
             this.score = score;
         }
 
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long user_id;
         public long getUser_id() {
             return user_id;
