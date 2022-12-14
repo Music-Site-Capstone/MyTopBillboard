@@ -12,21 +12,21 @@ CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT,
 );
 DROP TABLE IF EXISTS playlist;
 CREATE TABLE playlist (id INT NOT NULL AUTO_INCREMENT,
-                   user_id INT NOT NULL,
-                   profile_name VARCHAR(50),
+                   user INT NOT NULL,
+                   name VARCHAR(50),
                    PRIMARY KEY (id)
 );
 DROP TABLE IF EXISTS rating;
 CREATE TABLE rating (id INT NOT NULL AUTO_INCREMENT,
-                       user_id INT NOT NULL,
-                       playlist_id INT NOT NULL,
+                       user INT NOT NULL,
+                       playlist INT NOT NULL,
                        score INT,
                        PRIMARY KEY (id)
 );
 DROP TABLE IF EXISTS song;
 CREATE TABLE song (id INT NOT NULL AUTO_INCREMENT,
-                     artist_id INT NOT NULL,
-                     genre_id INT NOT NULL,
+                     artist INT NOT NULL,
+                     genre INT NOT NULL,
                      title VARCHAR(255),
                      PRIMARY KEY (id)
 );

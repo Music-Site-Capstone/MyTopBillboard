@@ -40,7 +40,7 @@ public class Artist {
             this.name = name;
         }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artistObject")
     private List<Song> songs;
         public List<Song> getSongs() {
             return songs;

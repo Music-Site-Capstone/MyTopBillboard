@@ -8,32 +8,32 @@ import java.util.List;
 @Table(name = "playlist")
 public class Playlist {
 
-    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating, List<Song> songs) {
+    public Playlist(long id, long user, String name, User userObject, List<Rating> rating, List<Song> songs) {
         this.id = id;
-        this.user_id = user_id;
-        this.playlistName = playlistName;
         this.user = user;
+        this.name = name;
+        this.userObject = userObject;
         this.rating = rating;
         this.songs = songs;
     }
 
-    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating) {
+    public Playlist(long id, long user, String name, User userObject, List<Rating> rating) {
         this.id = id;
-        this.user_id = user_id;
-        this.playlistName = playlistName;
         this.user = user;
+        this.name = name;
+        this.userObject = userObject;
         this.rating = rating;
     }
 
-    public Playlist(long id, long user_id, String playlistName) {
+    public Playlist(long id, long user, String name) {
         this.id = id;
-        this.user_id = user_id;
-        this.playlistName = playlistName;
+        this.user = user;
+        this.name = name;
     }
 
-    public Playlist(long id, String playlistName) {
+    public Playlist(long id, String name) {
         this.id = id;
-        this.playlistName = playlistName;
+        this.name = name;
     }
 
     public Playlist(){}
@@ -44,47 +44,42 @@ public class Playlist {
         public long getId() {
             return id;
         }
-
         public void setId(long id) {
             this.id = id;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long user_id;
-        public long getUser_id() {
-            return user_id;
-        }
-
-        public void setUser_id(long user_id) {
-            this.user_id = user_id;
-        }
-
-    @Column(nullable = false, length = 50)
-    private String playlistName;
-        public String getPlaylistName() {
-            return playlistName;
-        }
-
-        public void setPlaylistName(String playlistName) {
-            this.playlistName = playlistName;
-        }
-
-    @ManyToOne
-    private User user;
-        public User getUser() {
+    private long user;
+        public long getUser() {
             return user;
         }
-
-        public void setUser(User user) {
+        public void setUser(long user) {
             this.user = user;
         }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlist")
+    @Column(nullable = false, length = 50)
+    private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    @ManyToOne
+    private User userObject;
+        public User getUserObject() {
+            return userObject;
+        }
+        public void setUserObject(User userObject) {
+            this.userObject = userObject;
+        }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlistObject")
     private List<Rating> rating;
         public List<Rating> getRating() {
             return rating;
         }
-
         public void setRating(List<Rating> rating) {
             this.rating = rating;
         }

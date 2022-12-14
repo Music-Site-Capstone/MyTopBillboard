@@ -41,7 +41,7 @@ public class Genre {
         this.name = name;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genreObject")
     private List<Song> songs;
         public List<Song> getSongs() {
             return songs;
