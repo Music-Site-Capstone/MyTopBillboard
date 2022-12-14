@@ -66,7 +66,7 @@ public class Song {
     public void setTitle(String title) {
         this.title = title;
     }
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long artist_id;
         public long getArtist_id() {
             return artist_id;
@@ -75,7 +75,7 @@ public class Song {
         public void setArtist_id(long artist_id) {
             this.artist_id = artist_id;
         }
-    @Column(nullable = false)
+    @Column(nullable = false, insertable=false, updatable=false)
     private long genre_id;
         public long getGenre_id() {
             return genre_id;
