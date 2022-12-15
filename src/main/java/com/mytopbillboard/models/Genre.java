@@ -7,14 +7,14 @@ import java.util.List;
 @Table (name = "genre")
 public class Genre {
 
-    public Genre(long id, String name, List<Song> songs) {
+    public Genre(long id, String genreName, List<Song> songs) {
         this.id = id;
-        this.name = name;
+        this.genreName = genreName;
         this.songs = songs;
     }
 
-    public Genre(long id, String name) {
-        this.name = name;
+    public Genre(long id, String genreName) {
+        this.genreName = genreName;
         this.id = id;
     }
 
@@ -26,19 +26,17 @@ public class Genre {
         public long getId() {
             return id;
         }
-
         public void setId(long id) {
         this.id = id;
     }
 
     @Column(unique = true, length = 75, nullable = false)
-    private String name;
-        public String getName() {
-            return name;
+    private String genreName;
+        public String getGenreName() {
+            return genreName;
         }
-
-        public void setName(String name) {
-        this.name = name;
+        public void setGenreName(String genreName) {
+        this.genreName = genreName;
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")

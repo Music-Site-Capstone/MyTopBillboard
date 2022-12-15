@@ -43,18 +43,16 @@ public class Rating {
         public long getId() {
             return id;
         }
-
         public void setId(long id) {
             this.id = id;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
     private long playlist_id;
-        public long getPlaylist_id() {
+        public long getPlaylistId() {
             return playlist_id;
         }
-
-        public void setPlaylist_id(long playlist_id) {
+        public void setPlaylistId(long playlist_id) {
             this.playlist_id = playlist_id;
         }
 
@@ -63,18 +61,16 @@ public class Rating {
         public short getScore() {
             return score;
         }
-
         public void setScore(short score) {
             this.score = score;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
     private long user_id;
-        public long getUser_id() {
+        public long getUserId() {
             return user_id;
         }
-
-        public void setUser_id(long user_id) {
+        public void setUserId(long user_id) {
             this.user_id = user_id;
         }
 
@@ -83,7 +79,6 @@ public class Rating {
         public Playlist getPlaylist() {
             return playlist;
         }
-
         public void setPlaylist(Playlist playlist) {
             this.playlist = playlist;
         }

@@ -44,18 +44,16 @@ public class Playlist {
         public long getId() {
             return id;
         }
-
         public void setId(long id) {
             this.id = id;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
     private long user_id;
-        public long getUser_id() {
+        public long getUserId() {
             return user_id;
         }
-
-        public void setUser_id(long user_id) {
+        public void setUserId(long user_id) {
             this.user_id = user_id;
         }
 
@@ -64,7 +62,6 @@ public class Playlist {
         public String getPlaylistName() {
             return playlistName;
         }
-
         public void setPlaylistName(String playlistName) {
             this.playlistName = playlistName;
         }
@@ -74,7 +71,6 @@ public class Playlist {
         public User getUser() {
             return user;
         }
-
         public void setUser(User user) {
             this.user = user;
         }
@@ -84,7 +80,6 @@ public class Playlist {
         public List<Rating> getRating() {
             return rating;
         }
-
         public void setRating(List<Rating> rating) {
             this.rating = rating;
         }
@@ -101,7 +96,6 @@ public class Playlist {
         public List<Song> getSong() {
             return songs;
         }
-
         public void setSong(List<Song> songs) {
             this.songs = songs;
         }

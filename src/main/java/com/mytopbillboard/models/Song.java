@@ -7,8 +7,8 @@ import java.util.List;
 @Table(name = "song")
 public class Song {
 
-    public Song(long song_id, String title, long artist_id, long genre_id, Artist artist, Genre genre, List<Playlist> playlists) {
-        this.song_id = song_id;
+    public Song(long id, String title, long artist_id, long genre_id, Artist artist, Genre genre, List<Playlist> playlists) {
+        this.id = id;
         this.title = title;
         this.artist_id = artist_id;
         this.genre_id = genre_id;
@@ -17,19 +17,19 @@ public class Song {
         this.playlists = playlists;
     }
 
-    public Song(long song_id, String title, long artist_id, long genre_id, Artist artist) {
-        this.song_id = song_id;
+    public Song(long id, String title, long artist_id, long genre_id, Artist artist) {
+        this.id = id;
         this.title = title;
         this.artist_id = artist_id;
         this.genre_id = genre_id;
         this.artist = artist;
     }
 
-    public Song(long song_id, String title, long artist_id, long genre_id) {
+    public Song(long id, String title, long artist_id, long genre_id) {
         this.title = title;
         this.artist_id = artist_id;
         this.genre_id = genre_id;
-        this.song_id = song_id;
+        this.id = id;
     }
 
     public Song(String title, long artist_id, long genre_id) {
@@ -51,13 +51,12 @@ public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long song_id;
-        public long getSong_id() {
-            return song_id;
+    private long id;
+        public long getId() {
+            return id;
         }
-
-        public void setSong_id(long song_id) {
-            this.song_id = song_id;
+        public void setId(long id) {
+            this.id = id;
         }
 
     @Column(nullable = false)
@@ -71,20 +70,19 @@ public class Song {
 
     @Column(nullable = false, insertable=false, updatable=false)
     private long artist_id;
-        public long getArtist_id() {
+        public long getArtistId() {
             return artist_id;
         }
-
-        public void setArtist_id(long artist_id) {
+        public void setArtistId(long artist_id) {
             this.artist_id = artist_id;
         }
+
     @Column(nullable = false, insertable=false, updatable=false)
     private long genre_id;
-        public long getGenre_id() {
+        public long getGenreId() {
             return genre_id;
         }
-
-        public void setGenre_id(long genre_id) {
+        public void setGenreId(long genre_id) {
             this.genre_id = genre_id;
         }
 
