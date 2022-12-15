@@ -7,30 +7,30 @@ import java.util.List;
 @Table(name = "rating")
 public class Rating {
 
-    public Rating(long id, long playlistId, short score, long userId, Playlist playlistObject, User userObject) {
+    public Rating(long id, long playlist_id, short score, long user_id, Playlist playlist, User user) {
         this.id = id;
-        this.playlistId = playlistId;
+        this.playlist_id = playlist_id;
         this.score = score;
-        this.userId = userId;
-        this.playlistObject = playlistObject;
-        this.userObject = userObject;
+        this.user_id = user_id;
+        this.playlist = playlist;
+        this.user = user;
     }
 
-    public Rating(long id, long playlistId, short score, long userId) {
+    public Rating(long id, long playlist_id, short score, long user_id) {
         this.id = id;
-        this.playlistId = playlistId;
+        this.playlist_id = playlist_id;
         this.score = score;
-        this.userId = userId;
+        this.user_id = user_id;
     }
 
-    public Rating(long id, long playlistId, short score) {
+    public Rating(long id, long playlist_id, short score) {
         this.id = id;
-        this.playlistId = playlistId;
+        this.playlist_id = playlist_id;
         this.score = score;
     }
 
-    public Rating(long playlistId, short score) {
-        this.playlistId = playlistId;
+    public Rating(long playlist_id, short score) {
+        this.playlist_id = playlist_id;
         this.score = score;
     }
 
@@ -43,19 +43,17 @@ public class Rating {
         public long getId() {
             return id;
         }
-
         public void setId(long id) {
             this.id = id;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long playlistId;
+    private long playlist_id;
         public long getPlaylistId() {
-            return playlistId;
+            return playlist_id;
         }
-
-        public void setPlaylistId(long playlistId) {
-            this.playlistId = playlistId;
+        public void setPlaylistId(long playlist_id) {
+            this.playlist_id = playlist_id;
         }
 
     @Column(nullable = false)
@@ -63,37 +61,34 @@ public class Rating {
         public short getScore() {
             return score;
         }
-
         public void setScore(short score) {
             this.score = score;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long userId;
+    private long user_id;
         public long getUserId() {
-            return userId;
+            return user_id;
         }
-
-        public void setUserId(long userId) {
-            this.userId = userId;
-        }
-
-    @ManyToOne
-    private Playlist playlistObject;
-        public Playlist getPlaylistObject() {
-            return playlistObject;
-        }
-
-        public void setPlaylistObject(Playlist playlistObject) {
-            this.playlistObject = playlistObject;
+        public void setUserId(long user_id) {
+            this.user_id = user_id;
         }
 
     @ManyToOne
-    private User userObject;
-        public User getUserObject() {
-            return userObject;
+    private Playlist playlist;
+        public Playlist getPlaylist() {
+            return playlist;
         }
-        public void setUserObject(User userObject) {
-            this.userObject = userObject;
+        public void setPlaylist(Playlist playlist) {
+            this.playlist = playlist;
+        }
+
+    @ManyToOne
+    private User user;
+        public User getUser() {
+            return user;
+        }
+        public void setUser(User user) {
+            this.user = user;
         }
 }

@@ -79,7 +79,6 @@ public class User {
         public List<Playlist> getPlaylist() {
             return playlists;
         }
-
         public void setPlaylist(List<Playlist> playlists) {
             this.playlists = playlists;
         }

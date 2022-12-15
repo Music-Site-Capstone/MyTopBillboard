@@ -7,40 +7,40 @@ import java.util.List;
 @Table(name = "song")
 public class Song {
 
-    public Song(long id, String title, long artistId, long genreId, Artist artistObject, Genre genreObject, List<Playlist> playlists) {
+    public Song(long id, String title, long artist_id, long genre_id, Artist artist, Genre genre, List<Playlist> playlists) {
         this.id = id;
         this.title = title;
-        this.artistId = artistId;
-        this.genreId = genreId;
-        this.artistObject = artistObject;
-        this.genreObject = genreObject;
+        this.artist_id = artist_id;
+        this.genre_id = genre_id;
+        this.artist = artist;
+        this.genre = genre;
         this.playlists = playlists;
     }
 
-    public Song(long id, String title, long artistId, long genreId, Artist artistObject) {
+    public Song(long id, String title, long artist_id, long genre_id, Artist artist) {
         this.id = id;
         this.title = title;
-        this.artistId = artistId;
-        this.genreId = genreId;
-        this.artistObject = artistObject;
+        this.artist_id = artist_id;
+        this.genre_id = genre_id;
+        this.artist = artist;
     }
 
-    public Song(long id, String title, long artistId, long genreId) {
+    public Song(long id, String title, long artist_id, long genre_id) {
         this.title = title;
-        this.artistId = artistId;
-        this.genreId = genreId;
+        this.artist_id = artist_id;
+        this.genre_id = genre_id;
         this.id = id;
     }
 
-    public Song(String title, long artistId, long genreId) {
+    public Song(String title, long artist_id, long genre_id) {
         this.title = title;
-        this.artistId = artistId;
-        this.genreId = genreId;
+        this.artist_id = artist_id;
+        this.genre_id = genre_id;
     }
 
-    public Song(String title, long artistId) {
+    public Song(String title, long artist_id) {
         this.title = title;
-        this.artistId = artistId;
+        this.artist_id = artist_id;
     }
 
     public Song(String title) {
@@ -69,41 +69,39 @@ public class Song {
     }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long artistId;
+    private long artist_id;
         public long getArtistId() {
-            return artistId;
+            return artist_id;
         }
-        public void setArtistId(long artistId) {
-            this.artistId = artistId;
+        public void setArtistId(long artist_id) {
+            this.artist_id = artist_id;
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long genreId;
+    private long genre_id;
         public long getGenreId() {
-            return genreId;
+            return genre_id;
         }
-        public void setGenreId(long genreId) {
-            this.genreId = genreId;
-        }
-
-    @ManyToOne
-    @JoinColumn(name = "artist")
-    private Artist artistObject;
-        public Artist getArtistObject() {
-            return artistObject;
-        }
-        public void setArtistObject(Artist artistObject) {
-            this.artistObject = artistObject;
+        public void setGenreId(long genre_id) {
+            this.genre_id = genre_id;
         }
 
     @ManyToOne
-    @JoinColumn(name = "genre")
-    private Genre genreObject;
-        public Genre getGenreObject() {
-            return genreObject;
+    private Artist artist;
+        public Artist getArtist() {
+            return artist;
         }
-        public void setGenreObject(Genre genreObject) {
-        this.genreObject = genreObject;
+        public void setArtist(Artist artist) {
+            this.artist = artist;
+        }
+
+    @ManyToOne
+    private Genre genre;
+        public Genre getGenre() {
+            return genre;
+        }
+        public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
 

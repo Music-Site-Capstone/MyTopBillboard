@@ -8,26 +8,26 @@ import java.util.List;
 @Table(name = "playlist")
 public class Playlist {
 
-    public Playlist(long id, long userId, String playlistName, User userObject, List<Rating> rating, List<Song> songs) {
+    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating, List<Song> songs) {
         this.id = id;
-        this.userId = userId;
+        this.user_id = user_id;
         this.playlistName = playlistName;
-        this.userObject = userObject;
+        this.user = user;
         this.rating = rating;
         this.songs = songs;
     }
 
-    public Playlist(long id, long userId, String playlistName, User userObject, List<Rating> rating) {
+    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating) {
         this.id = id;
-        this.userId = userId;
+        this.user_id = user_id;
         this.playlistName = playlistName;
-        this.userObject = userObject;
+        this.user = user;
         this.rating = rating;
     }
 
-    public Playlist(long id, long userId, String playlistName) {
+    public Playlist(long id, long user_id, String playlistName) {
         this.id = id;
-        this.userId = userId;
+        this.user_id = user_id;
         this.playlistName = playlistName;
     }
 
@@ -49,12 +49,12 @@ public class Playlist {
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long userId;
+    private long user_id;
         public long getUserId() {
-            return userId;
+            return user_id;
         }
-        public void setUserId(long userId) {
-            this.userId = userId;
+        public void setUserId(long user_id) {
+            this.user_id = user_id;
         }
 
     @Column(nullable = false, length = 50)
@@ -67,12 +67,12 @@ public class Playlist {
         }
 
     @ManyToOne
-    private User userObject;
-        public User getUserObject() {
-            return userObject;
+    private User user;
+        public User getUser() {
+            return user;
         }
-        public void setUserObject(User userObject) {
-            this.userObject = userObject;
+        public void setUser(User user) {
+            this.user = user;
         }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlist")
@@ -96,7 +96,6 @@ public class Playlist {
         public List<Song> getSong() {
             return songs;
         }
-
         public void setSong(List<Song> songs) {
             this.songs = songs;
         }

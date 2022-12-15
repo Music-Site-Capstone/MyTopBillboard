@@ -25,7 +25,6 @@ public class Artist {
         public long getId() {
             return id;
         }
-
         public void setId(long id) {
             this.id = id;
     }
@@ -35,7 +34,6 @@ public class Artist {
         public String getArtistName() {
             return artistName;
         }
-
         public void setArtistName(String artistName) {
             this.artistName = artistName;
         }
