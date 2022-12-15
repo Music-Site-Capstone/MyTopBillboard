@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <nav th:replace="/partials.html :: navbar"></nav>
+    <nav th:replace="/partials.html :: navbar-desktop"></nav>
+    <nav th:replace="partials.html :: navbar-mobile"></nav>
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
         <button>Logout</button>
     </form>
@@ -45,6 +46,5 @@
     <h1 th:replace="partials.html :: header"></h1>
     <nav th:replace="partials.html :: mobile-footer"></nav>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="../js/modal.js"></script>
 </body>
 </html>
