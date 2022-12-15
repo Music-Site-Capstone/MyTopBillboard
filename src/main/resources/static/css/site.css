@@ -1,0 +1,40 @@
+.page-wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-image: url("../img/register-page.jpeg");
+    background-size: cover;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.create-account{
+    display: flex;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.container{
+    height: 600px;
+    width: 500px;
+    padding: 30px 60px;
+    position: relative;
+
+}
+
+
+.create-account-form{
+    row-gap: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #aaaaaa1f;
+    box-shadow: 1px 13px 18px #0702025e;
+    border-radius: 10px;
+    padding: 30px;
+}
