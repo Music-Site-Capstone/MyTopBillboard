@@ -7,15 +7,15 @@ import java.util.List;
 @Table(name = "artist")
 public class Artist {
 
-    public Artist(long id, String name, List<Song> songs) {
+    public Artist(long id, String artistName, List<Song> songs) {
         this.id = id;
-        this.name = name;
+        this.artistName = artistName;
         this.songs = songs;
     }
 
-    public Artist(long id, String name) {
+    public Artist(long id, String artistName) {
         this.id = id;
-        this.name = name;
+        this.artistName = artistName;
     }
 
     public Artist() {}
@@ -31,16 +31,16 @@ public class Artist {
     }
 
     @Column(unique = true, length = 75, nullable = false)
-    private String name;
-        public String getName() {
-            return name;
+    private String artistName;
+        public String getArtistName() {
+            return artistName;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setArtistName(String artistName) {
+            this.artistName = artistName;
         }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artistObject")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Song> songs;
         public List<Song> getSongs() {
             return songs;

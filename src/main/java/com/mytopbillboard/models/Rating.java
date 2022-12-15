@@ -7,30 +7,30 @@ import java.util.List;
 @Table(name = "rating")
 public class Rating {
 
-    public Rating(long id, long playlist, short score, long user, Playlist playlistObject, User userObject) {
+    public Rating(long id, long playlistId, short score, long userId, Playlist playlistObject, User userObject) {
         this.id = id;
-        this.playlist = playlist;
+        this.playlistId = playlistId;
         this.score = score;
-        this.user = user;
+        this.userId = userId;
         this.playlistObject = playlistObject;
         this.userObject = userObject;
     }
 
-    public Rating(long id, long playlist, short score, long user) {
+    public Rating(long id, long playlistId, short score, long userId) {
         this.id = id;
-        this.playlist = playlist;
+        this.playlistId = playlistId;
         this.score = score;
-        this.user = user;
+        this.userId = userId;
     }
 
-    public Rating(long id, long playlist, short score) {
+    public Rating(long id, long playlistId, short score) {
         this.id = id;
-        this.playlist = playlist;
+        this.playlistId = playlistId;
         this.score = score;
     }
 
-    public Rating(long playlist, short score) {
-        this.playlist = playlist;
+    public Rating(long playlistId, short score) {
+        this.playlistId = playlistId;
         this.score = score;
     }
 
@@ -49,13 +49,13 @@ public class Rating {
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long playlist;
-        public long getPlaylist() {
-            return playlist;
+    private long playlistId;
+        public long getPlaylistId() {
+            return playlistId;
         }
 
-        public void setPlaylist(long playlist) {
-            this.playlist = playlist;
+        public void setPlaylistId(long playlistId) {
+            this.playlistId = playlistId;
         }
 
     @Column(nullable = false)
@@ -69,13 +69,13 @@ public class Rating {
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long user;
-        public long getUser() {
-            return user;
+    private long userId;
+        public long getUserId() {
+            return userId;
         }
 
-        public void setUser(long user) {
-            this.user = user;
+        public void setUserId(long userId) {
+            this.userId = userId;
         }
 
     @ManyToOne

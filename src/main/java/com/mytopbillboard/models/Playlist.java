@@ -8,32 +8,32 @@ import java.util.List;
 @Table(name = "playlist")
 public class Playlist {
 
-    public Playlist(long id, long user, String name, User userObject, List<Rating> rating, List<Song> songs) {
+    public Playlist(long id, long userId, String playlistName, User userObject, List<Rating> rating, List<Song> songs) {
         this.id = id;
-        this.user = user;
-        this.name = name;
+        this.userId = userId;
+        this.playlistName = playlistName;
         this.userObject = userObject;
         this.rating = rating;
         this.songs = songs;
     }
 
-    public Playlist(long id, long user, String name, User userObject, List<Rating> rating) {
+    public Playlist(long id, long userId, String playlistName, User userObject, List<Rating> rating) {
         this.id = id;
-        this.user = user;
-        this.name = name;
+        this.userId = userId;
+        this.playlistName = playlistName;
         this.userObject = userObject;
         this.rating = rating;
     }
 
-    public Playlist(long id, long user, String name) {
+    public Playlist(long id, long userId, String playlistName) {
         this.id = id;
-        this.user = user;
-        this.name = name;
+        this.userId = userId;
+        this.playlistName = playlistName;
     }
 
-    public Playlist(long id, String name) {
+    public Playlist(long id, String playlistName) {
         this.id = id;
-        this.name = name;
+        this.playlistName = playlistName;
     }
 
     public Playlist(){}
@@ -49,21 +49,21 @@ public class Playlist {
         }
 
     @Column(nullable = false, insertable=false, updatable=false)
-    private long user;
-        public long getUser() {
-            return user;
+    private long userId;
+        public long getUserId() {
+            return userId;
         }
-        public void setUser(long user) {
-            this.user = user;
+        public void setUserId(long userId) {
+            this.userId = userId;
         }
 
     @Column(nullable = false, length = 50)
-    private String name;
-        public String getName() {
-            return name;
+    private String playlistName;
+        public String getPlaylistName() {
+            return playlistName;
         }
-        public void setName(String name) {
-            this.name = name;
+        public void setPlaylistName(String playlistName) {
+            this.playlistName = playlistName;
         }
 
     @ManyToOne
@@ -75,7 +75,7 @@ public class Playlist {
             this.userObject = userObject;
         }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlistObject")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "playlist")
     private List<Rating> rating;
         public List<Rating> getRating() {
             return rating;
