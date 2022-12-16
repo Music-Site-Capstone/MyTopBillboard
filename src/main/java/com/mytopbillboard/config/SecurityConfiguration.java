@@ -12,14 +12,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SecurityConfiguration {
 
-//    @Bean
-//    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-//        http.authorizeHttpRequests()
-//                .anyRequest().permitAll()
-//                .and().formLogin().loginPage("/login").defaultSuccessUrl("/homepage")
-//                .and().httpBasic();
-//        return http.build();
-//    }
+// When ever you create a new mapping it needs to be added to the Security Bean. "Authenticated"
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
