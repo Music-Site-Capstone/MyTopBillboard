@@ -15,10 +15,10 @@
     <nav th:replace="partials/partials.html :: navbar-desktop"></nav>
 <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
-        <button>Logout</button>
+<!--        <button>Logout</button>-->
     </form>
     <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
-        <button>Login</button>
+<!--        <button>Login</button>-->
     </form>
 
 

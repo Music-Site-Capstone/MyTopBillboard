@@ -1,10 +1,19 @@
-html {
-    background: url(../img/register-page.jpeg) no-repeat center center fixed;
+.page-wrapper {
+    background: url(../img/registration-page.jpeg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     overflow: hidden;
+}
+
+.page-wrapper2{
+    background: url(../img/login-page.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow:hidden;
 }
 
 img{
@@ -26,7 +35,7 @@ img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: rgba(87, 87, 87, 0.8);
+    background: rgba(87, 87, 87, 0.33);
     overflow: hidden;
     /*opacity: 0.4;*/
     box-shadow: 10px 10px 30px #000;}
@@ -42,7 +51,7 @@ img{
     width: 260px;
     height: 260px;
     border-radius: 5px;
-    background: rgba(87,87,87,0.8);
+    background: rgba(87,87,87,0.33);
     box-shadow: 1px 1px 50px #000;
     display: none;
 }
@@ -66,7 +75,7 @@ img{
 }
 
 .submit{
-background-color: #000000;
+background-color: #000000d0;
 }
 
 .close-btn:hover{
@@ -206,11 +215,11 @@ a:hover{
     width: 260px;
     height: 180px;
     border-radius: 10px;
-    background: rgba(87,87,87,0.8);
+    background: rgba(87,87,87,0.33);
     box-shadow: 1px 1px 50px #000;
     display: none;
 }
 
 .orange-btn{
-    background: rgba(87,198,255,.5);
+    background: #000000d0;
 }
