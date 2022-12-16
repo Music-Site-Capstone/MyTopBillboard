@@ -1,7 +1,7 @@
 .dnModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 10; /* Sit on top */
+    z-index: 1000; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -29,7 +29,7 @@
     position: absolute;
     width: 100%;
     height: 84.5%;
-    z-index: 100;
+    z-index: 1001;
     background-color: #fefefe;
     margin: 8vh auto 7vh auto;
     padding: 20px;
