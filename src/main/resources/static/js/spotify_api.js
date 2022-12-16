@@ -1,4 +1,6 @@
-SpotifyAPIController = (function() {
+// alert("yo!!");
+
+SpotifyAPIController = (async function() {
     const clientId = SPOTIFY_CLIENT_ID;
     const clientSecret = SPOTIFY_CLIENT_SECRET;
 
@@ -18,8 +20,25 @@ SpotifyAPIController = (function() {
 
         }
 
-       return getToken();
+       let bearerToken = await getToken();
 
+
+    const getSearch = async(bearer) => {
+        const response = await fetch(' https://api.spotify.com/v1/search?type=track&q=supermassiv',{
+            method: 'GET',
+            headers: {
+                'Authorization' : `Bearer ${bearer}`,
+                'Content-Type' : 'application/json'
+            }
+        });
+
+        const data = await response.json()
+        console.log(data);
+        // return data.access_token;
+
+    }
+
+    await getSearch(bearerToken);
 
 })();
 
