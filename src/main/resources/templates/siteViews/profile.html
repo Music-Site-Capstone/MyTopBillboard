@@ -10,50 +10,56 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 
+
     <link rel="stylesheet" th:href="@{css/modal.css}">
     <link rel="stylesheet" href="../css/modal.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
+
+    <link rel="stylesheet" th:href="@{css/modal.css}">
+
 </head>
 
 <body>
-    <nav th:replace="partials/partials.html :: navbar-desktop"></nav>
-<!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
-    <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
-<!--        <button>Logout</button>-->
-    </form>
-    <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
-<!--        <button>Login</button>-->
-    </form>
+        <nav th:replace="partials/partials.html :: navbar-desktop"></nav>
+    <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
+        <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
+    <!--        <button>Logout</button>-->
+        </form>
+        <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
+    <!--        <button>Login</button>-->
+        </form>
 
 
 
 
-    <button class="dnModal-button" id="m-current-city">
-        Search Music
-    </button>
+        <button class="dnModal-button" id="m-current-city">
+            Search Music
+        </button>
 
-    <div class="dnModal">
-        <div id="Dropdown" class="dnModal-content">
-            <span class="dnModal-close">&times;</span>
+    <!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
+        <div class="dnModal">
+            <div id="Dropdown" class="dnModal-content">
+                <span class="dnModal-close">&times;</span>
 
-            <!--insert song search here-->
-
-
-        </div><!--modal content end, line 37 start-->
-    </div> <!--modal end, line 36 start-->
+                <!--insert song search here-->
 
 
-
-
-    <h2>hellloooooo nurse</h2>
+            </div><!--modal content end, line 37 start-->
+        </div> <!--modal end, line 36 start-->
 
 
 
 
-    <h1 th:replace="partials/partials.html :: header"></h1><br>
+        <h2>hellloooooo nurse</h2>
+
+
+
+
+        <h1 th:replace="partials/partials.html :: header"></h1><br>
+
 
 <div class="container" style="border: .4rem solid black;">
     <div class="grid text-center" style="border: .4rem solid blue;">
@@ -102,6 +108,13 @@
     </script>
     <nav th:replace="partials/partials-mobile.html :: mobile-footer"></nav>
 <script th:src="@{js/spotify_api.js}"></script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script th:src="@{js/modal.js}"></script>
+    <script th:src="@{js/spotify_api.js}"></script>
 
 </body>
 </html>
