@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
     <div th:fragment="head" th:remove="tag">
         <meta charset="UTF-8">
@@ -14,10 +16,12 @@
 <body>
 <h1 th:fragment="header">YO THIS IS THE HEADER</h1>
 <nav th:fragment="navbar-desktop" class="nav nav-pills nav-justified">
-    <a class="nav-link" href="#">Home</a>
-    <a class="nav-link" href="#">Search</a>
-    <a class="nav-link" href="#">Login</a>
-    <a class="nav-link" href="#">Register</a>
+    <a class="nav-link" th:href="@{/homepage}">Home</a>
+    <a class="nav-link" th:href="@{/profile}">Profile</a>
+    <a sec:authorize="isAnonymous()" class="nav-link" href="#">Login</a>
+    <a sec:authorize="isAnonymous()" class="nav-link" href="#">Register</a>
+    <li> <form id="logoutForm" th:action="@{/logout}" method="post">
+    </form><a href="#" onclick="document.getElementById('logoutForm').submit();">Log Out</a></li>
 </nav>
 
 <nav th:fragment="navbar-mobile" class="navbar navbar-light bg-light">
