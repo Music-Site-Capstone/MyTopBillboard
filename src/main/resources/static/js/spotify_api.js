@@ -1,4 +1,6 @@
-SpotifyAPIController = (function() {
+// alert("yo!!");
+
+SpotifyAPIController = (async function() {
     const clientId = SPOTIFY_CLIENT_ID;
     const clientSecret = SPOTIFY_CLIENT_SECRET;
 
@@ -13,13 +15,40 @@ SpotifyAPIController = (function() {
         });
 
         const data = await response.json()
+        console.log(data);
         console.log(data.access_token);
         return data.access_token;
 
         }
 
-       return getToken();
+       let bearerToken = await getToken();
+        let usersSearch = "supermassive";
+        // let userSearch = document.querySelector(idOfSubmitButton).addEventListener('click', function(event){
+    //      userSearch =    document.querySelector(idOfFormInput).value
+    // });
 
+    const getSearch = async(bearer, usersSearch) => {
+        const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${usersSearch}`,{
+            method: 'GET',
+            headers: {
+                'Authorization' : `Bearer ${bearer}`,
+                'Content-Type' : 'application/json'
+            }
+        });
+
+        const data = await response.json()
+        console.log(data);
+        const track = await data.tracks.items[0].name;//grabbing the name of the track
+        console.log(track)
+        const artist = await data.tracks.items[0].artists[0].name//grabbing the name of the Artist
+        console.log(artist);
+        return track;
+
+    }
+
+    await getSearch(bearerToken, usersSearch);
 
 })();
+
+
 
