@@ -8,7 +8,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script th:src="@{js/keys.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+
     <link rel="stylesheet" th:href="@{css/modal.css}">
+    <link rel="stylesheet" href="../css/modal.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+    <link rel="stylesheet" th:href="@{css/modal.css}">
+
 </head>
 
 <body>
@@ -48,6 +59,56 @@
 
 
         <h1 th:replace="partials/partials.html :: header"></h1><br>
+
+
+<div class="container" style="border: .4rem solid black;">
+    <div class="grid text-center" style="border: .4rem solid blue;">
+        <div class="g-col-10" style="border: .3rem solid grey;">Playlist</div>
+    </div>
+
+    <br><br><br>
+
+    <div class="grid text-center">
+        <div class="g-col-4" style="border: .1rem solid grey;">Song1</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song2</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song3</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song4</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song5</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song6</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song7</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song8</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song9</div>
+        <div class="g-col-4" style="border: .1rem solid grey;">Song10</div>
+    </div>
+</div>
+
+
+    <nav th:replace="partials/partials-mobile.html :: mobile-footer"></nav>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        // When the user clicks on the button, open the modal
+        $('.dnModal-button').on('click', function () {
+            $('.dnModal, .dnModal-content').css('display', "block");
+        });
+        // When the user clicks on <span> (x), close the modal
+        $('.dnModal-close').on('click', function () {
+            $('.dnModal, .dnModal-content').css('display', "none");
+        });
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        const modal = document.getElementsByClassName('dnModal')[0];
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <nav th:replace="partials/partials-mobile.html :: mobile-footer"></nav>
+<script th:src="@{js/spotify_api.js}"></script>
+
 
 
 
@@ -102,5 +163,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script th:src="@{js/modal.js}"></script>
     <script th:src="@{js/spotify_api.js}"></script>
+
 </body>
 </html>
