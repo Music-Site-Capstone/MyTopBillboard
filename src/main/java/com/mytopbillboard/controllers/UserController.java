@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserController {
 
@@ -36,10 +39,20 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user){
+    public String registerUser(@ModelAttribute User user, HttpServletRequest request){
+        String planPassword = user.getPassword();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
+        authWithHttpServletRequest(request, user.getUsername(), planPassword);
         return "redirect:/homepage";
+    }
+
+    private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
+        try {
+            request.login(username, password);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
 
 }
