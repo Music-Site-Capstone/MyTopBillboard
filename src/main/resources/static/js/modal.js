@@ -16,4 +16,5 @@ $(function () {
             modal.style.display = "none";
         }
     }
+
 })
