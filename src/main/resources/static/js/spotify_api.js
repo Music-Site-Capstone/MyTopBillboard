@@ -22,10 +22,13 @@ SpotifyAPIController = (async function() {
         }
 
        let bearerToken = await getToken();
-        let usersSearch = "supermassive";
-        // let userSearch = document.querySelector(idOfSubmitButton).addEventListener('click', function(event){
-    //      userSearch =    document.querySelector(idOfFormInput).value
-    // });
+        // let usersSearch = "supermassive";
+    let usersSearch = ('.modal-search').onkeyup(function(){
+        usersSearch = $(this).value('#modal_search_form');
+        usersSearch.focus();
+        alert('You typed ' + usersSearch );
+    });
+
 
     const getSearch = async(bearer, usersSearch) => {
         const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${usersSearch}`,{

@@ -26,7 +26,7 @@
         </form>
 
 
-        <button class="dnModal-button" id="m-current-city">
+        <button class="dnModal-button" id="profile-search-music">
             Search Music
         </button>
 
@@ -34,10 +34,12 @@
         <div class="dnModal">
             <div id="Dropdown" class="dnModal-content">
                 <span class="dnModal-close">&times;</span>
-
-                <!--insert song search here-->
-
-
+                <form class="modal-search" role="search">
+                    <div class="search-bar">
+                        <input type="text" class="form-control" id="modal_search_form" placeholder="Add Something To Your Playlist!">
+                        <input type="submit" id="modal_hidden_search_button">
+                    </div>
+                </form>
             </div><!--modal content end, line 37 start-->
         </div> <!--modal end, line 36 start-->
 
@@ -64,7 +66,7 @@
 </div>
 
 <!--JQuery-->
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script th:src="@{js/jquery-3.6.3.min.js}"></script>
 <!--Custom JS scripts-->
 <script th:src="@{js/modal.js}"></script>
 <script th:src="@{js/spotify_api.js}"></script>
