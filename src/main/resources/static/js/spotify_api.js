@@ -28,15 +28,16 @@ SpotifyAPIController = (async function() {
 
 
     let usersSearch;
-    $('.modal-search-bar').on('keyup', setTimeout(function(){
-        let timedSearch = $(this).val();
-        alert(timedSearch)
-        if(usersSearch === timedSearch){
-        getSearch(bearerToken, usersSearch);
-        } else {
-            usersSearch = $(this).val();
-        }
-        }, 1000));
+    $('.modal-search-bar').on('keyup', function() {
+        setTimeout(async function () {
+            let timedSearch = $('.modal-search-bar').val();
+            if (usersSearch === timedSearch) {
+                await getSearch(bearerToken, usersSearch);
+            } else {
+                usersSearch = $('.modal-search-bar').val();
+            }
+        }, 200);
+    })
 
 
 
