@@ -17,13 +17,4 @@ $(function () {
         }
     }
 
-// //When the User types into the search bar in the model, it will populate a list of music
-    $('.modal-search').each(function(){
-        $(this).find('input').keypress()(function(e){
-            if(e.which == 10 || e.which == 13){
-                this.form.submit();
-            }
-        });
-        $(this).find('input[type=submit]').hide();
-    })
 })

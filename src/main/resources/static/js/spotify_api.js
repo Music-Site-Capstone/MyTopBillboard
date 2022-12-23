@@ -23,15 +23,26 @@ SpotifyAPIController = (async function() {
 
        let bearerToken = await getToken();
         // let usersSearch = "supermassive";
-    let usersSearch = ('.modal-search').onkeyup(function(){
-        usersSearch = $(this).value('#modal_search_form');
-        usersSearch.focus();
-        alert('You typed ' + usersSearch );
-    });
 
 
-    const getSearch = async(bearer, usersSearch) => {
-        const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${usersSearch}`,{
+
+
+    let usersSearch;
+    $('.modal-search-bar').on('keyup', setTimeout(function(){
+        let timedSearch = $(this).val();
+        alert(timedSearch)
+        if(usersSearch === timedSearch){
+        getSearch(bearerToken, usersSearch);
+        } else {
+            usersSearch = $(this).val();
+        }
+        }, 1000));
+
+
+
+
+    const getSearch = async(bearer, search = usersSearch) => {
+        const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${search}`,{
             method: 'GET',
             headers: {
                 'Authorization' : `Bearer ${bearer}`,
@@ -49,7 +60,7 @@ SpotifyAPIController = (async function() {
 
     }
 
-    await getSearch(bearerToken, usersSearch);
+
 
 })();
 
