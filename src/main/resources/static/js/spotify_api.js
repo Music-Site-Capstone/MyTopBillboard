@@ -1,4 +1,3 @@
-// alert("yo!!");
 
 SpotifyAPIController = (async function() {
     const clientId = SPOTIFY_CLIENT_ID;
@@ -28,7 +27,7 @@ SpotifyAPIController = (async function() {
 
 
     let usersSearch;
-    $('.modal-search-bar').on('keyup', function(e) {
+    $('.modal-search-bar').on('keyup', function() {
         let searchValue = $(this).val();
         if (usersSearch === searchValue) {
             console.log('good');
@@ -62,13 +61,13 @@ SpotifyAPIController = (async function() {
         console.log(track)
         const artist = await data.tracks.items[0].artists[0].name//grabbing the name of the Artist
         console.log(artist);
-        return track;
+        const image = await data.tracks.items[0].album.images[data.tracks.items[0].album.images.length - 1].url;
+        // return track;
+
+        $('.modal-fill').html('').append(`<div><img src="${image}" alt="fail"><p>${artist} - ${track}</p></div>`);
 
     }
 
 
 
 })();
-
-
-
