@@ -2,3 +2,15 @@
 @media screen and (max-width: 575px) {}
 /*the following will only show on mid or larger screens*/
 @media screen and (min-width: 576px) {}
+
+.modal-search-bar {
+    width: 100%;
+    height: 2.8rem;
+    margin-top: 4px;
+    background: #F5F5F5;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+}
