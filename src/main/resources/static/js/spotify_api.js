@@ -54,18 +54,20 @@ SpotifyAPIController = (async function() {
                 'Content-Type' : 'application/json'
             }
         });
-
+        $('.modal-fill').html('');
         const data = await response.json()
         console.log(data);
-        const track = await data.tracks.items[0].name;//grabbing the name of the track
-        console.log(track)
-        const artist = await data.tracks.items[0].artists[0].name//grabbing the name of the Artist
-        console.log(artist);
-        const image = await data.tracks.items[0].album.images[data.tracks.items[0].album.images.length - 1].url;
-        // return track;
+        let track;
+        let artist;
+        let image;
+        for (let i = 0; i < 5; i++){
+            track = await data.tracks.items[i].name;//grabbing the name of the track
+            artist = await data.tracks.items[i].artists[0].name;//grabbing the name of the Artist
+            image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
+            // return track;
 
-        $('.modal-fill').html('').append(`<div><img src="${image}" alt="fail"><p>${artist} - ${track}</p></div>`);
-
+            $('.modal-fill').append(`<div><img src="${image}" alt="fail"><p>${artist} - ${track}</p></div>`);
+        }
     }
 
 
