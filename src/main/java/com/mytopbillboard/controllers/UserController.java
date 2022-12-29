@@ -2,11 +2,13 @@ package com.mytopbillboard.controllers;
 
 import com.mytopbillboard.models.User;
 import com.mytopbillboard.repositories.UserRepository;
+import com.mytopbillboard.services.Utils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,8 @@ public class UserController {
 
     private final UserRepository userDao;
 
+
+
     private final PasswordEncoder passwordEncoder;
 
 
@@ -26,10 +30,20 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/profile")
-    public String profile(){
-        return "siteViews/profile";
+
+    @GetMapping("/profile/{username}")
+    public String usersProfile(Model model, @PathVariable String username){
+        String currentUser = Utils.currentUserProfile();
+        model.addAttribute("user", userDao.findByUsername(username));
+        model.addAttribute("activeUser", currentUser);
+        if(userDao.findByUsername(username) != null){
+            return "siteViews/profile";
+        }
+
+
+        return "redirect:/landingPage";
     }
+
 
 
     @GetMapping("/register")
