@@ -19,7 +19,7 @@ public class SecurityConfiguration {
                 .antMatchers("/login", "/", "/register", "/landingPage").permitAll()
                 .antMatchers("/profile/{username}", "/homepage").authenticated()
                 // sets the url success page
-                .and().formLogin().loginPage("/login").defaultSuccessUrl("/profile/{username}")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/homepage")
 //                .and().logout().logoutSuccessUrl("/splash?logout")
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/landingPage").deleteCookies("JSESSIONID").invalidateHttpSession(true)
                 .and().httpBasic();

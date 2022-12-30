@@ -37,16 +37,14 @@ public class UserController {
 
     @GetMapping("/profile/{username}")
     public String usersProfile(Model model, @PathVariable("username") String username){
-        User currentUser = Utils.currentUser();
-        long usersId = Utils.currentUserProfile();
-        String currentUsersUsername = Utils.currentUsersUsername();
-        model.addAttribute("usersId", userDao.findById(usersId));
-        model.addAttribute("activeUser", currentUser);
-        model.addAttribute("username", currentUsersUsername);
-        if(currentUsersUsername != null){
-            return "siteViews/profile";
+        long userId = Utils.currentUserProfile();
+        model.addAttribute("user", userDao.findByUsername(username));
+        model.addAttribute("activeUser", userDao.findById(userId).getUsername());
+        if(userDao.findByUsername(username) == null){
+            return "redirect:/register";
+        } else {
+        return "siteViews/profile";
         }
-        return "redirect:/register";
     }
 
 
