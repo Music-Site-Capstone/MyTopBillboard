@@ -17,7 +17,23 @@
 </head>
 
 <body>
-    <nav th:replace="partials/partials.html :: navbar-desktop"></nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link dnModal-button" id="profile-search-music">
+                        Search Music
+                    </a>
+                    <a class="nav-link" th:href="@{/homepage}">Home</a>
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
 <!--        <button>Logout</button>-->
@@ -27,9 +43,7 @@
     </form>
 
 
-    <button class="dnModal-button" id="profile-search-music">
-        Search Music
-    </button>
+
 
 <!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
     <div class="dnModal">
