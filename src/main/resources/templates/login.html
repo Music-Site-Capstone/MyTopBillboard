@@ -4,60 +4,72 @@
   <div th:replace="partials/partials.html :: head"></div>
 </head>
 <body class="page-wrapper2">
-<nav th:replace="partials/partials.html :: navbar-desktop"></nav>
-<!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
-<!--<h1 th:replace="partials/partials.html :: header"></h1>-->
-<div th:if="${param.error}">
-  Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-  You have been logged out.
-</div>
-
-<div id="login-button">
-  <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
-  </img>
-</div>
-<div id="container">
-  <h1>Login</h1>
-  <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-  </span>
-
-  <form th:action="@{/login}" method="post">
-      <input placeholder="Username" id="username" name="username" class="input2" type="text">
-      <input placeholder="Password" id="password" name="password" class="input2" type="password">
-    <input class="submit" type="submit" value="Login">
-
-    <div id="remember-container">
-      <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
-      <span id="remember">Remember me</span>
-      <span id="forgotten">Forgotten password</span>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" th:href="@{/landingpage}">VibeCheck</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" th:href="@{/register}">Register</a>
+        </div>
+      </div>
     </div>
-  </form>
-</div>
+  </nav>
+  <!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
+  <!--<h1 th:replace="partials/partials.html :: header"></h1>-->
+  <div th:if="${param.error}">
+    Invalid Username and Password.
+  </div>
+  <div th:if="${param.logout}">
+    You have been logged out.
+  </div>
 
-<!-- Forgotten Password Container -->
-<div id="forgotten-container">
-  <h1>Forgotten</h1>
-  <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-  </span>
+  <div id="login-button">
+    <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+    </img>
+  </div>
+  <div id="container">
+    <h1>Login</h1>
+    <span class="close-btn">
+      <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    </span>
 
-  <form>
-    <input type="email" name="email" placeholder="E-mail">
-    <a href="#" class="orange-btn">Get new password</a>
-  </form>
-</div>
+    <form th:action="@{/login}" method="post">
+        <input placeholder="Username" id="username" name="username" class="input2" type="text">
+        <input placeholder="Password" id="password" name="password" class="input2" type="password">
+      <input class="submit" type="submit" value="Login">
 
-<script
-        src="https://code.jquery.com/jquery-3.6.2.min.js"
-        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
-        crossorigin="anonymous"></script>
+      <div id="remember-container">
+        <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
+        <span id="remember">Remember me</span>
+        <span id="forgotten">Forgotten password</span>
+      </div>
+    </form>
+  </div>
 
-<script th:src="@{js/registration.js}"></script>
+  <!-- Forgotten Password Container -->
+  <div id="forgotten-container">
+    <h1>Forgotten</h1>
+    <span class="close-btn">
+      <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    </span>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <form>
+      <input type="email" name="email" placeholder="E-mail">
+      <a href="#" class="orange-btn">Get new password</a>
+    </form>
+  </div>
+
+  <script
+          src="https://code.jquery.com/jquery-3.6.2.min.js"
+          integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
+          crossorigin="anonymous"></script>
+
+  <script th:src="@{js/registration.js}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 
 </body>
 </html>
