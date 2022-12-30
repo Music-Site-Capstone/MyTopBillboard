@@ -10,7 +10,21 @@
     <link rel="stylesheet" th:href="@{css/landing.css}">
 </head>
 <body>
-    <nav th:replace="partials/partials.html :: navbar-desktop"></nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/landingpage}">VibeCheck</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
     <!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
     <h1 th:replace="partials/partials.html :: header"></h1>
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
