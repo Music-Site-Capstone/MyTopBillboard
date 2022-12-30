@@ -9,7 +9,12 @@ public class Utils {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    public static String currentUserProfile(){
+    public static long currentUserProfile(){
+        return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+        ).getId();
+    }
+
+    public static String currentUsersUsername(){
         return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
     }
 
