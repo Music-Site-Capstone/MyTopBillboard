@@ -6,59 +6,64 @@
 </head>
 <body class="page-wrapper">
 
+    <nav class="nav">
+        <a class="nav-link text-dark" th:href="@{/landingpage}">VibeCheck</a>
+        <a class="nav-link" th:href="@{/login}">Dont have an account? Register!</a>
+    </nav>
+
 <!--&lt;!&ndash;                <nav th:replace="partials.html :: navbar-desktop"></nav>&ndash;&gt;-->
 <!--&lt;!&ndash;                <nav th:replace="partials.html :: navbar-mobile"></nav>&ndash;&gt;-->
 <!--&lt;!&ndash;                <h1 th:replace="partials.html :: header"></h1>&ndash;&gt;-->
 
 
-<div id="login-button">
-    <img src="/img/vibe-check-icon.png" alt="microphone" height="40px" width="40px">
-    </img>
-</div>
-<div id="container">
-    <h1>Register</h1>
-    <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-  </span>
+    <div id="login-button">
+        <img src="/img/vibe-check-icon.png" alt="microphone" height="40px" width="40px">
+        </img>
+    </div>
+    <div id="container">
+        <h1>Register</h1>
+        <span class="close-btn">
+        <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+      </span>
 
-        <form class="create-account-form" th:action="@{/register}" method="post" th:object="${user}">
-            <input placeholder="Username" class="input2" id="username" th:field="*{username}">
-            <input placeholder="Email" class="input2" id="email" th:field="*{email}">
-            <input placeholder="Password" class="input2" id="password" type="password" th:field="*{password}">
-            <input class="submit" type="submit" value="Register">
+            <form class="create-account-form" th:action="@{/register}" method="post" th:object="${user}">
+                <input placeholder="Username" class="input2" id="username" th:field="*{username}">
+                <input placeholder="Email" class="input2" id="email" th:field="*{email}">
+                <input placeholder="Password" class="input2" id="password" type="password" th:field="*{password}">
+                <input class="submit" type="submit" value="Register">
 
-        <div id="remember-container">
-            <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
-            <span id="remember">Remember me</span>
-            <span id="forgotten">Forgotten password</span>
-        </div>
-    </form>
-</div>
+            <div id="remember-container">
+                <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
+                <span id="remember">Remember me</span>
+                <span id="forgotten">Forgotten password</span>
+            </div>
+        </form>
+    </div>
 
-<!-- Forgotten Password Container -->
-<div id="forgotten-container">
-    <h1>Forgotten</h1>
-    <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-  </span>
+    <!-- Forgotten Password Container -->
+    <div id="forgotten-container">
+        <h1>Forgotten</h1>
+        <span class="close-btn">
+        <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+      </span>
 
-    <form>
-        <input type="email" name="email" placeholder="E-mail">
-        <a href="#" class="orange-btn">Get new password</a>
-    </form>
-</div>
+        <form>
+            <input type="email" name="email" placeholder="E-mail">
+            <a href="#" class="orange-btn">Get new password</a>
+        </form>
+    </div>
 
-<script
-        src="https://code.jquery.com/jquery-3.6.2.min.js"
-        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
-        crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.6.2.min.js"
+            integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
+            crossorigin="anonymous"></script>
 
-<script th:src="@{js/registration.js}"></script>
+    <script th:src="@{js/registration.js}"></script>
 
-<!--GreenSock GSAP Tween plugin for Animations below-->
+    <!--GreenSock GSAP Tween plugin for Animations below-->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js">
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js">
+    </script>
 
 </body>
 </html>
