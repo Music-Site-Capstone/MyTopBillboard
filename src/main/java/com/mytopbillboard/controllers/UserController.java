@@ -30,18 +30,23 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping("/profile")
+    public String profileRedirect(){
+        return "siteViews/landing_page";
+    }
 
     @GetMapping("/profile/{username}")
-    public String usersProfile(Model model, @PathVariable String username){
-        String currentUser = Utils.currentUserProfile();
-        model.addAttribute("user", userDao.findByUsername(username));
+    public String usersProfile(Model model, @PathVariable("username") String username){
+        User currentUser = Utils.currentUser();
+        long usersId = Utils.currentUserProfile();
+        String currentUsersUsername = Utils.currentUsersUsername();
+        model.addAttribute("usersId", userDao.findById(usersId));
         model.addAttribute("activeUser", currentUser);
-        if(userDao.findByUsername(username) != null){
+        model.addAttribute("username", currentUsersUsername);
+        if(currentUsersUsername != null){
             return "siteViews/profile";
         }
-
-
-        return "redirect:/landingPage";
+        return "redirect:/register";
     }
 
 
@@ -58,7 +63,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
         authWithHttpServletRequest(request, user.getUsername(), planPassword);
-        return "redirect:/homepage";
+        return "redirect:/profile/{username}";
     }
 
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {

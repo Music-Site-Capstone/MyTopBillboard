@@ -16,10 +16,10 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/login", "/", "/register", "/landingPage", "/profile").permitAll()
-                .antMatchers("/profile", "/homepage").authenticated()
+                .antMatchers("/login", "/", "/register", "/landingPage").permitAll()
+                .antMatchers("/profile/{username}", "/homepage").authenticated()
                 // sets the url success page
-                .and().formLogin().loginPage("/login").defaultSuccessUrl("/homepage")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/profile/{username}")
 //                .and().logout().logoutSuccessUrl("/splash?logout")
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/landingPage").deleteCookies("JSESSIONID").invalidateHttpSession(true)
                 .and().httpBasic();
