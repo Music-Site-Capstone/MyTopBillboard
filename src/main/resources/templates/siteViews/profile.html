@@ -65,53 +65,33 @@
         <span>rating</span>
     </div>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-header">
-            Playlists:
+    <div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Playlists:
+            </div>
+            <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+                <li th:if="${userID} == ${playlist.userId}" class="list-group-item">
+
+                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="playlist${playlist.id}"></a> <!--need to make the href fill the other table-->
+                </li>
+            </ul>
+            <button th:if="${userID} == ${activeUserID}">
+                + Add New Playlist
+            </button>
         </div>
-        <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
-            <li th:if="${userID} == ${playlist.userId}" class="list-group-item">
+        <br><br><br><br><br><br><br>
 
-                <a th:href="@{#}"><p th:text="${playlist.playlistName}"></a> <!--need to make the href fill the other table-->
-            </li>
-        </ul>
-        <button th:if="${userID} == ${activeUserID}">
-            + Add New Playlist
-        </button>
-    </div>
-    <br><br><br><br><br><br><br>
-
-    <div class="card" style="width: 18rem;">
-        <div class="card-header">
-            Songs
+        <div class="card" style="width: 18rem;">
+            <div class="card-header playlist-title">
+                Songs
+            </div>
+            <ul class="list-group list-group-flush song-list">
+                <li class="list-group-item">Pick a playlist!</li>
+            </ul>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
     </div>
 
-<!--<div class="container" style="border: .4rem solid black;">-->
-<!--    <div class="grid text-center" style="border: .4rem solid blue;">-->
-<!--        <div class="g-col-10" style="border: .3rem solid grey;">Playlist</div>-->
-<!--    </div>-->
-
-<!--    <br><br><br>-->
-
-<!--    <div class="grid text-center">-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song1</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song2</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song3</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song4</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song5</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song6</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song7</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song8</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song9</div>-->
-<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song10</div>-->
-<!--    </div>-->
-<!--</div>-->
 
 <!--JQuery-->
 <script th:src="@{/js/jquery-3.6.3.min.js}"></script>
