@@ -1,6 +1,7 @@
 package com.mytopbillboard.controllers;
 
 import com.mytopbillboard.models.User;
+import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import com.mytopbillboard.services.Utils;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,15 +19,13 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     private final UserRepository userDao;
-
-
-
+    private final PlaylistRepository playlistDao;
     private final PasswordEncoder passwordEncoder;
 
 
-
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder){
+    public UserController(UserRepository userDao, PlaylistRepository playlistDao, PasswordEncoder passwordEncoder){
         this.userDao = userDao;
+        this.playlistDao = playlistDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -38,8 +37,9 @@ public class UserController {
     @GetMapping("/profile/{username}")
     public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();
-        model.addAttribute("user", userDao.findByUsername(username));
+        model.addAttribute("userID", userDao.findByUsername(username).getId());
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
+        model.addAttribute("allPlaylists", playlistDao.findAll());
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
         } else {
