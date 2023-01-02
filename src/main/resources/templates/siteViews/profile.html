@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <h2>Username</h2>
+    <h2 th:text="${activeUser}"></h2> <!--change this to the page owner-->
 
     <div>
         <span>rank</span>
@@ -67,12 +67,13 @@
 
     <div class="card" style="width: 18rem;">
         <div class="card-header">
-            Playlists
+            Playlists:
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
+        <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+            <li th:if="${userID} == ${playlist.userId}" class="list-group-item">
+
+                <a th:href="@{#}"><input type="button" value="Edit" th:text="${playlist.playlistName}"></a> <!--need to make the href fill the other table-->
+            </li>
         </ul>
         <button>
             + Add New Playlist
