@@ -7,18 +7,83 @@
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{css/landing.css}">
 </head>
 <body>
-<nav th:replace="partials/partials.html :: navbar-desktop"></nav>
-<!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
-<h1 th:replace="partials/partials.html :: header"></h1>
-<form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
-    <button>Logout</button>
-</form>
-<form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
-    <button>Login</button>
-</form>
-    <div>Welcome to the landing page!</div>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">VibeCheck</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+        <div>Welcome to the landing page!</div>
+    <!--paired carousels-->
+
+    <main>
+        <section class="carousel" aria-label="Gallery">
+            <ol class="carousel__viewportv">
+                <li id="carousel__slide1v"
+                    tabindex="0"
+                    class="carousel__slide">
+                    <h3>Create a SICK profile with a HOT playlist!</h3>
+                    <div class="carousel__snapper"></div>
+                </li>
+
+                <li id="carousel__slide2v"
+                    tabindex="0"
+                    class="carousel__slide">
+                    <h3>Prove your GREATNESS by getting to the top of the leaderboards!</h3>
+                    <div class="carousel__snapper"></div>
+                </li>
+
+                <li id="carousel__slide3v"
+                    tabindex="0"
+                    class="carousel__slide">
+                    <h3>Judge your LOSER friends' terrible music taste!</h3>
+                    <div class="carousel__snapper"></div>
+                </li>
+            </ol>
+        </section>
+
+
+
+
+
+
+    <!--fdnfkansdk;fnasfgnkasnsna;flgnadsl;gl;kdsafnvgkfdsnkvgdfsindsafkgnvkasfdv;kadsfn-->
+
+
+        <section class="carousel" aria-label="Gallery">
+            <ol class="carousel__viewport">
+                <li id="carousel__slide1"
+                    tabindex="0"
+                    class="carousel__slide">
+                    <img th:src="@{img/lily-allenmyspace_trans_NvBQzQNjv4Bq3U9-D5U2JffhMhmF-FT3huN_okDYFaF5uKA7PWJo3RI.webp}" alt="profile">
+                    <div class="carousel__snapper"></div>
+                </li>
+                <li id="carousel__slide2"
+                    tabindex="0"
+                    class="carousel__slide">
+                    <img th:src="@{img/Screen Shot 2020-11-12 at 3.53.19 PM.png}" alt="leaderboard">
+                    <div class="carousel__snapper"></div>
+                </li>
+                <li id="carousel__slide3"
+                    tabindex="0"
+                    class="carousel__slide">
+                    <img th:src="@{img/614dfaed9cdcb08628f3b1cc_5-star-rating.jpeg}" alt="rating">
+                    <div class="carousel__snapper"></div>
+                </li>
+            </ol>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </body>
 </html>
