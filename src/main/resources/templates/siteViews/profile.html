@@ -76,8 +76,8 @@
                     <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="playlist${playlist.id}"></a> <!--need to make the href fill the other table-->
                 </li>
             </ul>
-            <form th:action="@{/profile}" th:method="post" th:object="${playlst}" class="playlistForm">
-                <input type="text" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}" th:field="">
+            <form th:action="@{/profile}" th:method="post" th:object="${playlist}" class="playlistForm">
+                <input id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}" th:field="*{playlistName}">
             </form>
         </div>
         <br><br><br><br><br><br><br>
