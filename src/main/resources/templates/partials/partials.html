@@ -10,8 +10,12 @@
 
         <link rel="stylesheet" th:href="@{/css/site.css}">
         <link rel="stylesheet" th:href="@{/css/modal.css}">
+<<<<<<< HEAD
         <link rel="stylesheet" th:href="@{css/registration.css}">
 
+=======
+        <link rel="stylesheet" th:href="@{/css/registration.css}">
+>>>>>>> 7e0e195230b3becb7f8b6b52ded8f23f5c50a8c3
     </div>
 
 </head>
@@ -20,16 +24,16 @@
 <div class="container" th:fragment="navbar-desktop">
     <nav class="nav nav-pills nav-justified">
         <a class="nav-link" th:href="@{/homepage}">Home</a>
-        <a class="nav-link" th:href="@{|/profile/${activeUser}|}">Profile</a>
+        <a class="nav-link" th:href="@{/profile}">Profile</a>
         <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}">Login</a>
         <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/register}">Register</a>
         <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
     </nav>
 </div>
-<!--<h1 th:fragment="header">YO THIS IS THE HEADER</h1>-->
-<!--<div class="container" th:fragment="desktop-footer">-->
+<h1 th:fragment="header">YO THIS IS THE HEADER</h1>
+<div class="container" th:fragment="desktop-footer">
 
-<!--</div>-->
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
