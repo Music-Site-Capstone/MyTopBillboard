@@ -37,6 +37,7 @@ public class UserController {
     @GetMapping("/profile/{username}")
     public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();
+        model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
         model.addAttribute("userID", userDao.findByUsername(username).getId());
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         model.addAttribute("allPlaylists", playlistDao.findAll());
