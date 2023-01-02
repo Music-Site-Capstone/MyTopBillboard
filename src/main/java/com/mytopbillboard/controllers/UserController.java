@@ -1,5 +1,6 @@
 package com.mytopbillboard.controllers;
 
+import com.mytopbillboard.models.Playlist;
 import com.mytopbillboard.models.User;
 import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.UserRepository;
@@ -39,6 +40,7 @@ public class UserController {
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         model.addAttribute("activeUserID", userDao.findById(userId).getId());
         model.addAttribute("allPlaylists", playlistDao.findAll());
+        model.addAttribute("playlist", new Playlist());
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
         } else {
