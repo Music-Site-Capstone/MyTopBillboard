@@ -5,116 +5,119 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<!--Bootstrap CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script th:src="@{js/keys.js}"></script>
+<!--Boostrap JS Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-
-
-    <link rel="stylesheet" th:href="@{css/modal.css}">
-    <link rel="stylesheet" href="../css/modal.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-
-    <link rel="stylesheet" th:href="@{css/modal.css}">
-
+<!--Custom Js Scripts-->
+    <script th:src="@{/js/keys.js}"></script>
+<!--Custom CSS-->
+    <link rel="stylesheet" th:href="@{/css/modal.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
 </head>
 
 <body>
-        <nav th:replace="partials/partials.html :: navbar-desktop"></nav>
-    <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
-        <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
-    <!--        <button>Logout</button>-->
-        </form>
-        <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
-    <!--        <button>Login</button>-->
-        </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link dnModal-button" id="profile-search-music">
+                        Search Music
+                    </a>
+                    <a class="nav-link" th:href="@{/homepage}">Home</a>
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
+    <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
+<!--        <button>Logout</button>-->
+    </form>
+    <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
+<!--        <button>Login</button>-->
+    </form>
 
 
 
 
-        <button class="dnModal-button" id="m-current-city">
-            Search Music
+<!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
+    <div class="dnModal">
+        <div id="Dropdown" class="dnModal-content">
+            <span class="dnModal-close">&times;</span>
+            <form class="modal-search" role="search">
+                <div class="search-bar">
+                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
+                </div>
+                <div class="modal-fill"></div>
+            </form>
+        </div>
+    </div>
+
+    <h2 th:text="${pageOwner}"></h2>
+
+    <div>
+        <span>rank</span>
+        <span>rating</span>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Playlists:
+        </div>
+        <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+            <li th:if="${userID} == ${playlist.userId}" class="list-group-item">
+
+                <a th:href="@{#}"><input type="button" value="Edit" th:text="${playlist.playlistName}"></a> <!--need to make the href fill the other table-->
+            </li>
+        </ul>
+        <button>
+            + Add New Playlist
         </button>
+    </div>
+    <br><br><br><br><br><br><br>
 
-    <!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
-        <div class="dnModal">
-            <div id="Dropdown" class="dnModal-content">
-                <span class="dnModal-close">&times;</span>
-
-                <!--insert song search here-->
-
-
-            </div><!--modal content end, line 37 start-->
-        </div> <!--modal end, line 36 start-->
-
-
-
-
-        <h2>hellloooooo nurse</h2>
-
-
-
-
-        <h1 th:replace="partials/partials.html :: header"></h1><br>
-
-
-<div class="container" style="border: .4rem solid black;">
-    <div class="grid text-center" style="border: .4rem solid blue;">
-        <div class="g-col-10" style="border: .3rem solid grey;">Playlist</div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Songs
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+        </ul>
     </div>
 
-    <br><br><br>
+<!--<div class="container" style="border: .4rem solid black;">-->
+<!--    <div class="grid text-center" style="border: .4rem solid blue;">-->
+<!--        <div class="g-col-10" style="border: .3rem solid grey;">Playlist</div>-->
+<!--    </div>-->
 
-    <div class="grid text-center">
-        <div class="g-col-4" style="border: .1rem solid grey;">Song1</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song2</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song3</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song4</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song5</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song6</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song7</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song8</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song9</div>
-        <div class="g-col-4" style="border: .1rem solid grey;">Song10</div>
-    </div>
-</div>
+<!--    <br><br><br>-->
 
+<!--    <div class="grid text-center">-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song1</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song2</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song3</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song4</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song5</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song6</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song7</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song8</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song9</div>-->
+<!--        <div class="g-col-4" style="border: .1rem solid grey;">Song10</div>-->
+<!--    </div>-->
+<!--</div>-->
 
-    <nav th:replace="partials/partials-mobile.html :: mobile-footer"></nav>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script>
-        // When the user clicks on the button, open the modal
-        $('.dnModal-button').on('click', function () {
-            $('.dnModal, .dnModal-content').css('display', "block");
-        });
-        // When the user clicks on <span> (x), close the modal
-        $('.dnModal-close').on('click', function () {
-            $('.dnModal, .dnModal-content').css('display', "none");
-        });
-
-
-        // When the user clicks anywhere outside of the modal, close it
-        const modal = document.getElementsByClassName('dnModal')[0];
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-    <nav th:replace="partials/partials-mobile.html :: mobile-footer"></nav>
-<script th:src="@{js/spotify_api.js}"></script>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script th:src="@{js/modal.js}"></script>
-    <script th:src="@{js/spotify_api.js}"></script>
+<!--JQuery-->
+<script th:src="@{/js/jquery-3.6.3.min.js}"></script>
+<!--Custom JS scripts-->
+<script th:src="@{/js/modal.js}"></script>
+<script th:src="@{/js/spotify_api.js}"></script>
 
 </body>
 </html>
