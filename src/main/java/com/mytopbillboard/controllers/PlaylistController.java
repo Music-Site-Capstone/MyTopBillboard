@@ -25,7 +25,7 @@ public class PlaylistController {
         Playlist playlist = new Playlist();
         playlist.setPlaylistName(playlistName);
         playlist.setUserId(Utils.currentUserProfile());
-
+        playlistDao.save(playlist);
         return "siteViews/profile";
     }
 
