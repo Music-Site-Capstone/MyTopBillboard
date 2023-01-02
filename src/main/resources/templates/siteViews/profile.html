@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link dnModal-button" id="profile-search-music">
+                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music">
                         Search Music
                     </a>
                     <a class="nav-link" th:href="@{/homepage}">Home</a>
@@ -72,10 +72,10 @@
         <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
             <li th:if="${userID} == ${playlist.userId}" class="list-group-item">
 
-                <a th:href="@{#}"><input type="button" value="Edit" th:text="${playlist.playlistName}"></a> <!--need to make the href fill the other table-->
+                <a th:href="@{#}"><p th:text="${playlist.playlistName}"></a> <!--need to make the href fill the other table-->
             </li>
         </ul>
-        <button>
+        <button th:if="${userID} == ${activeUserID}">
             + Add New Playlist
         </button>
     </div>

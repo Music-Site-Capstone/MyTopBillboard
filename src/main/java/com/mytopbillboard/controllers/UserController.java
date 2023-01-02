@@ -40,6 +40,7 @@ public class UserController {
         model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
         model.addAttribute("userID", userDao.findByUsername(username).getId());
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
+        model.addAttribute("activeUserID", userDao.findById(userId).getId());
         model.addAttribute("allPlaylists", playlistDao.findAll());
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
