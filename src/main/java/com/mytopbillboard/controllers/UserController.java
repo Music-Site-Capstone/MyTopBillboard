@@ -61,7 +61,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
         authWithHttpServletRequest(request, user.getUsername(), planPassword);
-        return "redirect:/profile/{username}";
+        return "redirect:/homepage";
     }
 
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
