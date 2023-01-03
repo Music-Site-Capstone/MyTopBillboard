@@ -8,18 +8,18 @@ import java.util.List;
 @Table(name = "playlist")
 public class Playlist {
 
-    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating, List<Song> songs) {
+    public Playlist(long id, /*long user_id,*/ String playlistName, User user, List<Rating> rating, List<Song> songs) {
         this.id = id;
-        this.user_id = user_id;
+//        this.user_id = user_id;
         this.playlistName = playlistName;
         this.user = user;
         this.rating = rating;
         this.songs = songs;
     }
 
-    public Playlist(long id, long user_id, String playlistName, User user, List<Rating> rating) {
+    public Playlist(long id, /*long user_id,*/ String playlistName, User user, List<Rating> rating) {
         this.id = id;
-        this.user_id = user_id;
+//        this.user_id = user_id;
         this.playlistName = playlistName;
         this.user = user;
         this.rating = rating;
@@ -27,7 +27,7 @@ public class Playlist {
 
     public Playlist(long id, long user_id, String playlistName) {
         this.id = id;
-        this.user_id = user_id;
+//        this.user_id = user_id;
         this.playlistName = playlistName;
     }
 
@@ -48,14 +48,14 @@ public class Playlist {
             this.id = id;
         }
 
-    @Column(nullable = false, insertable=false, updatable=false)
-    private long user_id;
-        public long getUserId() {
-            return user_id;
-        }
-        public void setUserId(long user_id) {
-            this.user_id = user_id;
-        }
+//    @Column(nullable = false)
+//    private long user_id;
+//        public long getUserId() {
+//            return user_id;
+//        }
+//        public void setUserId(long user_id) {
+//            this.user_id = user_id;
+//        }
 
     @Column(nullable = false, length = 50)
     private String playlistName;
