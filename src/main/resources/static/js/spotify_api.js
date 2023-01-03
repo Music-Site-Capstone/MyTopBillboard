@@ -21,7 +21,7 @@ SpotifyAPIController = (async function() {
         }
 
        let bearerToken = await getToken();
-        // let usersSearch = "supermassive";
+
 
 
 
@@ -44,9 +44,19 @@ SpotifyAPIController = (async function() {
     })
 
 
+  //   curl --request GET \
+  // --url https://api.spotify.com/v1/recommendations/available-genre-seeds \
+  //       --header 'Authorization: ' \
+  // --header 'Content-Type: application/json'
 
 
-    const getSearch = async(bearer, search = usersSearch) => {
+  //   curl --request GET \
+  // --url https://api.spotify.com/v1/artists/id \
+  //       --header 'Authorization: ' \
+  // --header 'Content-Type: application/json'
+
+    let artistID;
+    const getSearch = async(bearer, search = usersSearch, artistID) => {
         const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${search}`,{
             method: 'GET',
             headers: {
@@ -54,8 +64,24 @@ SpotifyAPIController = (async function() {
                 'Content-Type' : 'application/json'
             }
         });
-        $('.modal-fill').html('');
         const data = await response.json()
+       artistID = data.tracks.items[0].artists[0].id;
+        console.log(artistID);
+
+        const genreResponse = await fetch(`https://api.spotify.com/v1/artists/${artistID}`,{
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${bearer}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        $('.modal-fill').html('');
+
+        const artistData = await genreResponse.json();
+        console.log(artistData);
+        let genres = artistData.genres.toString();
+        console.log(genres);
         console.log(data);
         let track;
         let artist;
