@@ -47,4 +47,19 @@ public class Artist {
             this.songs = songs;
         }
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="artist_genres",
+            joinColumns = @JoinColumn(name= "artist_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genre> genres;
+
+        public List<Genre> getGenres() {
+            return genres;
+        }
+
+        public void setGenres(List<Genre> genres) {
+            this.genres = genres;
+        }
 }

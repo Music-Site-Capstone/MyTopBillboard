@@ -83,6 +83,12 @@ SpotifyAPIController = (async function() {
         let genres = artistData.genres.toString();
         console.log(genres);
         console.log(data);
+
+        function addGenres(){
+
+        }
+
+
         let track;
         let artist;
         let image;
@@ -92,7 +98,7 @@ SpotifyAPIController = (async function() {
             image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
             // return track;
 
-            $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p><button class="addButton">Add song to playlist</button></div>`);
+            $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p><button class="addButton" id="addGenres">Add song to playlist</button></div>`);
         }
     }
 
