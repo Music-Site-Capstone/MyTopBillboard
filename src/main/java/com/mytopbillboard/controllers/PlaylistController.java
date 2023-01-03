@@ -32,17 +32,18 @@ public class PlaylistController {
         this.songDao = songDao;
     }
 
-    //    @PostMapping("/profile/{username}")
-//    public String addSong(){
-//        return "redirect:/siteViews/profile"; // provisional solution. Trying to explicitly not reload/redirect so that people will be able to add songs to playlist without reloading page.
-//    }
 
-    @PostMapping("/profile")
-    public String addPlaylist(@ModelAttribute Playlist playlist){
-        playlist.setUser(userDao.findById(9));
+    @PostMapping("/profile/{username}")
+    public String addPlaylist(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "userId") long userId){
+        System.out.println("I AM FUNCTIONAL AT ALL");
+        System.out.println(userId);
+        Playlist playlist = new Playlist();
+        playlist.setPlaylistName(playlistName);
+        playlist.setUser(userDao.findById(userId));
         playlistDao.save(playlist);
-        return "siteViews/profile";
+        return "redirect:/profile/" + username; //return response object with a set status method
     }
+
 
     @PostMapping("/home")
     public String addSonHome(){

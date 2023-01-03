@@ -114,14 +114,12 @@
                     <input type="hidden" name="playlistId" th:value="${playlist.id}">
                     <button>rate</button>
                     </form>
-<!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="playlist${playlist.id}"></a> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
+                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></a> <!--need to make the href fill the other table-->
                 </li>
             </ul>
-
-
-            <form th:action="@{/profile}" th:method="post" th:object="${playlist}" class="playlistForm">
-                <input id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}" th:field="*{playlistName}">
-                <button>Create New Playlist</button>
+            <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
+                <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
+                <input  th:value="${activeUserID}" name="userId" type="text">
             </form>
 
 
@@ -144,6 +142,7 @@
 <!--Custom JS scripts-->
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/spotify_api.js}"></script>
+    <script th:src="@{/js/profile.js}"></script>
 
 </body>
 </html>

@@ -46,7 +46,7 @@ public class UserController {
         model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
         model.addAttribute("userID", userDao.findByUsername(username).getId());
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
-        model.addAttribute("activeUserID", userDao.findById(userId).getId());
+        model.addAttribute("activeUserID", userId);
         model.addAttribute("allPlaylists", playlistDao.findAll());
         model.addAttribute("playlist", new Playlist());
         model.addAttribute("songs", songs);
@@ -57,7 +57,6 @@ public class UserController {
         return "siteViews/profile";
         }
     }
-
 
 
     @GetMapping("/register")
