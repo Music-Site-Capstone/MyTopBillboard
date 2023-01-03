@@ -47,4 +47,6 @@ public class Artist {
             this.songs = songs;
         }
 
+
+
 }
