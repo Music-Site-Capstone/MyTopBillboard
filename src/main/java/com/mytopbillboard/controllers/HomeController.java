@@ -22,6 +22,9 @@ public class HomeController {
 
     @GetMapping("/homepage")
     public String welcomeHome(Model model) {
+        model.addAttribute("randomUserId", (int) Math.ceil(Math.random() * userDao.findAll().size()));
+        // on html i will loop through the find all starting at the random number
+        // loop will have links
         long userId = Utils.currentUserProfile();
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         return "/siteViews/homepage";
