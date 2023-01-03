@@ -4,6 +4,7 @@ import com.mytopbillboard.models.Playlist;
 import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +42,9 @@ private final UserRepository userDao;
         return "redirect:/profile/" + username; //return response object with a set status method
     }
 
+    @PostMapping("profile/{username}/{playlistName}")
+    public String showSongsInPlaylist(Model model, @PathVariable("username") String username, @RequestParam(name= "playlistName") String playlistName)
+
 //    public String create(
 //            @RequestParam(name = "title") String title,
 //            @RequestParam(name = "description") String description
@@ -50,6 +54,7 @@ private final UserRepository userDao;
 //        ad.setDescription(description);
 //        // save the ad...
 //    }
+
 
 
 
