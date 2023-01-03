@@ -98,7 +98,12 @@ SpotifyAPIController = (async function() {
             image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
             // return track;
 
-            $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p><button class="addButton" id="addGenres">Add song to playlist</button></div>`);
+            $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
+            <form th:action="@{profile/pageOwner}" th:method="POST" th:object="${artist}" th:object="${genres}">
+            <input th:field=""
+            <button class="addButton" id="addGenres">Add song to playlist</button>
+            </form>
+            </div>`);
         }
     }
 
