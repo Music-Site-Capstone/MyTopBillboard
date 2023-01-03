@@ -18,3 +18,11 @@ $(function () {
     }
 
 })
+
+$(document).ready(function(){
+    $(".add").on('click', function(){
+        let playlistId = $(this).attr("data-playlist-id");
+        let songId = $(this).attr("data-song-id");
+        $.post("/song/playlist/" + playlistId + "/add/" + songId);
+    });
+});

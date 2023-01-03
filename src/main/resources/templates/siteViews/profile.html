@@ -46,10 +46,33 @@
 
 
 <!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
+<!--    <div class="dnModal">-->
+<!--        <div id="Dropdown" class="dnModal-content">-->
+<!--            <span class="dnModal-close">&times;</span>-->
+<!--            <form class="modal-search" role="search">-->
+<!--                <div class="search-bar">-->
+<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
+<!--                </div>-->
+<!--                <div class="modal-fill"></div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
     <div class="dnModal">
         <div id="Dropdown" class="dnModal-content">
             <span class="dnModal-close">&times;</span>
             <form class="modal-search" role="search">
+                <ul>
+                    <li th:each="song : ${songs}">
+                        <div th:if="${song.getPlaylist().contains(playlist.id)}">
+                            <a th:href="@{|/song/${song.getId()}|}">
+                            <span th:text="${song.title}"></span>
+                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>
+                        </a>
+                        </div>
+
+                    </li>
+                </ul>
                 <div class="search-bar">
                     <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
                 </div>
@@ -57,6 +80,10 @@
             </form>
         </div>
     </div>
+
+
+
+
 
     <h2 th:text="${pageOwner}"></h2>
 
@@ -70,15 +97,34 @@
             <div class="card-header">
                 Playlists:
             </div>
-            <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+            <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
                 <li th:if="${userID} == ${playlist.userId}" class="list-group-item">
-
-                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="playlist${playlist.id}"></a> <!--need to make the href fill the other table-->
+                        <h3 th:text="${playlist.playlistName}"></h3>
+                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music">
+                        Add Music
+                    </a>
+                    <form th:action="@{/rating}" th:method="post" th:object="${rating}" >
+                    <select th:field="*{score}" name="rating" id="rating">
+                        <option th:value="1">1</option>
+                        <option th:value="2">2</option>
+                        <option th:value="3">3</option>
+                        <option th:value="4">4</option>
+                        <option th:value="5">5</option>
+                    </select>
+                    <input type="hidden" name="playlistId" th:value="${playlist.id}">
+                    <button>rate</button>
+                    </form>
+<!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="playlist${playlist.id}"></a> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
                 </li>
             </ul>
+
+
             <form th:action="@{/profile}" th:method="post" th:object="${playlist}" class="playlistForm">
                 <input id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}" th:field="*{playlistName}">
+                <button>Create New Playlist</button>
             </form>
+
+
         </div>
         <br><br><br><br><br><br><br>
 

@@ -1,8 +1,11 @@
 package com.mytopbillboard.controllers;
 
 import com.mytopbillboard.models.Playlist;
+import com.mytopbillboard.models.Rating;
+import com.mytopbillboard.models.Song;
 import com.mytopbillboard.models.User;
 import com.mytopbillboard.repositories.PlaylistRepository;
+import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import com.mytopbillboard.services.Utils;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -20,11 +24,14 @@ public class UserController {
     private final PlaylistRepository playlistDao;
     private final PasswordEncoder passwordEncoder;
 
+    private final SongRepository songDao;
 
-    public UserController(UserRepository userDao, PlaylistRepository playlistDao, PasswordEncoder passwordEncoder){
+
+    public UserController(UserRepository userDao, PlaylistRepository playlistDao, PasswordEncoder passwordEncoder, SongRepository songDao){
         this.userDao = userDao;
         this.playlistDao = playlistDao;
         this.passwordEncoder = passwordEncoder;
+        this.songDao = songDao;
     }
 
     @GetMapping("/profile")
@@ -35,12 +42,15 @@ public class UserController {
     @GetMapping("/profile/{username}")
     public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();
+        List<Song> songs = songDao.findAll();
         model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
         model.addAttribute("userID", userDao.findByUsername(username).getId());
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         model.addAttribute("activeUserID", userDao.findById(userId).getId());
         model.addAttribute("allPlaylists", playlistDao.findAll());
         model.addAttribute("playlist", new Playlist());
+        model.addAttribute("songs", songs);
+        model.addAttribute("rating", new Rating());
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
         } else {
@@ -62,7 +72,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
         authWithHttpServletRequest(request, user.getUsername(), planPassword);
-        return "redirect:/profile/{username}";
+        return "redirect:/homepage";
     }
 
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
