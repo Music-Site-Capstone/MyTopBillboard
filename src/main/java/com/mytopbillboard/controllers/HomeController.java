@@ -1,10 +1,14 @@
 package com.mytopbillboard.controllers;
 
+import com.mytopbillboard.models.User;
 import com.mytopbillboard.repositories.UserRepository;
 import com.mytopbillboard.services.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -20,17 +24,17 @@ public class HomeController {
         return "/siteViews/landing_page";
     }
 
+
     @GetMapping("/homepage")
     public String welcomeHome(Model model) {
-//        int randomUserId = (int) Math.ceil(Math.random() * userDao.findAll().size());
+
+        List<User> users = userDao.findAll();
+        List<User> firstFive = new ArrayList<>();
         for (int i = 0; i < 5; i++){
-//            if (randomUserId + i > userDao.findAll().size()){
-//                model.addAttribute("user" + i, userDao.findById(Math.abs(userDao.findAll().size() - (randomUserId + i))).getUsername());
-//            } else{
-//                model.addAttribute("user" + i, userDao.findById(randomUserId + i).getUsername());
-//            }
-            model.addAttribute("user" + i, userDao.findById(i+1));
+            firstFive.add(users.get(i));
+
         }
+        model.addAttribute("users", firstFive);
         long userId = Utils.currentUserProfile();
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         return "/siteViews/homepage";
