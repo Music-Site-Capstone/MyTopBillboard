@@ -22,9 +22,6 @@ SpotifyAPIController = (async function() {
 
        let bearerToken = await getToken();
 
-$.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
-
-
 
     let usersSearch;
     $('.modal-search-bar').on('keyup', function() {
@@ -42,18 +39,6 @@ $.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
             }, 300);
         }
     })
-
-
-  //   curl --request GET \
-  // --url https://api.spotify.com/v1/recommendations/available-genre-seeds \
-  //       --header 'Authorization: ' \
-  // --header 'Content-Type: application/json'
-
-
-  //   curl --request GET \
-  // --url https://api.spotify.com/v1/artists/id \
-  //       --header 'Authorization: ' \
-  // --header 'Content-Type: application/json'
 
     let artistID;
     const getSearch = async(bearer, search = usersSearch, artistID) => {
