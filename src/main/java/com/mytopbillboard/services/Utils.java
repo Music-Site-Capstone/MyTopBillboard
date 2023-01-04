@@ -29,7 +29,7 @@ public class Utils {
         for (int i = 0; i < playlists.size(); i++){
             List<Rating> ratings = playlists.get(i).getRating();
             for (int j = 0; j < ratings.size(); j++){
-                score += ratings.get(i).getScore();
+                score += ratings.get(j).getScore();
                 counter++;
             }
         }
