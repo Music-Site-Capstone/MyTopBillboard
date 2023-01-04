@@ -48,7 +48,7 @@ public class PlaylistController {
     }
 
     @PostMapping("/song/playlist/{playlistId}/add/{songId}")
-    public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId, @RequestBody ){
+    public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId, @RequestBody Song song){
         Playlist playlist = playlistDao.findById(playlistId);
         List<Song> songs = playlist.getSong();
         //Get artist information<Name>
