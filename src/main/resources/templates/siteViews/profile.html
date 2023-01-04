@@ -103,7 +103,7 @@
                     <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
                         Add Music
                     </a>
-                    <form th:action="@{/rating}" th:method="post" th:object="${rating}" >
+                    <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
                     <select th:field="*{score}" name="rating" id="rating">
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
