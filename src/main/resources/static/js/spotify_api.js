@@ -22,7 +22,7 @@ SpotifyAPIController = (async function() {
 
        let bearerToken = await getToken();
 
-
+$.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
 
 
 
@@ -100,10 +100,7 @@ SpotifyAPIController = (async function() {
 
 
             $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
-            <form th:action="@{profile/pageOwner}" th:method="POST" th:object="${artist}" th:object="${genres}">
-            <input th:field="*{}"
             <button class="addButton" id="addGenres">Add song to playlist</button>
-            </form>
             </div>`);
 
         }
