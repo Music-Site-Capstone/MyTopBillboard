@@ -33,7 +33,10 @@ public class Utils {
                 counter++;
             }
         }
-        return score/counter;
+        if (counter > 0){
+            return Math.round(score/counter * 100.0f) * 100.0f;
+        }
+        return 0.00F;
     }
 
 }
