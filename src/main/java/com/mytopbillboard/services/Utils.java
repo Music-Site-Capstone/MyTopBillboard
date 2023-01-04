@@ -1,7 +1,11 @@
 package com.mytopbillboard.services;
 
+import com.mytopbillboard.models.Playlist;
+import com.mytopbillboard.models.Rating;
 import com.mytopbillboard.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.List;
 
 public class Utils {
 
@@ -18,5 +22,21 @@ public class Utils {
         return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
     }
 
+    public static float averageRating (User user){
+        List<Playlist> playlists = user.getPlaylist();
+        float score = 0F;
+        int counter = 0;
+        for (int i = 0; i < playlists.size(); i++){
+            List<Rating> ratings = playlists.get(i).getRating();
+            for (int j = 0; j < ratings.size(); j++){
+                score += ratings.get(i).getScore();
+                counter++;
+            }
+        }
+        if (counter > 0){
+            return Math.round(score/counter * 100.0f) * 100.0f;
+        }
+        return 0.00F;
+    }
 
 }

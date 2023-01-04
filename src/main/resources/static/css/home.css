@@ -1,4 +1,24 @@
 /*the following will only show on small screens*/
-@media screen and (max-width: 575px) {}
+@media screen and (max-width: 575px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+    .row > div {
+        flex: 100%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+        /*demo*/
+    }
+
+}
 /*the following will only show on mid or larger screens*/
-@media screen and (min-width: 576px) {}
+@media screen and (min-width: 576px) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .row > div {
+        flex: 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+        /*demo*/
+    }
+}
