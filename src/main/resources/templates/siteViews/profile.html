@@ -145,7 +145,7 @@
             </ul>
             <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
                 <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
-                <input  th:value="${activeUserID}" name="userId" type="text">
+                <input  th:value="${activeUserID}" name="userId" type="hidden">
             </form>
 
 
