@@ -7,10 +7,10 @@ import java.util.List;
 @Table (name = "genre")
 public class Genre {
 
-    public Genre(long id, String genreName, List<Song> songs) {
+    public Genre(long id, String genreName, List<Artist> artists) {
         this.id = id;
         this.genreName = genreName;
-        this.songs = songs;
+        this.artists = artists;
     }
 
     public Genre(long id, String genreName) {
@@ -38,13 +38,24 @@ public class Genre {
         public void setGenreName(String genreName) {
         this.genreName = genreName;
     }
+//
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
+//    private List<Song> songs;
+//        public List<Song> getSongs() {
+//            return songs;
+//        }
+//        public void setSongs(List<Song> songs) {
+//        this.songs = songs;
+//    }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
-    private List<Song> songs;
-        public List<Song> getSongs() {
-            return songs;
+    @ManyToMany(cascade= CascadeType.ALL, mappedBy = "genres")
+    List<Artist> artists;
+
+        public List<Artist> getArtists() {
+            return artists;
         }
-        public void setSongs(List<Song> songs) {
-        this.songs = songs;
-    }
+
+        public void setArtists(List<Artist> artists) {
+            this.artists = artists;
+        }
 }

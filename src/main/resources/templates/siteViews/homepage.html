@@ -53,16 +53,18 @@
             </ul>
         </div>
     </div>
-    <div class="card text-center">
-        <div class="card-body">
-            <h2>EXPLORE</h2>
-            <ul class="list-group">
-                <li class="list-group-item">theceo1999</li>
-                <li class="list-group-item">richy088</li>
-                <li class="list-group-item">aarmorris</li>
-                <li class="list-group-item">super-hacker</li>
-                <li class="list-group-item">jsprouse</li>
-            </ul>
+    <div class="text-center col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group">
+                    <h2>EXPLORE</h2>
+                    <li class="list-group-item"><a th:text="${user0}" th:href="@{|/profile/${user0}|}"></a></li>
+                    <li class="list-group-item"><a th:text="${user1}" th:href="@{|/profile/${user1}|}"></a></li>
+                    <li class="list-group-item"><a th:text="${user2}" th:href="@{|/profile/${user2}|}"></a></li>
+                    <li class="list-group-item"><a th:text="${user3}" th:href="@{|/profile/${user3}|}"></a></li>
+                    <li class="list-group-item"><a th:text="${user4}" th:href="@{|/profile/${user4}|}"></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
