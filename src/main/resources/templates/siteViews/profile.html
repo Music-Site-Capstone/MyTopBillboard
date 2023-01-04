@@ -58,28 +58,28 @@
 <!--        </div>-->
 <!--    </div>-->
 
-    <div class="dnModal">
-        <div id="Dropdown" class="dnModal-content">
-            <span class="dnModal-close">&times;</span>
-            <form class="modal-search" role="search">
-                <ul>
-                    <li th:each="song : ${songs}">
-                        <div th:if="${song.getPlaylist().contains(playlist.id)}">
-                            <a th:href="@{|/song/${song.getId()}|}">
-                            <span th:text="${song.title}"></span>
-                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>
-                        </a>
-                        </div>
+<!--    <div class="dnModal">-->
+<!--        <div id="Dropdown" class="dnModal-content">-->
+<!--            <span class="dnModal-close">&times;</span>-->
+<!--            <form class="modal-search" role="search">-->
+<!--                <ul>-->
+<!--                    <li th:each="song : ${songs}">-->
+<!--                        <div th:if="${song.getPlaylist().contains(playlist.id)}">-->
+<!--                            <a th:href="@{|/song/${song.getId()}|}">-->
+<!--                            <span th:text="${song.title}"></span>-->
+<!--                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>-->
+<!--                        </a>-->
+<!--                        </div>-->
 
-                    </li>
-                </ul>
-                <div class="search-bar">
-                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
-                </div>
-                <div class="modal-fill"></div>
-            </form>
-        </div>
-    </div>
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="search-bar">-->
+<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
+<!--                </div>-->
+<!--                <div class="modal-fill"></div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
 
@@ -105,7 +105,30 @@
                     <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
                         Add Music
                     </a>
-                    <form th:action="@{/rating}" th:method="post" th:object="${rating}" >
+                    <div class="dnModal">
+                        <div id="Dropdown" class="dnModal-content">
+                            <span class="dnModal-close">&times;</span>
+                            <form class="modal-search" role="search">
+                                <ul>
+                                    <li th:each="song : ${songs}">
+                                        <div> // Removed th if *Need to find a way to load only profile playlist*
+                                            <a th:href="@{|/song/${song.getId()}|}">
+                                                <span th:text="${song.title}"></span>
+                                                <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>
+                                            </a>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                                <div class="search-bar">
+                                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
+                                </div>
+                                <div class="modal-fill"></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div th:if="${activeUserID} != ${userID}">
+                    <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
                     <select th:field="*{score}" name="rating" id="rating">
                         <option th:value="1">1</option>
                         <option th:value="2">2</option>
@@ -116,6 +139,7 @@
                     <input type="hidden" name="playlistId" th:value="${playlist.id}">
                     <button>rate</button>
                     </form>
+                    </div>
                     <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></a> <!--need to make the href fill the other table-->
                 </li>
             </ul>

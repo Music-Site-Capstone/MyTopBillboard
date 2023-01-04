@@ -8,6 +8,7 @@ import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.RatingRepository;
 import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
+import com.mytopbillboard.services.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,14 +67,14 @@ public class PlaylistController {
         return "redirect:/profile";
     }
 
-    @PostMapping("/rating")
-    public String rate(@ModelAttribute Rating rating, @RequestParam(name="playlistId") long playListId){
-        User user = userDao.findById(9);
+    @PostMapping("/rating/{owner}")
+    public String rate(@ModelAttribute Rating rating, @RequestParam(name="playlistId") long playListId, @PathVariable("owner")String owner){
+        User user = userDao.findById(Utils.currentUserProfile());
         Playlist playlist = playlistDao.findById(playListId);
         rating.setUser(user);
         rating.setPlaylist(playlist);
         ratingDao.save(rating);
-        return "redirect:/profile";
+        return "redirect:/profile/" + owner;
 
     }
 
