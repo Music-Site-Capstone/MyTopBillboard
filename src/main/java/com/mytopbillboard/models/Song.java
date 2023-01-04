@@ -7,11 +7,10 @@ import java.util.List;
 @Table(name = "song")
 public class Song {
 
-    public Song(long id, String title, Artist artist, Genre genre, List<Playlist> playlists) {
+    public Song(long id, String title, Artist artist, List<Playlist> playlists) {
         this.id = id;
         this.title = title;
         this.artist = artist;
-        this.genre = genre;
         this.playlists = playlists;
     }
 
@@ -62,14 +61,6 @@ public class Song {
             this.artist = artist;
         }
 
-    @ManyToOne
-    private Genre genre;
-        public Genre getGenre() {
-            return genre;
-        }
-        public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
 
 
     @ManyToMany(mappedBy = "songs")

@@ -9,10 +9,7 @@ import com.mytopbillboard.repositories.RatingRepository;
 import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,12 +48,21 @@ public class PlaylistController {
     }
 
     @PostMapping("/song/playlist/{playlistId}/add/{songId}")
-    public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId){
+    public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId, @RequestBody ){
         Playlist playlist = playlistDao.findById(playlistId);
         List<Song> songs = playlist.getSong();
+        //Get artist information<Name>
+        //Get all the songs from artist
+        //Check if the song title exists in the list of songs in mtb_db
+        //If it does exist, get ID. Then add song, set songs to playlist, then save playlist
+        //If the song DOESNT exist than DO the following:
+        //Pull the genres from the artist, AND add genres that dont exist already (from the artist)
+        //Save the new genres
+        //Save the song with the genres associated with it
         songs.add(songDao.findById(songId));
         playlist.setSong(songs);
         playlistDao.save(playlist);
+
         return "redirect:/profile";
     }
 
