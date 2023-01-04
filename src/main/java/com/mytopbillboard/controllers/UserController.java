@@ -48,7 +48,6 @@ public class UserController {
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         model.addAttribute("activeUserID", userId);
         model.addAttribute("allPlaylists", playlistDao.findAll());
-//        model.addAttribute("playlist", new Playlist());
         model.addAttribute("songs", songs);
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("rating", new Rating());
