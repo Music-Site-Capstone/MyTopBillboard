@@ -1,3 +1,11 @@
+$('.plName').on('click', async function (){
+    let playlistId = $(this).attr("plId")
+    let username = $(this).attr("activeUser")
+
+    let data = await fetch("/profile/playlist/"+ playlistId).then(res => res.json());
+    console.log(data);
+})
+
 $(function (){
     let regexNumberCheck = / \d/;
     $(`.playlist${regexNumberCheck}`).on('click', function(){

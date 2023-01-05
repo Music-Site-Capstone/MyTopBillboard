@@ -102,8 +102,12 @@
             </div>
             <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
-                        <h3 th:text="${playlist.playlistName}"></h3>
+
+                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"> 
+                          <input  th:value="${activeUserID}" name="userId" type="hidden">
+                        </h3>
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+
                     <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
                         Add Music
                     </a>
@@ -142,7 +146,6 @@
                     <button>rate</button>
                     </form>
                     </div>
-                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></a> <!--need to make the href fill the other table-->
                 </li>
             </ul>
             <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
