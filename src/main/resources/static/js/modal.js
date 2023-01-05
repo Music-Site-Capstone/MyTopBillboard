@@ -1,6 +1,6 @@
 $(function () {
 // When the user clicks on the button, open the modal
-    $('.dnModal-button').on('click', function () {
+    $('#searchModal-button').on('click', function () {
         $('.dnModal, .dnModal-content').css('display', "block");
     });
 // When the user clicks on <span> (x), close the modal

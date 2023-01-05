@@ -71,6 +71,14 @@ public class PlaylistController {
 
     }
 
-
+    @PostMapping("/song")
+    public String addSong(@RequestParam(name="title") String title, @RequestParam(name="playlist") long playlist){
+        Song song = new Song();
+        song.setTitle(title);
+        songDao.save(song);
+        Playlist thisPlaylist = playlistDao.findById(playlist);
+        thisPlaylist.getSong().add(song);
+        return "redirect:/homepage";
+    }
 
 }

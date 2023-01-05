@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music">
+                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="searchModal-button">
                         Search Music
                     </a>
                     <a class="nav-link" th:href="@{/homepage}">Home</a>
@@ -45,34 +45,11 @@
 
 
 
-<!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <div class="dnModal">
-        <div id="Dropdown" class="dnModal-content">
-            <span class="dnModal-close">&times;</span>
+<!-- To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
+    <div class="dnModal" id="searchModal-container">
+        <div class="dnModal-content" id="searchModal-content">
+            <span class="dnModal-close" id="search-close">&times;</span>
             <form class="modal-search" role="search">
-                <ul>
-                    <li th:each="song : ${songs}">
-                        <div th:if="${song.getPlaylist().contains(playlist.id)}">
-                            <a th:href="@{|/song/${song.getId()}|}">
-                            <span th:text="${song.title}"></span>
-                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>
-                        </a>
-                        </div>
-
-                    </li>
-                </ul>
                 <div class="search-bar">
                     <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
                 </div>
@@ -80,6 +57,28 @@
             </form>
         </div>
     </div>
+
+<!--    <div class="dnModal">-->
+<!--        <div id="Dropdown" class="dnModal-content">-->
+<!--            <span class="dnModal-close">&times;</span>-->
+<!--            <form class="modal-search" role="search">-->
+<!--                <ul>-->
+<!--                    <li th:each="song : ${songs}">-->
+<!--                        <div th:if="${song.getPlaylist().contains(playlist.id)}">-->
+<!--                            <a th:href="@{|/song/${song.getId()}|}">-->
+<!--                            <span th:text="${song.title}"></span>-->
+<!--                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>-->
+<!--                        </a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="search-bar">-->
+<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
+<!--                </div>-->
+<!--                <div class="modal-fill"></div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
 
@@ -99,12 +98,9 @@
             <div class="card-header">
                 Playlists:
             </div>
-            <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+            <ul th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
                         <h3 th:text="${playlist.playlistName}"></h3>
-                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
-                        Add Music
-                    </a>
                     <form th:action="@{/rating}" th:method="post" th:object="${rating}" >
                     <select th:field="*{score}" name="rating" id="rating">
                         <option th:value="1">1</option>
@@ -139,12 +135,22 @@
     </div>
 
 
+    <div class="dnModal" id="playlistModal-contatiner">
+        <div class="dnModal-content" id="playlistModal-content">
+            <span class="dnModal-close" id="playlist-close">&times;</span>
+            <h3>Which playlist would you like to add this song to?</h3>
+            <ul th:each="playlist : ${allPlaylists}" id="playlistPick">
+                <li th:if="${playlist.user.id} == ${activeUser.id}" class="addSongToPlalistOption" th:value="${playlist.playlistName}" th:id="${playlist.id}"></li>
+            </ul>
+        </div>
+    </div>
+
 <!--JQuery-->
 <script th:src="@{/js/jquery-3.6.3.min.js}"></script>
 <!--Custom JS scripts-->
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/spotify_api.js}"></script>
     <script th:src="@{/js/profile.js}"></script>
-
+    <script th:src="@{/js/addSong.js}"></script>
 </body>
 </html>

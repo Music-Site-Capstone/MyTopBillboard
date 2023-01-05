@@ -92,20 +92,34 @@ SpotifyAPIController = (async function() {
         let track;
         let artist;
         let image;
-        for (let i = 0; i < 5; i++){
+        for (let i = 0; i < 5; i++) {
             track = await data.tracks.items[i].name;//grabbing the name of the track
             artist = await data.tracks.items[i].artists[0].name;//grabbing the name of the Artist
             image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
             // return track;
 
+            $.get('/profile/{username}');
 
-            $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
-            <form th:action="@{profile/pageOwner}" th:method="POST" th:object="${artist}" th:object="${genres}">
-            <input th:field="*{}"
-            <button class="addButton" id="addGenres">Add song to playlist</button>
-            </form>
+            $('.modal-fill').append(`
+            <div class="searchline">
+                <img src="${image}" alt="fail">
+                <p>${artist} - ${track}</p>
+                <!-- <form th:action="@{profile/pageOwner}" th:method="POST" th:object="${artist}" th:object="${genres}">
+                     <input th:field="*{}"
+                </form>-->
+                <button class="addButton" id="addButton${i}">Add song to playlist</button>
             </div>`);
-
+            $()//addbutton will open playlist modal on click
+            $('.addSongToPlalistOption').on('click', function () {
+                $.ajax("/song", {
+                    type: POST,
+                    data: {
+                        title: track,
+                        artist: artist,
+                        playlist: $(this).id
+                    }
+                })
+            })
         }
     }
 
