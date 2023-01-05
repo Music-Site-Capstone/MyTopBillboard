@@ -1,5 +1,7 @@
 package com.mytopbillboard.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mytopbillboard.models.Playlist;
 import com.mytopbillboard.models.Rating;
 import com.mytopbillboard.models.Song;
@@ -76,9 +78,18 @@ public class PlaylistController {
         songs.add(songDao.findById(songId));
         playlist.setSong(songs);
         playlistDao.save(playlist);
-
         return "redirect:/profile";
     }
+
+    @PostMapping("/song/playlist/{playlistId}")
+    public @ResponseBody void addSongToDB(@PathVariable long playlistId, @RequestBody Song song) throws JsonProcessingException {
+        //Object Mapper
+        //save song with songDao;
+        System.out.println("inside addSongToDB");
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writeValueAsString(song));
+    }
+
 
     @PostMapping("/rating/{owner}")
     public String rate(@ModelAttribute Rating rating, @RequestParam(name="playlistId") long playListId, @PathVariable("owner")String owner){

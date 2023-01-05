@@ -4,6 +4,7 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="_csrf" data-th-content="${_csrf.token}">
     <title>Title</title>
 <!--Bootstrap CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -101,8 +102,12 @@
             </div>
             <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
-                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}">                <input  th:value="${activeUserID}" name="userId" type="hidden">
+
+                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"> 
+                          <input  th:value="${activeUserID}" name="userId" type="hidden">
                         </h3>
+                    <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+
                     <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
                         Add Music
                     </a>

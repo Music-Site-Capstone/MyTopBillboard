@@ -7,6 +7,13 @@ import java.util.List;
 @Table(name = "artist")
 public class Artist {
 
+    public Artist(long id, String artistName, List<Song> songs, List<Genre> genres) {
+        this.id = id;
+        this.artistName = artistName;
+        this.songs = songs;
+        this.genres = genres;
+    }
+
     public Artist(long id, String artistName, List<Song> songs) {
         this.id = id;
         this.artistName = artistName;
