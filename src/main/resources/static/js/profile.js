@@ -1,9 +1,17 @@
 $('.plName').on('click', async function (){
+    let baseURL = "/profile/playlist"
     let playlistId = $(this).attr("plId")
     let username = $(this).attr("activeUser")
 
-    let data = await fetch("/profile/playlist/"+ playlistId).then(res => res.json());
+
+    let data = await fetch(`${baseURL}/${playlistId}/${username}`).then(res => res.json());
     console.log(data);
+    console.log("it works")
+    console.log(playlistId)
+    console.log(username)
+
+
+
 })
 
 $(function (){
