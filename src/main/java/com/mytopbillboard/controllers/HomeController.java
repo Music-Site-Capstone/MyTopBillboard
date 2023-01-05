@@ -27,12 +27,10 @@ public class HomeController {
 
     @GetMapping("/homepage")
     public String welcomeHome(Model model) {
-
         List<User> users = userDao.findAll();
         List<User> firstFive = new ArrayList<>();
         for (int i = 0; i < 5; i++){
             firstFive.add(users.get(i));
-
         }
         model.addAttribute("users", firstFive);
         long userId = Utils.currentUserProfile();
