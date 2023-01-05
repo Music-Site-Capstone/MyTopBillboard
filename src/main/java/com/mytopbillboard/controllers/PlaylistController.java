@@ -12,6 +12,7 @@ import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import com.mytopbillboard.services.Utils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +44,18 @@ public class PlaylistController {
         playlistDao.save(playlist);
         return "redirect:/profile/" + username; //return response object with a set status method
     }
+
+    @GetMapping("/profile/{username}/{plId}")
+    public String getPlaylistSongs(Model model, @PathVariable("username") String username, @PathVariable("plId") Long plId, @RequestParam(name = "userId") long userId){
+        System.out.println("get playlist songs works");
+        List<Song> songs = songDao.findAll();
+        model.addAttribute("songs", songs);
+        model.addAttribute("singlePlaylistId", playlistDao.findById(plId));
+
+        return "redirect:/profile/" + username;
+    }
+
+
 
 
     @PostMapping("/home")
@@ -89,6 +102,14 @@ public class PlaylistController {
 
     }
 
+    @GetMapping("profile/playlist/{plId}")
+    public @ResponseBody Playlist displayPlaylistSongs(@PathVariable("plId") Long plId){
+        System.out.println("the string inside display playlist songs");
+        Playlist playlist = playlistDao.findById(plId).get();
+        return playlist;
 
+
+
+    }
 
 }
