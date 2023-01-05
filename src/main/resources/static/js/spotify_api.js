@@ -22,7 +22,7 @@ SpotifyAPIController = (async function() {
 
        let bearerToken = await getToken();
 
-$.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
+// $.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
 
 
 
