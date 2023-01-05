@@ -1,5 +1,7 @@
 package com.mytopbillboard.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -68,6 +70,7 @@ public class Playlist {
 
     @ManyToOne
     private User user;
+        @JsonIgnore
         public User getUser() {
             return user;
         }
