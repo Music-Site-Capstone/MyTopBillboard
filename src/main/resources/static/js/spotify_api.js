@@ -22,9 +22,6 @@ SpotifyAPIController = (async function() {
 
        let bearerToken = await getToken();
 
-$.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
-
-
 
     let usersSearch;
     $('.modal-search-bar').on('keyup', function() {
@@ -42,18 +39,6 @@ $.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
             }, 300);
         }
     })
-
-
-  //   curl --request GET \
-  // --url https://api.spotify.com/v1/recommendations/available-genre-seeds \
-  //       --header 'Authorization: ' \
-  // --header 'Content-Type: application/json'
-
-
-  //   curl --request GET \
-  // --url https://api.spotify.com/v1/artists/id \
-  //       --header 'Authorization: ' \
-  // --header 'Content-Type: application/json'
 
     let artistID;
     const getSearch = async(bearer, search = usersSearch, artistID) => {
@@ -84,9 +69,45 @@ $.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
         console.log(genres);
         console.log(data);
 
-        function addGenres(){
 
-        }
+
+        $(document).on('click', '.addButton', async function(e){
+            e.preventDefault();
+            console.log("inside click event for add song");
+            let i = $(this).attr('data-loop-id');
+            let genreObjects = [];
+            for (let genre of artistData.genres){
+                genreObjects.push({
+                    genreName: genre
+                })
+            }
+            let song = {
+                title: data.tracks.items[i].name,
+                artist: {
+                    artistName: data.tracks.items[i].artists[0].name,
+                    genres: genreObjects
+                }
+            }
+            console.log(song);
+            let fetchOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+                },
+                body: JSON.stringify(song)
+
+            }
+            console.log(`/song/playlist/${$('#playlist-id').text()}`)
+            let addedSong = await fetch(`/song/playlist/${$('#playlist-id').text()}`, fetchOptions)
+
+        })
+
+
+
+
+
+
 
 
         let track;
@@ -100,7 +121,7 @@ $.ajax("https://api.spotify.com/v1/recommendations/available-genre-seeds?")
 
 
             $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
-            <button class="addButton" id="addGenres">Add song to playlist</button>
+            <button class="addButton" id="addSong" data-loop-id="${i}">Add song to playlist</button>
             </div>`);
 
         }
