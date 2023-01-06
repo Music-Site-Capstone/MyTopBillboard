@@ -20,3 +20,14 @@ $('#forgotten').click(function(){
         $("#forgotten-container").fadeIn();
     });
 });
+
+
+$('.create-account-form').submit(function(){
+    if($('#password').val()=== ""){
+        alert("aahhhhhhhhh");
+        return false;
+    }
+})
+
+
+}
