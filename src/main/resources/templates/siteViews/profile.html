@@ -108,17 +108,19 @@
 
 
                     <div th:if="${activeUserID} != ${userID}">
-                    <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
-                    <select th:field="*{score}" name="rating" id="rating">
-                        <option th:value="1">1</option>
-                        <option th:value="2">2</option>
-                        <option th:value="3">3</option>
-                        <option th:value="4">4</option>
-                        <option th:value="5">5</option>
-                    </select>
-                    <input type="hidden" name="playlistId" th:value="${playlist.id}">
-                    <button>rate</button>
-                    </form>
+                        <div th:if="${!ratingCheck.contains(playlist)}">
+                            <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
+                                <select th:field="*{score}" name="rating" id="rating">
+                                    <option th:value="1">1</option>
+                                    <option th:value="2">2</option>
+                                    <option th:value="3">3</option>
+                                    <option th:value="4">4</option>
+                                    <option th:value="5">5</option>
+                                </select>
+                                <input type="hidden" name="playlistId" th:value="${playlist.id}">
+                                <button>rate</button>
+                            </form>
+                        </div>
                     </div>
 
                 </li>
