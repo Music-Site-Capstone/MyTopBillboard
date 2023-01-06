@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,7 +50,11 @@ public class UserController {
         model.addAttribute("allPlaylists", playlistDao.findAll());
         model.addAttribute("songs", songs);
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
-        model.addAttribute("ratingCheck", userDao.findById(userId).getRatings());
+        List<Long> playlistIdList = new ArrayList<>();
+        userDao.findById(userId).getRatings().forEach(rating -> {
+            playlistIdList.add(rating.getPlaylistId());
+            });
+        model.addAttribute("ratingCheck", playlistIdList);
         model.addAttribute("rating", new Rating());
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
