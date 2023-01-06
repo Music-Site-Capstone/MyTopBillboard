@@ -109,7 +109,7 @@
 
                         </h3>
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
-
+                    <button class="deleteButton">Delete</button>
                     <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
                         Add Music
                     </a>
@@ -177,6 +177,16 @@
 <script th:src="@{/js/modal.js}"></script>
 <script th:src="@{/js/spotify_api.js}"></script>
     <script th:src="@{/js/profile.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".submitButton").click(function (e) {
+                e.preventDefault();
+                console.log("You are trying to delete");
+                // window.location.replace('/profile/' + formValue);
+            });
+        })
+    </script>
 
 </body>
 </html>
