@@ -26,9 +26,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music">
-                        Search Music
-                    </a>
+<!--                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music">-->
+<!--                        Search Music-->
+<!--                    </a>-->
                     <a class="nav-link" th:href="@{/homepage}">Home</a>
                     <a class="nav-link" th:href="@{/logout}">Logout</a>
                 </div>
@@ -106,31 +106,7 @@
                         <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"></h3>
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
 
-                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
-                        Add Music
-                    </a>
-                    <div class="dnModal">
-                        <div id="Dropdown" class="dnModal-content">
-                            <span class="dnModal-close">&times;</span>
-                            <form class="modal-search" role="search">
-                                <ul>
-                                    <li th:each="song : ${songs}">
-                                        <div> <!-- Removed th if *Need to find a way to load only profile playlist-->
-                                            <a th:href="@{|/song/${song.getId()}|}">
-                                                <span th:text="${song.title}"></span>
-                                                <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>
-                                            </a>
-                                        </div>
 
-                                    </li>
-                                </ul>
-                                <div class="search-bar">
-                                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
-                                </div>
-                                <div class="modal-fill"></div>
-                            </form>
-                        </div>
-                    </div>
                     <div th:if="${activeUserID} != ${userID}">
                     <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
                     <select th:field="*{score}" name="rating" id="rating">
@@ -156,11 +132,23 @@
         <br><br><br><br><br><br><br>
 
         <div class="card" style="width: 18rem;">
-            <div class="card-header playlist-title">
-                Songs
+            <div class="card-header playlist-title" id="playlist-name">
+            </div>
+            <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
+                Add Music
+            </a>
+            <div class="dnModal">
+                <div id="Dropdown" class="dnModal-content">
+                    <span class="dnModal-close">&times;</span>
+                    <form class="modal-search" role="search">
+                        <div class="search-bar">
+                            <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
+                        </div>
+                        <div class="modal-fill"></div>
+                    </form>
+                </div>
             </div>
 
-            <div id="songs"></div>
 <!--            <ul class="list-group list-group-flush song-list" th:each="song : ${songs}">-->
 <!--                <li class="list-group-item">Pick a playlist!</li>-->
 <!--                <span id="placementForPl"></span>-->

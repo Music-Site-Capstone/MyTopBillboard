@@ -11,7 +11,7 @@ $('.plName').on('click', async function (){
     console.log(username)
 
 
-    $('#songs').text(data.playlistName)
+    $('#playlist-name').text(data.playlistName)
 
 
 
