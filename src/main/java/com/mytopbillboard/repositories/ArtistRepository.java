@@ -8,6 +8,6 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
 
     Artist findById(long id);
 
-    Artist findByartistName(String artistName);
+    Artist findByArtistName(String artistName);
 
 }

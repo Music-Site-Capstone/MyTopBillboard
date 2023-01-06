@@ -80,51 +80,82 @@ public class PlaylistController {
         return "redirect:/profile";
     }
 
+//    @PostMapping("/song/playlist/{playlistId}")
+//    public @ResponseBody void addSongToDB(@PathVariable long playlistId, @RequestBody Song song) throws JsonProcessingException {
+//        //Object Mapper
+//        //save song with songDao;
+//        Song songData = new Song();
+//        songData.setTitle(song.getTitle());
+//        songData.setArtist(song.getArtist());
+//        songDao.save(songData);
+//        //the following checks if the artist is already in the database and adds if not
+//        if(artistDao.findByartistName(song.getArtist().getArtistName()) == null){
+//            Artist artistData = new Artist();
+//            artistData.setArtistName(song.getArtist().getArtistName());
+//            List<Song> songList = new ArrayList<Song>(){{
+//                add(songData);
+//            }};
+//            artistDao.save(artistData);
+//        }
+//        artistDao.findByartistName(song.getArtist().getArtistName()).getSongs().add(songData);
+//        //we may need to save the above step
+//
+//        //the following checks if the genre is already in the database and adds if not, and also the genre/artist relationship
+//        for(int i = 0; i < song.getArtist().getGenres().size(); i++){
+//            if(genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()) == null){
+//                Genre genreData = new Genre();
+//                genreData.setGenreName(song.getArtist().getGenres().get(i).getGenreName());
+//                List<Artist> artistList = new ArrayList<Artist>(){{
+//                    add(song.getArtist());
+//                    }};
+//                System.out.println(artistList);
+//                genreData.setArtists(artistList);
+//                genreDao.save(genreData);
+//            } else
+//            {
+//                if (!genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().contains(song.getArtist())){
+//                    genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().add(song.getArtist());
+//                    //we may need to save the above step
+//                    }
+//            }
+//        }
+//
+//
+//        System.out.println("inside addSongToDB");
+//        ObjectMapper mapper = new ObjectMapper();
+//        System.out.println(mapper.writeValueAsString(song));
+//    }
+
     @PostMapping("/song/playlist/{playlistId}")
     public @ResponseBody void addSongToDB(@PathVariable long playlistId, @RequestBody Song song) throws JsonProcessingException {
         //Object Mapper
         //save song with songDao;
-        Song songData = new Song();
-        songData.setTitle(song.getTitle());
-        songData.setArtist(song.getArtist());
-        //the following checks if the artist is already in the database and adds if not
-        if(artistDao.findByartistName(song.getArtist().getArtistName()) == null){
-            Artist artistData = new Artist();
-            artistData.setArtistName(song.getArtist().getArtistName());
-            List<Song> songList = new ArrayList<Song>(){{
-                add(song);
-            }};
-            artistDao.save(artistData);
-        }
-        artistDao.findByartistName(song.getArtist().getArtistName()).getSongs().add(songData);
-        //we may need to save the above step
-
-        //the following checks if the genre is already in the database and adds if not, and also the genre/artist relationship
-        for(int i = 0; i < song.getArtist().getGenres().size(); i++){
-            if(genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()) == null){
-                Genre genreData = new Genre();
-                genreData.setGenreName(song.getArtist().getGenres().get(i).getGenreName());
-                List<Artist> artistList = new ArrayList<Artist>(){{
-                    add(song.getArtist());
-                    }};
-
-                genreData.setArtists(artistList);
-                genreDao.save(genreData);
-            } else
-            {
-                if (!genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().contains(song.getArtist())){
-                    genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().add(song.getArtist());
-                    //we may need to save the above step
-                    }
-            }
-        }
-
-        songDao.save(song);
         System.out.println("inside addSongToDB");
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(song));
+        //need to save genre but getting error resulting from duplicates
+        for (Genre genre : song.getArtist().getGenres()) {
+            Genre genreDB = new Genre();
+            genreDB.setGenreName(genre.getGenreName());
+//            genreDB =  genreDao.save(genreDB);
+        }
+        //finding artist by artist name but getting around duplicates
+        Artist artistDB = artistDao.findByArtistName(song.getArtist().getArtistName());
+        if (artistDB == null) {
+            //if not there then add
+            Artist artist = new Artist();
+            artist.setArtistName(song.getArtist().getArtistName());
+            artistDB = artistDao.save(artist);
+        }
+        //find playlist by id and then add song into playlist and then save
+        song.setArtist(artistDB);
+        song = songDao.save(song);
+        Playlist playlist = playlistDao.findById(playlistId);
+        playlist.getSong().add(song);
+        playlistDao.save(playlist);
     }
 
+    //for genre table put default value of 1 for all songs when saving songs
 
     @PostMapping("/rating/{owner}")
     public String rate(@ModelAttribute Rating rating, @RequestParam(name="playlistId") long playListId, @PathVariable("owner")String owner){
