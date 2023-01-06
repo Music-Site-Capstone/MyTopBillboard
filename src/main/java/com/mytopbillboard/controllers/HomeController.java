@@ -34,13 +34,18 @@ public class HomeController {
         List<User> firstFive = new ArrayList<>();
         for (int i = 0; i < 5; i++){
             firstFive.add(users.get(i));
-
         }
 
-        List<User> topRatedUsers = new ArrayList<>();
-        for(int i = 0; i < users.size(); i++){
-
+        Collections.sort(users, new Comparator<User>() {
+            public int compare(User user1, User user2){
+                return Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername()))) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername())));
+            }
+        });
+        for(User user : users){
+            System.out.println(user.getUsername());
         }
+
+        model.addAttribute("topRatedUsers", users);
         model.addAttribute("users", firstFive);
         long userId = Utils.currentUserProfile();
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());

@@ -1,14 +1,13 @@
 package com.mytopbillboard.controllers;
 
-import com.mytopbillboard.models.Playlist;
 import com.mytopbillboard.models.Rating;
 import com.mytopbillboard.models.Song;
 import com.mytopbillboard.models.User;
 import com.mytopbillboard.repositories.PlaylistRepository;
+import com.mytopbillboard.repositories.RatingRepository;
 import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import com.mytopbillboard.services.Utils;
-import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,6 @@ public class UserController {
     private final UserRepository userDao;
     private final PlaylistRepository playlistDao;
     private final PasswordEncoder passwordEncoder;
-
     private final SongRepository songDao;
 
 
@@ -51,6 +49,7 @@ public class UserController {
         model.addAttribute("allPlaylists", playlistDao.findAll());
         model.addAttribute("songs", songs);
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
+        model.addAttribute("ratingCheck", userDao.findById(userId).getRatings());
         model.addAttribute("rating", new Rating());
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
