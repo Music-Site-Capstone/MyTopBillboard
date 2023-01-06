@@ -38,15 +38,7 @@ public class Genre {
         public void setGenreName(String genreName) {
         this.genreName = genreName;
     }
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
-//    private List<Song> songs;
-//        public List<Song> getSongs() {
-//            return songs;
-//        }
-//        public void setSongs(List<Song> songs) {
-//        this.songs = songs;
-//    }
+
 
     @ManyToMany(cascade= CascadeType.ALL, mappedBy = "genres")
     List<Artist> artists;
