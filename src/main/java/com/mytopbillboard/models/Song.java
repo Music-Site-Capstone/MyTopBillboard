@@ -1,5 +1,7 @@
 package com.mytopbillboard.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -65,6 +67,7 @@ public class Song {
 
     @ManyToMany(mappedBy = "songs")
     private List<Playlist> playlists;
+        @JsonIgnore
         public List<Playlist> getPlaylist() {
             return playlists;
         }

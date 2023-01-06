@@ -191,6 +191,7 @@ public class PlaylistController {
     public Playlist displayPlaylistSongs(@PathVariable("plId") Long plId,@PathVariable("username") String username, Model model){
         System.out.println("the string inside display playlist songs");
         Playlist playlist = playlistDao.findById(plId).get();
+        System.out.println(playlist.getSong());
 //        model.addAttribute("displaySinglePlaylist", playlist);
         System.out.println(username);
         return playlist;

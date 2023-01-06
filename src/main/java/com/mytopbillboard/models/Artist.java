@@ -1,5 +1,7 @@
 package com.mytopbillboard.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -47,6 +49,7 @@ public class Artist {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Song> songs;
+        @JsonIgnore
         public List<Song> getSongs() {
             return songs;
         }
