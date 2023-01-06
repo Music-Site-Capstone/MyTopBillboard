@@ -115,7 +115,7 @@
                             <form class="modal-search" role="search">
                                 <ul>
                                     <li th:each="song : ${songs}">
-                                        <div> // Removed th if *Need to find a way to load only profile playlist*
+                                        <div> <!-- Removed th if *Need to find a way to load only profile playlist-->
                                             <a th:href="@{|/song/${song.getId()}|}">
                                                 <span th:text="${song.title}"></span>
                                                 <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>
