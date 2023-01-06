@@ -79,12 +79,15 @@
     <div class="card text-center">
         <div class="card-body">
             <h2>LEADERBOARD</h2>
-            <ul class="list-group">
-                <li class="list-group-item">theceo1999</li>
-                <li class="list-group-item">richy088</li>
-                <li class="list-group-item">aarmorris</li>
-                <li class="list-group-item">super-hacker</li>
-                <li class="list-group-item">jsprouse</li>
+            <ul th:each="user:${users}">
+                <li class="list-group-item"><a th:text="${user.username}"></a></li>
+<!--            <ul class="list-group">-->
+<!--                <li class="list-group-item">theceo1999</li>-->
+<!--                <li class="list-group-item">richy088</li>-->
+<!--                <li class="list-group-item">aarmorris</li>-->
+<!--                <li class="list-group-item">super-hacker</li>-->
+<!--                <li class="list-group-item">jsprouse</li>-->
+<!--            </ul>-->
             </ul>
         </div>
     </div>

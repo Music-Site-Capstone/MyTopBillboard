@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -32,6 +34,11 @@ public class HomeController {
         List<User> firstFive = new ArrayList<>();
         for (int i = 0; i < 5; i++){
             firstFive.add(users.get(i));
+
+        }
+
+        List<User> topRatedUsers = new ArrayList<>();
+        for(int i = 0; i < users.size(); i++){
 
         }
         model.addAttribute("users", firstFive);
