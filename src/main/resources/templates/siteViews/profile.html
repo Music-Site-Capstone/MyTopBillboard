@@ -108,7 +108,7 @@
 
 
                     <div th:if="${activeUserID} != ${userID}">
-                        <div th:if="${!ratingCheck.contains(playlist)}">
+                        <div th:if="${!ratingCheck.contains(playlist.id)}">
                             <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
                                 <select th:field="*{score}" name="rating" id="rating">
                                     <option th:value="1">1</option>
