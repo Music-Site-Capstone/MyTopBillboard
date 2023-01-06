@@ -10,11 +10,8 @@ $('.plName').on('click', async function (){
     console.log(playlistId)
     console.log(username)
 
-
-    $('#songs').text(data.playlistName)
-
-
-
+    $('#playlist-name').text(data.playlistName)
+    $('#allPlaylistSongs').text(data.playlistName);
 
 })
 
