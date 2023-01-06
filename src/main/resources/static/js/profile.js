@@ -10,8 +10,16 @@ $('.plName').on('click', async function (){
     console.log(playlistId)
     console.log(username)
 
+    let playlistSongsLength = data.song.length
+
     $('#playlist-name').text(data.playlistName)
-    $('#allPlaylistSongs').text(data.playlistName);
+    // $('#allPlaylistSongs').text(data.song[0].title);
+    // console.log(data.song.length)
+    console.log(playlistSongsLength)
+    for (let i = 0; i < playlistSongsLength; i++){
+        $('#allPlaylistSongs').append(`<div class="search-line"><p> ${data.song[i].title}</p></div>`);
+    }
+
 
 })
 

@@ -26,11 +26,11 @@
         <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
       </span>
 
-            <form class="create-account-form" th:action="@{/register}" method="post" th:object="${user}">
+            <form id="create-account-form" th:action="@{/register}" method="post" th:object="${user}">
                 <input placeholder="Username" class="input2" id="username" th:field="*{username}">
                 <input placeholder="Email" class="input2" id="email" th:field="*{email}">
                 <input placeholder="Password" class="input2" id="password" type="password" th:field="*{password}">
-                <input class="submit" type="submit" value="Register">
+                <input class="submit" type="submit" value="Register" disabled>
 
             <div id="remember-container">
                 <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
