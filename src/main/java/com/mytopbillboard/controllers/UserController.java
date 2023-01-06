@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping("/profile/{username}")
-    public String usersProfile(Model model, @PathVariable("username") String username, @Nullable @RequestParam(value = "playlistId", required = false, defaultValue = "1") Long playListId){
+    public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();
         List<Song> songs = songDao.findAll();
         model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
@@ -49,8 +49,6 @@ public class UserController {
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         model.addAttribute("activeUserID", userId);
         model.addAttribute("allPlaylists", playlistDao.findAll());
-        model.addAttribute("singlePlaylistId", playlistDao.findById(playListId));
-        model.addAttribute("singlePlaylistName", playlistDao.findById(playListId).get().getPlaylistName());
         model.addAttribute("songs", songs);
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("rating", new Rating());

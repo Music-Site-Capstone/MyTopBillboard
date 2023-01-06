@@ -103,11 +103,7 @@
             <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
-                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}">
-<!--                          <input  th:value="${activeUser}" name="user" type="hidden">-->
-<!--                          <input type="hidden" name="playlistId" th:value="${playlist.id}">-->
-
-                        </h3>
+                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"></h3>
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
 
                     <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
