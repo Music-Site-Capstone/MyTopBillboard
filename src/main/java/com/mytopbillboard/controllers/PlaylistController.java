@@ -2,15 +2,10 @@ package com.mytopbillboard.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mytopbillboard.models.Playlist;
-import com.mytopbillboard.models.Rating;
-import com.mytopbillboard.models.Song;
-import com.mytopbillboard.models.User;
-import com.mytopbillboard.repositories.PlaylistRepository;
-import com.mytopbillboard.repositories.RatingRepository;
-import com.mytopbillboard.repositories.SongRepository;
-import com.mytopbillboard.repositories.UserRepository;
+import com.mytopbillboard.models.*;
+import com.mytopbillboard.repositories.*;
 import com.mytopbillboard.services.Utils;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +21,19 @@ public class PlaylistController {
 
     private final SongRepository songDao;
 
-    public PlaylistController(RatingRepository ratingDao, UserRepository userDao, PlaylistRepository playlistDao, SongRepository songDao) {
+    private final ArtistRepository artistDao;
+//need artist to save song
+    private final GenreRepository genreDao;
+    //needed genre to save song
+
+    public PlaylistController(RatingRepository ratingDao, UserRepository userDao, PlaylistRepository playlistDao, SongRepository songDao, ArtistRepository artistDao, GenreRepository genreDao) {
         this.ratingDao = ratingDao;
         this.userDao = userDao;
         this.playlistDao = playlistDao;
         this.songDao = songDao;
+        this.artistDao = artistDao;
+        this.genreDao = genreDao;
+        //added two more constructors
     }
 
 
@@ -88,7 +91,29 @@ public class PlaylistController {
         System.out.println("inside addSongToDB");
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(song));
+        //need to save genre but getting error resulting from duplicates
+        for (Genre genre : song.getArtist().getGenres()) {
+            Genre genreDB = new Genre();
+            genreDB.setGenreName(genre.getGenreName());
+//            genreDB =  genreDao.save(genreDB);
+        }
+        //finding artist by artist name but getting around duplicates
+        Artist artistDB = artistDao.findByArtistName(song.getArtist().getArtistName());
+        if (artistDB == null) {
+            //if not there then add
+            Artist artist = new Artist();
+            artist.setArtistName(song.getArtist().getArtistName());
+            artistDB = artistDao.save(artist);
+        }
+        //find playlist by id and then add song into playlist and then save
+        song.setArtist(artistDB);
+        song = songDao.save(song);
+        Playlist playlist = playlistDao.findById(playlistId);
+        playlist.getSong().add(song);
+        playlistDao.save(playlist);
     }
+
+    //for genre table put default value of 1 for all songs when saving songs
 
 
     @PostMapping("/rating/{owner}")
