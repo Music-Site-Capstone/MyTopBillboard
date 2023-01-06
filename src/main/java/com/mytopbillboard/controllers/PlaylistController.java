@@ -87,6 +87,7 @@ public class PlaylistController {
         Song songData = new Song();
         songData.setTitle(song.getTitle());
         songData.setArtist(song.getArtist());
+        songDao.save(song);
         //the following checks if the artist is already in the database and adds if not
         if(artistDao.findByartistName(song.getArtist().getArtistName()) == null){
             Artist artistData = new Artist();
@@ -119,7 +120,7 @@ public class PlaylistController {
             }
         }
 
-        songDao.save(song);
+
         System.out.println("inside addSongToDB");
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(song));
