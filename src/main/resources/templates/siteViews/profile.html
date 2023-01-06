@@ -104,8 +104,8 @@
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
                         <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}">
-                          <input  th:value="${activeUser}" name="user" type="hidden">
-                          <input type="hidden" name="playlistId" th:value="${playlist.id}">
+<!--                          <input  th:value="${activeUser}" name="user" type="hidden">-->
+<!--                          <input type="hidden" name="playlistId" th:value="${playlist.id}">-->
 
                         </h3>
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
@@ -166,10 +166,13 @@
             <div class="card-header playlist-title">
                 Songs
             </div>
-            <ul class="list-group list-group-flush song-list" th:each="song : ${songs}">
-                <li class="list-group-item" th:if="${song.id} == ${singlePlaylistId}">Pick a playlist!</li>
-                <span th:text="${song.title}"></span>
-            </ul>
+
+            <div id="songs"></div>
+<!--            <ul class="list-group list-group-flush song-list" th:each="song : ${songs}">-->
+<!--                <li class="list-group-item">Pick a playlist!</li>-->
+<!--                <span id="placementForPl"></span>-->
+<!--                <span th:text="${song.title}"></span>-->
+<!--            </ul>-->
         </div>
     </div>
 
