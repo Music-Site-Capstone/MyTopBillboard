@@ -139,24 +139,25 @@ public class PlaylistController {
 //            genreDB.setGenreName(genre.getGenreName());
 ////            genreDB =  genreDao.save(genreDB);
 //        }
-//            for(int i = 0; i < song.getArtist().getGenres().size(); i++){
-//            if(genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()) == null){
-//                Genre genreData = new Genre();
-//                genreData.setGenreName(song.getArtist().getGenres().get(i).getGenreName());
-//                List<Artist> artistList = new ArrayList<Artist>(){{
-//                    add(song.getArtist());
-//                    }};
-//                System.out.println(artistList);
-//                genreData.setArtists(artistList);
-//                genreDao.save(genreData);
-//            } else
-//            {
-//                if (!genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().contains(song.getArtist())){
-//                    genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().add(song.getArtist());
-//                    //we may need to save the above step
-//                    }
-//            }
-//        }
+            for(int i = 0; i < song.getArtist().getGenres().size(); i++){
+            if(genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()) == null){
+                Genre genreData = new Genre();
+                genreData.setGenreName(song.getArtist().getGenres().get(i).getGenreName());
+                Song finalSong = song;
+                List<Artist> artistList = new ArrayList<Artist>(){{
+                    add(finalSong.getArtist());
+                    }};
+                System.out.println(artistList);
+                genreData.setArtists(artistList);
+                genreDao.save(genreData);
+            } else
+            {
+                if (!genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().contains(song.getArtist())){
+                    genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().add(song.getArtist());
+                    //we may need to save the above step
+                    }
+            }
+        }
         //finding artist by artist name but getting around duplicates
         Artist artistDB = artistDao.findByArtistName(song.getArtist().getArtistName());
         if (artistDB == null) {
