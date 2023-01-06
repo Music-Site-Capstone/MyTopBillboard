@@ -138,14 +138,13 @@ public class PlaylistController {
 
     }
 
-    @GetMapping("profile/playlist/{plId}")
-    public @ResponseBody Playlist displayPlaylistSongs(@PathVariable("plId") Long plId){
+    @GetMapping("profile/playlist/{plId}/{username}")
+    public String displayPlaylistSongs(@PathVariable("plId") Long plId,@PathVariable("username") String username, Model model){
         System.out.println("the string inside display playlist songs");
         Playlist playlist = playlistDao.findById(plId).get();
-        return playlist;
-
-
-
+        model.addAttribute("displaySinglePlaylist", playlist);
+        System.out.println(username);
+        return "redirect:/profile/" + username;
     }
 
 }

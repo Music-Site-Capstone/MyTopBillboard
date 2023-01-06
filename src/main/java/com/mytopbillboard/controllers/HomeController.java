@@ -21,7 +21,7 @@ public class HomeController {
 
     @GetMapping("/landingPage")
     public String welcome() {
-        return "/siteViews/landing_page";
+        return "siteViews/landing_page";
     }
 
 
@@ -37,6 +37,6 @@ public class HomeController {
         model.addAttribute("users", firstFive);
         long userId = Utils.currentUserProfile();
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());
-        return "/siteViews/homepage";
+        return "siteViews/homepage";
     }
 }
