@@ -12,8 +12,12 @@ $('.plName').on('click', async function (){
 
 
 
+    $('#playlist-name').text(data.playlistName)
+
+
     $('#songs').text(data.playlistName);
     // $('#allPlaylistSongs').text(data.song);
+
 
 
 
