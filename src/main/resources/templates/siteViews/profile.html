@@ -104,6 +104,7 @@
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
                         <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"></h3>
+
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
 
 
@@ -124,7 +125,7 @@
                     </div>
 
                     <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> <!--need to make the href fill the other table-->
-
+                        <button>delete</button>
 
                 </li>
 
