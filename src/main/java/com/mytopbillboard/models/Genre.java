@@ -7,12 +7,6 @@ import java.util.List;
 @Table (name = "genre")
 public class Genre {
 
-    public Genre(long id, String genreName, List<Artist> artists) {
-        this.id = id;
-        this.genreName = genreName;
-        this.artists = artists;
-    }
-
     public Genre(long id, String genreName) {
         this.genreName = genreName;
         this.id = id;
@@ -40,14 +34,4 @@ public class Genre {
     }
 
 
-    @ManyToMany(cascade= CascadeType.ALL, mappedBy = "genres")
-    List<Artist> artists;
-
-        public List<Artist> getArtists() {
-            return artists;
-        }
-
-        public void setArtists(List<Artist> artists) {
-            this.artists = artists;
-        }
 }

@@ -1,5 +1,7 @@
 package com.mytopbillboard.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,18 +9,12 @@ import java.util.List;
 @Table(name = "artist")
 public class Artist {
 
-    public Artist(long id, String artistName, List<Song> songs, List<Genre> genres) {
-        this.id = id;
-        this.artistName = artistName;
-        this.songs = songs;
-        this.genres = genres;
-    }
-
     public Artist(long id, String artistName, List<Song> songs) {
         this.id = id;
         this.artistName = artistName;
         this.songs = songs;
     }
+
 
     public Artist(long id, String artistName) {
         this.id = id;
@@ -47,6 +43,7 @@ public class Artist {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Song> songs;
+        @JsonIgnore
         public List<Song> getSongs() {
             return songs;
         }
@@ -54,19 +51,4 @@ public class Artist {
             this.songs = songs;
         }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="artist_genres",
-            joinColumns = @JoinColumn(name= "artist_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id")
-    )
-    private List<Genre> genres;
-
-        public List<Genre> getGenres() {
-            return genres;
-        }
-
-        public void setGenres(List<Genre> genres) {
-            this.genres = genres;
-        }
 }

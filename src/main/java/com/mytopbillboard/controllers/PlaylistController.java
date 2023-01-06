@@ -133,30 +133,6 @@ public class PlaylistController {
         System.out.println("inside addSongToDB");
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(song));
-        //need to save genre but getting error resulting from duplicates
-//        for (Genre genre : song.getArtist().getGenres()) {
-//            Genre genreDB = new Genre();
-//            genreDB.setGenreName(genre.getGenreName());
-////            genreDB =  genreDao.save(genreDB);
-//        }
-//            for(int i = 0; i < song.getArtist().getGenres().size(); i++){
-//            if(genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()) == null){
-//                Genre genreData = new Genre();
-//                genreData.setGenreName(song.getArtist().getGenres().get(i).getGenreName());
-//                List<Artist> artistList = new ArrayList<Artist>(){{
-//                    add(song.getArtist());
-//                    }};
-//                System.out.println(artistList);
-//                genreData.setArtists(artistList);
-//                genreDao.save(genreData);
-//            } else
-//            {
-//                if (!genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().contains(song.getArtist())){
-//                    genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().add(song.getArtist());
-//                    //we may need to save the above step
-//                    }
-//            }
-//        }
         //finding artist by artist name but getting around duplicates
         Artist artistDB = artistDao.findByArtistName(song.getArtist().getArtistName());
         if (artistDB == null) {
@@ -187,12 +163,14 @@ public class PlaylistController {
     }
 
     @GetMapping("profile/playlist/{plId}/{username}")
-    public String displayPlaylistSongs(@PathVariable("plId") Long plId,@PathVariable("username") String username, Model model){
+    @ResponseBody
+    public Playlist displayPlaylistSongs(@PathVariable("plId") Long plId,@PathVariable("username") String username, Model model){
         System.out.println("the string inside display playlist songs");
         Playlist playlist = playlistDao.findById(plId).get();
-        model.addAttribute("displaySinglePlaylist", playlist);
+        System.out.println(playlist.getSong());
+//        model.addAttribute("displaySinglePlaylist", playlist);
         System.out.println(username);
-        return "redirect:/profile/" + username;
+        return playlist;
     }
 
 }

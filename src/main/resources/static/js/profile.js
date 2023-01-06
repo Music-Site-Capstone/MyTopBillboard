@@ -1,16 +1,17 @@
 $('.plName').on('click', async function (){
-    let baseURL = "/profile/playlist"
     let playlistId = $(this).attr("plId")
     let username = $(this).attr("activeUser")
+    const theURL = "/profile/playlist/"
 
 
-    let data = await fetch(`${baseURL}/${playlistId}/${username}`).then(res => res.json());
+    let data = await fetch(`${theURL}${playlistId}/${username}`).then(res => res.json());
     console.log(data);
     console.log("it works")
     console.log(playlistId)
     console.log(username)
 
-
+    $('#playlist-name').text(data.playlistName)
+    $('#allPlaylistSongs').text(data.playlistName);
 
 })
 
