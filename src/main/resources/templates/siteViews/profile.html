@@ -107,6 +107,8 @@
                     <div hidden th:text="${playlist.id}" id="playlist-id"></div>
 
 
+
+
                     <div th:if="${activeUserID} != ${userID}">
                         <div th:if="${!ratingCheck.contains(playlist.id)}">
                             <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
@@ -123,8 +125,13 @@
                         </div>
                     </div>
 
+                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> <!--need to make the href fill the other table-->
+
+
                 </li>
+
             </ul>
+
             <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
                 <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
                 <input  th:value="${activeUserID}" name="userId" type="hidden">

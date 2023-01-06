@@ -79,12 +79,9 @@
     <div class="card text-center">
         <div class="card-body">
             <h2>LEADERBOARD</h2>
-            <ul class="list-group">
-                <li class="list-group-item">theceo1999</li>
-                <li class="list-group-item">richy088</li>
-                <li class="list-group-item">aarmorris</li>
-                <li class="list-group-item">super-hacker</li>
-                <li class="list-group-item">jsprouse</li>
+            <ul th:each="user:${#numbers.sequence(topRatedUsers.size() -1, 0, -1)}">
+                <li class="list-group-item"><a th:text="${topRatedUsers[user].username}"></a></li>
+
             </ul>
         </div>
     </div>
