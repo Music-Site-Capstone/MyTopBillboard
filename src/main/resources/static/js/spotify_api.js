@@ -122,7 +122,8 @@ SpotifyAPIController = (async function() {
             // return track;
 
 
-            $('.modal-fill').append(`<div class="searchline"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
+
+            $('.modal-fill').append(`<div class="searchline border"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
             <button class="addButton" id="addSong${id}" data-loop-id="${i}">Add song to playlist</button>
             </div>`);
 

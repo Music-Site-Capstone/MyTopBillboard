@@ -21,7 +21,7 @@ public class SecurityConfiguration {
                 // sets the url success page
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/homepage")
 //                .and().logout().logoutSuccessUrl("/splash?logout")
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/landingPage").deleteCookies("JSESSIONID").invalidateHttpSession(true)
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").deleteCookies("JSESSIONID").invalidateHttpSession(true)
                 .and().httpBasic();
         return http.build();
     }
