@@ -91,6 +91,7 @@ public class PlaylistController {
         songs.add(songDao.findById(songId));
         playlist.setSong(songs);
         playlistDao.save(playlist);
+        System.out.println("Added song " + songId);
         return "redirect:/profile";
     }
 
