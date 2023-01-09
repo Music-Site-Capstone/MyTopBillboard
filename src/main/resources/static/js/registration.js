@@ -21,6 +21,7 @@ $('#forgotten').click(function(){
     });
 });
 
+
 $('.input2').on('keyup',function(){
     if (($('#username').val().length === 0)
         || ($('#email').val().length === 0)
@@ -30,4 +31,5 @@ $('.input2').on('keyup',function(){
         $("input[type=submit]").prop("disabled", false);
     }
 })
+
 
