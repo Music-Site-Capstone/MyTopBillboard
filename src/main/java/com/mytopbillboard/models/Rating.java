@@ -1,5 +1,7 @@
 package com.mytopbillboard.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -49,6 +51,7 @@ public class Rating {
 
     @Column(nullable = false, insertable=false, updatable=false)
     private long playlist_id;
+
         public long getPlaylistId() {
             return playlist_id;
         }
@@ -76,6 +79,7 @@ public class Rating {
 
     @ManyToOne
     private Playlist playlist;
+        @JsonIgnore
         public Playlist getPlaylist() {
             return playlist;
         }
@@ -85,6 +89,7 @@ public class Rating {
 
     @ManyToOne
     private User user;
+        @JsonIgnore
         public User getUser() {
             return user;
         }

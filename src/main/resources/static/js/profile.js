@@ -27,6 +27,7 @@ $('.plName').on('click', async function (){
                             <input  th:value=${data.playlistName} name="playlistName" type="hidden">
                              <input  th:value=${data.song[i].title} name="playlistSongName" type="hidden">
                         </form>`);
+        $('#allPlaylistSongs').append(`<div class="search-line border"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
     }
 })
 
