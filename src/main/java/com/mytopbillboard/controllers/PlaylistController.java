@@ -55,8 +55,8 @@ public class PlaylistController {
     }
 
     @PostMapping("/profile/playlist/delete/{username}")
-    public String deletePlaylist(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "userId") long userId){
-        Playlist playlistToDelete = playlistDao.findByPlaylistName(playlistName);
+    public String deletePlaylist(@PathVariable("username") String username, @RequestParam(name = "playlistId") long playlistId, @RequestParam(name = "userId") long userId){
+        Playlist playlistToDelete = playlistDao.findById(playlistId);
         playlistDao.delete(playlistToDelete);
         return "redirect:/profile/" + username; //return response object with a set status method
     }
