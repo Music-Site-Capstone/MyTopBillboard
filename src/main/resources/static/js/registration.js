@@ -27,6 +27,18 @@ $(function(){
     $('#username, #email, #password' ).change(validate);
 })
 
+
+// function validate(){
+//     if ($('#username').val().length > 0
+//         && $('#email').val().length > 0
+//         && $('#password').val().length > 0){
+//         $("input[type=submit]").prop("disabled", false);
+//     } else{
+//         $("input[type=submit]").prop("disabled", true);
+//     }
+//
+// }
+
 $('.input2').on('keyup',function(){
     if (($('#username').val().length === 0)
         || ($('#email').val().length === 0)
@@ -36,4 +48,5 @@ $('.input2').on('keyup',function(){
         $("input[type=submit]").prop("disabled", false);
     }
 })
+
 
