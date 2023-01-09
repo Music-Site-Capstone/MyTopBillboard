@@ -123,12 +123,19 @@ SpotifyAPIController = (async function() {
 
 
 
-            $('.modal-fill').append(`<div class="searchline border"><img src="${image}" alt="fail"><p>${artist} - ${track}</p>
-            <button class="addButton" id="addSong${id}" data-loop-id="${i}">Add song to playlist</button>
-            </div>`);
+            $('.modal-fill').append(
+                `<div class="searchline border">
+                    <img src="${image}" alt="fail">
+                    <span>
+                        <p>${artist}</p>
+                        <p>${track}</p>
+                    </span>
+                    <button class="addButton" id="addSong${id}" data-loop-id="${i}">Add song to playlist</button>
+                </div>`);
 
             $(document).on('click', `#addSong${id}`, async function(e){
                 e.preventDefault();
+                console.log(e)
                 // console.log("inside click event for add song");
                 // let i = $(this).attr('data-loop-id');
                 // let genreObjects = [];
@@ -138,9 +145,9 @@ SpotifyAPIController = (async function() {
                 //     })
                 // }
                 let song = {
-                    title: track,
+                    title: $(e.target.previousElementSibling.children[1]).text(),
                     artist: {
-                        artistName: artist
+                        artistName: $(e.target.previousElementSibling.children[0]).text()
                         // genres: genreObjects
                     }
                 }
@@ -157,6 +164,8 @@ SpotifyAPIController = (async function() {
                 console.log(`/song/playlist/${$('#playlist-name').attr("plId")}`)
                 let addedSong = await fetch(`/song/playlist/${$('#playlist-name').attr("plId")}`, fetchOptions)
 
+                $('.modal-search-bar').val("");
+                $('.modal-fill').html("");
             })
 
         }
