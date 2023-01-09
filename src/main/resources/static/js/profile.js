@@ -12,10 +12,12 @@ $('.plName').on('click', async function (){
 
     let playlistSongsLength = data.song.length
 
-    $('#playlist-name').text(data.playlistName)
+    $('#playlist-name').text(data.playlistName).attr("plId", playlistId);
+
     // $('#allPlaylistSongs').text(data.song[0].title);
     // console.log(data.song.length)
     console.log(playlistSongsLength)
+    $("#allPlaylistSongs").empty();
     for (let i = 0; i < playlistSongsLength; i++){
         $('#allPlaylistSongs').append(`<form th:action="@{|/profile/playlist/song/delete/${username}" method="post" class="playlistForm"> 
         <div class="search-line"><p> ${data.song[i].title}</p></div>

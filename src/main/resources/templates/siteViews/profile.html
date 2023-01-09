@@ -105,7 +105,7 @@
 
                         <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"></h3>
 
-                    <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+                    <div hidden th:data-id="${playlist.id}" class="playlist-id"></div>
 
 
 
