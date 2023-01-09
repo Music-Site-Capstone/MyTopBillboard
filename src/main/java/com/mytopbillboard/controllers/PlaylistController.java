@@ -159,6 +159,7 @@ public class PlaylistController {
         //find playlist by id and then add song into playlist and then save
         song.setArtist(artistDB);
         song = songDao.save(song);
+        System.out.println(song);
         Playlist playlist = playlistDao.findById(playlistId);
         playlist.getSong().add(song);
         playlistDao.save(playlist);
