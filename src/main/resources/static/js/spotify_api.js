@@ -98,8 +98,8 @@ SpotifyAPIController = (async function() {
                 body: JSON.stringify(song)
 
             }
-            console.log(`/song/playlist/${$('#playlist-id').text()}`)
-            let addedSong = await fetch(`/song/playlist/${$('#playlist-id').text()}`, fetchOptions)
+            console.log(`/song/playlist/${$('#playlist-name').attr("plId")}`)
+            let addedSong = await fetch(`/song/playlist/${$('#playlist-name').attr("plId")}`, fetchOptions)
 
         })
 
