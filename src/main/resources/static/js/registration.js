@@ -21,12 +21,6 @@ $('#forgotten').click(function(){
     });
 });
 
-
-$(function(){
-    validate();
-    $('#username, #email, #password' ).change(validate);
-})
-
 $('.input2').on('keyup',function(){
     if (($('#username').val().length === 0)
         || ($('#email').val().length === 0)
