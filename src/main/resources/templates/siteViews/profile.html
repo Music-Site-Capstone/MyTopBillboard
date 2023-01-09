@@ -105,8 +105,24 @@
 
                         <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"></h3>
 
-                    <div hidden th:text="${playlist.id}" id="playlist-id"></div>
 
+                    <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
+                        Add Music
+                    </a>
+
+
+                    <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+                    <div class="dnModal">
+                        <div id="Dropdown" class="dnModal-content">
+                            <span class="dnModal-close">&times;</span>
+                            <form class="modal-search" role="search">
+                                <div class="search-bar">
+                                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
+                                </div>
+                                <div class="modal-fill" th:id="${playlist.id}"></div>
+                            </form>
+                        </div>
+                    </div>
 
 
 
@@ -126,7 +142,7 @@
                         </div>
                     </div>
 
-                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> <!--need to make the href fill the other table-->
+<!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
                         <form th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
                             <button>delete</button>
                             <input  th:value="${activeUserID}" name="userId" type="hidden">
@@ -146,22 +162,7 @@
         <br><br><br><br><br><br><br>
 
         <div class="card" style="width: 18rem;">
-            <div class="card-header playlist-title" id="playlist-name">
-            </div>
-            <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
-                Add Music
-            </a>
-            <div class="dnModal">
-                <div id="Dropdown" class="dnModal-content">
-                    <span class="dnModal-close">&times;</span>
-                    <form class="modal-search" role="search">
-                        <div class="search-bar">
-                            <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
-                        </div>
-                        <div class="modal-fill"></div>
-                    </form>
-                </div>
-            </div>
+            <div class="card-header playlist-title" id="playlist-name"></div>
             <div id="allPlaylistSongs"></div>
         </div>
     </div>
