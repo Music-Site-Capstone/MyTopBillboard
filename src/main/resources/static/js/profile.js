@@ -17,7 +17,13 @@ $('.plName').on('click', async function (){
     // console.log(data.song.length)
     console.log(playlistSongsLength)
     for (let i = 0; i < playlistSongsLength; i++){
-        $('#allPlaylistSongs').append(`<div class="search-line"><p> ${data.song[i].title}</p></div>`);
+        $('#allPlaylistSongs').append(`<form th:action="@{|/profile/playlist/song/delete/${username}" method="post" class="playlistForm"> 
+        <div class="search-line"><p> ${data.song[i].title}</p></div>
+                        <button>delete</button>
+                            <input  th:value=${username} name="userId" type="hidden">
+                            <input  th:value=${data.playlistName} name="playlistName" type="hidden">
+                             <input  th:value=${data.song[i].title} name="playlistSongName" type="hidden">
+                        </form>`);
     }
 
 

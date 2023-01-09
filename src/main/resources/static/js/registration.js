@@ -27,6 +27,7 @@ $(function(){
     $('#username, #email, #password' ).change(validate);
 })
 
+<<<<<<< HEAD
 // function validate(){
 //     if ($('#username').val().length > 0
 //         && $('#email').val().length > 0
@@ -37,3 +38,15 @@ $(function(){
 //     }
 //
 // }
+=======
+$('.input2').on('keyup',function(){
+    if (($('#username').val().length === 0)
+        || ($('#email').val().length === 0)
+        || ($('#password').val().length === 0)){
+        $("input[type=submit]").prop("disabled", true);
+    } else{
+        $("input[type=submit]").prop("disabled", false);
+    }
+})
+
+>>>>>>> c61647b9e36f990b6a3fa721b618563126149f48
