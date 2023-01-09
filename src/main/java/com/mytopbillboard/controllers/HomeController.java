@@ -21,7 +21,7 @@ public class HomeController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/landingPage")
+    @GetMapping("/")
     public String welcome() {
         return "siteViews/landing_page";
     }
