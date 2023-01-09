@@ -20,7 +20,7 @@ $('.plName').on('click', async function (){
 
     $('#allPlaylistSongs').html('');
     for (let i = 0; i < playlistSongsLength; i++){
-        $('#allPlaylistSongs').append(`<div class="search-line"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
+        $('#allPlaylistSongs').append(`<div class="search-line border"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
     }
 
 
