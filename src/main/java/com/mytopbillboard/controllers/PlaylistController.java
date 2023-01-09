@@ -77,7 +77,7 @@ public class PlaylistController {
     }
 
     @PostMapping("/song/playlist/{playlistId}/add/{songId}")
-    public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId){
+    public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId, @RequestParam(name = "songTitle")String songTitle){
         Playlist playlist = playlistDao.findById(playlistId);
         List<Song> songs = playlist.getSong();
         //Get artist information<Name>
@@ -88,6 +88,11 @@ public class PlaylistController {
         //Pull the genres from the artist, AND add genres that dont exist already (from the artist)
         //Save the new genres
         //Save the song with the genres associated with it
+        List<Song> allSongs = songDao.findAll();
+        if (allSongs.contains(songDao.findByTitle(songTitle))){
+
+        }
+
         songs.add(songDao.findById(songId));
         playlist.setSong(songs);
         playlistDao.save(playlist);
