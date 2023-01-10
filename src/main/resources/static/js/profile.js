@@ -59,6 +59,9 @@ $('.plName').on('click', async function (){
                     <div class="image-for-playlist">
                          <img src="${data.song[i].image}" alt="fail">    
                     </div>
+                    <div class="song-and-tile-playlist">
+                        <p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p>
+                    </div>
                 </div>
               </form>
             </div>`);
