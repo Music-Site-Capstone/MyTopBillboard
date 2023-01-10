@@ -130,11 +130,11 @@ input:focus{
 
 /* Placeholders */
 ::-webkit-input-placeholder {
-    color: #ddd;  }
+    color: rgba(255, 255, 255, 0.98);  }
 :-moz-placeholder { /* Firefox 18- */
-    color: red;  }
+    color: #ffffff;  }
 ::-moz-placeholder {  /* Firefox 19+ */
-    color: red;  }
+    color: #fdfdfd;  }
 :-ms-input-placeholder {
     color: #333;  }
 
