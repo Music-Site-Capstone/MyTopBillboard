@@ -31,9 +31,14 @@ public class HomeController {
     public String welcomeHome(Model model) {
 
         List<User> users = userDao.findAll();
+        int randomUserId = (int) Math.ceil(Math.random() * userDao.findAll().size());
         List<User> firstFive = new ArrayList<>();
         for (int i = 0; i < 5; i++){
-            firstFive.add(users.get(i));
+            if (randomUserId + i > userDao.findAll().size()){
+                firstFive.add(userDao.findAll().get(Math.abs(userDao.findAll().size() - (randomUserId + i -1))));
+            } else{
+                firstFive.add(userDao.findAll().get(randomUserId + i - 1));
+            }
         }
 
         Collections.sort(users, new Comparator<User>() {
