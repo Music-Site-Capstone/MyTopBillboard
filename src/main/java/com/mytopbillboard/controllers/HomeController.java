@@ -45,7 +45,7 @@ public class HomeController {
 
         // The following contains the logic for the leaderboard and organizing user ranks. creates a sorted list of all users.
         //consider moving to utils to also use with profile.
-        users.sort((user1, user2) -> Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername()))) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))));
+        users.sort((user2, user1) -> Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername()))) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))));
 
 
         model.addAttribute("topRatedUsers", users);
