@@ -31,6 +31,8 @@ public class HomeController {
     public String welcomeHome(Model model) {
 
         List<User> users = userDao.findAll();
+
+        //The following is a randomizer that finds 5 users to be populated into the discover section.
         int randomUserId = (int) Math.ceil(Math.random() * userDao.findAll().size());
         List<User> firstFive = new ArrayList<>();
         for (int i = 0; i < 5; i++){
@@ -41,14 +43,10 @@ public class HomeController {
             }
         }
 
-        Collections.sort(users, new Comparator<User>() {
-            public int compare(User user1, User user2){
-                return Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername()))) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername())));
-            }
-        });
-        for(User user : users){
-            System.out.println(user.getUsername());
-        }
+        // The following contains the logic for the leaderboard and organizing user ranks. creates a sorted list of all users.
+        //consider moving to utils to also use with profile.
+        users.sort((user1, user2) -> Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername()))) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))));
+
 
         model.addAttribute("topRatedUsers", users);
         model.addAttribute("users", firstFive);
