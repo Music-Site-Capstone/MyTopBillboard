@@ -149,17 +149,30 @@ public class PlaylistController {
         System.out.println(mapper.writeValueAsString(song));
         //finding artist by artist name but getting around duplicates
         Artist artistDB = artistDao.findByArtistName(song.getArtist().getArtistName());
+        List<String> songDB = new ArrayList<>();
+        artistDB.getSongs().forEach(artistSong -> {
+            songDB.add(artistSong.getTitle());
+        });
         if (artistDB == null) {
             //if not there then add
             Artist artist = new Artist();
             artist.setArtistName(song.getArtist().getArtistName());
             artistDB = artistDao.save(artist);
+            song.setArtist(artistDB);
+            song = songDao.save(song);
+            Playlist playlist = playlistDao.findById(playlistId);
+            playlist.getSong().add(song);
+            playlistDao.save(playlist);
+        } else if (!songDB.contains(song.getTitle())) {
+            song.setArtist(artistDB);
+            song = songDao.save(song);
+            Playlist playlist = playlistDao.findById(playlistId);
+            playlist.getSong().add(song);
+            playlistDao.save(playlist);
         }
         //find playlist by id and then add song into playlist and then save
-        song.setArtist(artistDB);
-        song = songDao.save(song);
         Playlist playlist = playlistDao.findById(playlistId);
-        playlist.getSong().add(song);
+        playlist.getSong().add(songDao.findByTitleAndArtist(song.getTitle(), artistDB));
         playlistDao.save(playlist);
     }
 
