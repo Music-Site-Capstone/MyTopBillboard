@@ -52,62 +52,8 @@ potifyAPIController = (async function() {
         const data = await response.json()
         artistID = data.tracks.items[0].artists[0].id;
         console.log(artistID);
-
-        // const genreResponse = await fetch(`https://api.spotify.com/v1/artists/${artistID}`,{
-        //     method: 'GET',
-        //     headers: {
-        //         'Authorization': `Bearer ${bearer}`,
-        //         'Content-Type': 'application/json'
-        //     }
-        // });
-
         $('.modal-fill').html('');
-
-        // const artistData = await genreResponse.json();
-        // console.log(artistData);
-        // let genres = artistData.genres.toString();
-        // console.log(genres);
         console.log(data);
-
-
-
-        // $(document).on('click', `.addButton`, async function(e){
-        //     e.preventDefault();
-        //     // console.log("inside click event for add song");
-        //     // let i = $(this).attr('data-loop-id');
-        //     // let genreObjects = [];
-        //     // for (let genre of artistData.genres){
-        //     //     genreObjects.push({
-        //     //         genreName: genre
-        //     //     })
-        //     // }
-        //     let song = {
-        //         title: data.tracks.items[i].name,
-        //         artist: {
-        //             artistName: data.tracks.items[i].artists[0].name
-        //             // genres: genreObjects
-        //         }
-        //     }
-        //     console.log(song);
-        //     let fetchOptions = {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
-        //         },
-        //         body: JSON.stringify(song)
-        //
-        //     }
-        //     console.log(`/song/playlist/${$('#playlist-name').attr("plId")}`)
-        //     let addedSong = await fetch(`/song/playlist/${$('#playlist-name').attr("plId")}`, fetchOptions)
-        //
-        // })
-
-
-
-
-
-
 
 
         let track;
@@ -135,19 +81,10 @@ potifyAPIController = (async function() {
             $(document).on('click', `#addSong${id}`, async function(e){
                 e.preventDefault();
                 console.log(e)
-                // console.log("inside click event for add song");
-                // let i = $(this).attr('data-loop-id');
-                // let genreObjects = [];
-                // for (let genre of artistData.genres){
-                //     genreObjects.push({
-                //         genreName: genre
-                //     })
-                // }
                 let song = {
                     title: $(e.target.previousElementSibling.children[1]).text(),
                     artist: {
                         artistName: $(e.target.previousElementSibling.children[0]).text()
-                        // genres: genreObjects
                     }
                 }
                 console.log(song);
