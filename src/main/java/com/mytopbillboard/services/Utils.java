@@ -3,11 +3,20 @@ package com.mytopbillboard.services;
 import com.mytopbillboard.models.Playlist;
 import com.mytopbillboard.models.Rating;
 import com.mytopbillboard.models.User;
+import com.mytopbillboard.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Utils {
+
+    private final UserRepository userDao;
+
+    public Utils(UserRepository userDao) {
+        this.userDao = userDao;
+    }
 
     public static User currentUser(){
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -38,5 +47,6 @@ public class Utils {
         }
         return 0.00F;
     }
+
 
 }
