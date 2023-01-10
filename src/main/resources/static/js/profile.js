@@ -2,6 +2,7 @@ $('.plName').on('click', async function (){
     let playlistId = $(this).attr("plId")
     let username = $(this).attr("activeUser")
     const theURL = "/profile/playlist/"
+    let activeUserId = $(this).attr("plid")
 
 
     let data = await fetch(`${theURL}${playlistId}/${username}`).then(res => res.json());
@@ -17,17 +18,17 @@ $('.plName').on('click', async function (){
     // $('#allPlaylistSongs').text(data.song[0].title);
     // console.log(data.song.length)
     console.log(playlistSongsLength)
-
+    let csrfValue = document.querySelector('meta[name="_csrf"]').content
     $('#allPlaylistSongs').html('');
     for (let i = 0; i < playlistSongsLength; i++){
         $('#allPlaylistSongs').append(`<div class="search-line"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
-        $('#allPlaylistSongs').append(`<form th:action="@{|/profile/playlist/song/delete/${username}" method="post" class="playlistForm"> 
+        $('#allPlaylistSongs').append(`<form action="/profile/playlist/song/delete/${username}" method="post" class="playlistForm"> 
                         <button>delete</button>
-                            <input  th:value=${username} name="userId" type="hidden">
-                            <input  th:value=${data.playlistName} name="playlistName" type="hidden">
-                             <input  th:value=${data.song[i].title} name="playlistSongName" type="hidden">
+                            <input type="hidden" name="_csrf" value=${csrfValue}>
+                            <input  value=${activeUserId} name="userId" type="hidden">
+                            <input  value=${data.playlistName} name="playlistName" type="hidden">
+                             <input  value=${data.song[i].id} name="playlistSongId" type="hidden">
                         </form>`);
-        $('#allPlaylistSongs').append(`<div class="search-line border"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
     }
 })
 
