@@ -81,7 +81,7 @@
             <h2>LEADERBOARD</h2>
 
             <ul th:each="user:${topRatedUsers}">
-                <li class="list-group-item"><a th:text="${user.username}"></a></li>
+                <li class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>
 
             </ul>
         </div>
