@@ -3,7 +3,7 @@ $('.plName').on('click', async function (){
     let username = $(this).attr("activeUser");
     const theURL = "/profile/playlist/";
     let activeUserId = $(this).attr("activeUserId");
-    let userId = $(this).attr("userId");;
+    let userId = $(this).attr("userId");
 
 
 //This utilizes the controller displayPlaylistSong
@@ -66,6 +66,27 @@ $('.plName').on('click', async function (){
         console.log(data.song[i].image)
 
     }
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['5th', '4th', '3rd', '2nd', 'most recent'],
+            datasets: [{
+                label: 'last 5 ratings for Playlist',
+                data: [19, 95, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 })
 
 $(function (){
