@@ -62,11 +62,13 @@ public class PlaylistController {
     }
 
     @PostMapping("/profile/playlist/song/delete/{username}")
-    public String deletePlaylistSong(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "userId") long userId, @RequestParam(name = "playlistSongName" )String playlistSongName){
-        Song songToDelete = songDao.findByTitle(playlistSongName);
+    public String deletePlaylistSong(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "userId") long userId, @RequestParam(name = "playlistSongId" )long songId){
+        System.out.println("song id" + songId);
+        Song songToDelete = songDao.findById(songId);
         Playlist playlistToUpdate = playlistDao.findByPlaylistName(playlistName);
         playlistToUpdate.getSong().remove(songToDelete);
         playlistDao.save(playlistToUpdate);
+//        songDao.delete(songToDelete);
         return "redirect:/profile/" + username; //return response object with a set status method
     }
 
