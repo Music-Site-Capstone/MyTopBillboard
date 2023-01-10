@@ -67,7 +67,7 @@ potifyAPIController = (async function() {
             id = await data.tracks.items[i].id;
             // return track;
 
-
+//Appending Image, Artist, and Track Name to the Modal Search
             $('.modal-fill').append(
                 `<div class="searchline border">
                     <img src="${image}" alt="fail">
@@ -83,6 +83,8 @@ potifyAPIController = (async function() {
                 console.log(e)
                 let song = {
                     title: $(e.target.previousElementSibling.children[1]).text(),
+                    image: $(e.target.previousElementSibling.previousElementSibling).attr('src'),
+
                     artist: {
                         artistName: $(e.target.previousElementSibling.children[0]).text()
                     }

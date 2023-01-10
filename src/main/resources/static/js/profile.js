@@ -3,7 +3,7 @@ $('.plName').on('click', async function (){
     let username = $(this).attr("activeUser")
     const theURL = "/profile/playlist/"
 
-
+//This utilizes the controller displayPlaylistSong
     let data = await fetch(`${theURL}${playlistId}/${username}`).then(res => res.json());
     console.log(data);
     console.log("it works")
@@ -20,7 +20,21 @@ $('.plName').on('click', async function (){
 
     $('#allPlaylistSongs').html('');
     for (let i = 0; i < playlistSongsLength; i++){
-        $('#allPlaylistSongs').append(`<div class="search-line border"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
+        $('#allPlaylistSongs').append(`
+        <div class="search-line border">
+            <div class="song-container">
+                 <div class="image-for-playlist">
+                     <img src="${data.song[i].image}" alt="fail">   
+                     
+                </div>
+                <div class="song-and-tile-playlist">
+                <p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p>
+                </div>
+            
+            </div>
+           
+        </div>`);
+        console.log(data.song[i].image)
     }
 
 

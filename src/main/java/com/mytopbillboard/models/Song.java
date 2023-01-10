@@ -9,11 +9,19 @@ import java.util.List;
 @Table(name = "song")
 public class Song {
 
-    public Song(long id, String title, Artist artist, List<Playlist> playlists) {
+    public Song(long id, String title, Artist artist, List<Playlist> playlists, String image) {
         this.id = id;
         this.title = title;
         this.artist = artist;
         this.playlists = playlists;
+        this.image = image;
+    }
+
+    public Song(long id, String title, Artist artist, String image){
+        this.id = id;
+        this.artist = artist;
+        this.title = title;
+        this.image = image;
     }
 
     public Song(long id, String title, Artist artist) {
@@ -52,6 +60,17 @@ public class Song {
         public void setTitle(String title) {
         this.title = title;
     }
+
+    @Column(nullable = false)
+    private String image;
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
 
 
     @ManyToOne
