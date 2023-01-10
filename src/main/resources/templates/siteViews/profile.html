@@ -103,7 +103,7 @@
             <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
                 <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
-                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:userId="${activeUserID}"></h3>
+                        <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
 
 
 
