@@ -1,5 +1,5 @@
 
-SpotifyAPIController = (async function() {
+potifyAPIController = (async function() {
     const clientId = SPOTIFY_CLIENT_ID;
     const clientSecret = SPOTIFY_CLIENT_SECRET;
 
@@ -18,9 +18,9 @@ SpotifyAPIController = (async function() {
         console.log(data.access_token);
         return data.access_token;
 
-        }
+    }
 
-       let bearerToken = await getToken();
+    let bearerToken = await getToken();
 
 
     let usersSearch;
@@ -50,7 +50,7 @@ SpotifyAPIController = (async function() {
             }
         });
         const data = await response.json()
-       artistID = data.tracks.items[0].artists[0].id;
+        artistID = data.tracks.items[0].artists[0].id;
         console.log(artistID);
         $('.modal-fill').html('');
         console.log(data);
@@ -67,7 +67,7 @@ SpotifyAPIController = (async function() {
             id = await data.tracks.items[i].id;
             // return track;
 
-
+//Appending Image, Artist, and Track Name to the Modal Search
             $('.modal-fill').append(
                 `<div class="searchline border">
                     <img src="${image}" alt="fail">
@@ -83,6 +83,8 @@ SpotifyAPIController = (async function() {
                 console.log(e)
                 let song = {
                     title: $(e.target.previousElementSibling.children[1]).text(),
+                    image: $(e.target.previousElementSibling.previousElementSibling).attr('src'),
+
                     artist: {
                         artistName: $(e.target.previousElementSibling.children[0]).text()
                     }

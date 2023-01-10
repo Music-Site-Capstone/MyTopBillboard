@@ -14,3 +14,17 @@
     padding: 0 3.5rem 0 1.5rem;
     font-size: 1rem;
 }
+.song-container {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: end;
+}
+.song-and-title-playlist{
+    text-align: right;
+}
+.image-for-playlist{
+    padding: 2px;
+    align-self: center;
+
+
+}

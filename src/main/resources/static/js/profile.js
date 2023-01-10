@@ -4,7 +4,7 @@ $('.plName').on('click', async function (){
     const theURL = "/profile/playlist/"
     let activeUserId = $(this).attr("plid")
 
-
+//This utilizes the controller displayPlaylistSong
     let data = await fetch(`${theURL}${playlistId}/${username}`).then(res => res.json());
     console.log(data);
     console.log("it works")
@@ -21,14 +21,31 @@ $('.plName').on('click', async function (){
     let csrfValue = document.querySelector('meta[name="_csrf"]').content
     $('#allPlaylistSongs').html('');
     for (let i = 0; i < playlistSongsLength; i++){
-        $('#allPlaylistSongs').append(`<div class="search-line"><p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p></div>`);
-        $('#allPlaylistSongs').append(`<form action="/profile/playlist/song/delete/${username}" method="post" class="playlistForm"> 
-                        <button>delete</button>
-                            <input type="hidden" name="_csrf" value=${csrfValue}>
-                            <input  value=${activeUserId} name="userId" type="hidden">
-                            <input  value=${data.playlistName} name="playlistName" type="hidden">
-                             <input  value=${data.song[i].id} name="playlistSongId" type="hidden">
-                        </form>`);
+
+        $('#allPlaylistSongs').append(`
+        <div class="search-line border">
+          <form action="/profile/playlist/song/delete/${username}" method="post" class="playlistForm"> 
+                          
+              <input type="hidden" name="_csrf" value=${csrfValue}>
+              <input  value=${activeUserId} name="userId" type="hidden">
+              <input  value=${data.playlistName} name="playlistName" type="hidden">
+              <input  value=${data.song[i].id} name="playlistSongId" type="hidden">
+          
+            <div class="song-container">
+                 <div class="image-for-playlist">
+                     <img src="${data.song[i].image}" alt="fail">   
+                     
+                </div>
+                <div class="song-and-tile-playlist">
+                <p> ${data.song[i].title} - ${data.song[i].artist.artistName} </p>
+                <button>delete</button>
+                </div>
+            
+            </div>
+          </form>
+        </div>`);
+        console.log(data.song[i].image)
+
     }
 })
 
