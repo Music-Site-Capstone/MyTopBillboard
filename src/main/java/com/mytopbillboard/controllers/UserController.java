@@ -26,7 +26,6 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final SongRepository songDao;
 
-
     public UserController(UserRepository userDao, PlaylistRepository playlistDao, PasswordEncoder passwordEncoder, SongRepository songDao){
         this.userDao = userDao;
         this.playlistDao = playlistDao;
@@ -43,6 +42,7 @@ public class UserController {
     public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();
         List<Song> songs = songDao.findAll();
+
         // the following is part of the check to see if a user has laready rated a playlist
         List<Long> playlistIdList = new ArrayList<>();
         userDao.findById(userId).getRatings().forEach(rating -> {
@@ -58,6 +58,7 @@ public class UserController {
         model.addAttribute("activeUserID", userId);
         model.addAttribute("allPlaylists", playlistDao.findAll());
         model.addAttribute("songs", songs);
+        model.addAttribute("myRatings",userDao.findById(userId).getRatings());
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("ratingCheck", playlistIdList);
         model.addAttribute("rating", new Rating());
