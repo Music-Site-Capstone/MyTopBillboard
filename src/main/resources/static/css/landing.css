@@ -153,6 +153,20 @@ ol, li {
     }
 }
 
+.page-title {
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+    width: 900px;
+}
+
+.card {
+    width: 900px;
+    height: 750px;
+}
+
 
 /*the following will only show on small screens*/
 @media screen and (max-width: 575px) {
