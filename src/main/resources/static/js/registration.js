@@ -30,6 +30,8 @@ $('.input2').on('keyup',function(){
     } else{
         $("input[type=submit]").prop("disabled", false);
     }
-})
-
-
+}).on("keypress", function (event) {
+    if (event.keyCode === 13 || event.which === 13) {
+        event.preventDefault();
+    }
+});
