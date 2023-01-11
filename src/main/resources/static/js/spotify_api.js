@@ -1,8 +1,10 @@
-
+// IIFE
 potifyAPIController = (async function() {
+    // check keys.js.
     const clientId = SPOTIFY_CLIENT_ID;
     const clientSecret = SPOTIFY_CLIENT_SECRET;
 
+    // Token is good for 1 hour, but each call should get a new one.
     const getToken = async() => {
         const response = await fetch('https://accounts.spotify.com/api/token',{
             method: 'POST',
@@ -17,12 +19,10 @@ potifyAPIController = (async function() {
         console.log(data);
         console.log(data.access_token);
         return data.access_token;
-
     }
 
+    // The following is the function that times the API call on key up in the search bar
     let bearerToken = await getToken();
-
-
     let usersSearch;
     $('.modal-search-bar').on('keyup', function() {
         let searchValue = $(this).val();
@@ -40,6 +40,7 @@ potifyAPIController = (async function() {
         }
     })
 
+    // The following is the actual API call function
     let artistID;
     const getSearch = async(bearer, search = usersSearch, artistID) => {
         const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${search}`,{
@@ -55,7 +56,7 @@ potifyAPIController = (async function() {
         $('.modal-fill').html('');
         console.log(data);
 
-
+        // The following loop populates the search results and creates the event handler for adding new songs
         let track;
         let artist;
         let image;
