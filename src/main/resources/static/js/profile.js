@@ -111,6 +111,13 @@ $('.plName').on('click', async function (){
     });
 })
 
+
+
+
+
+
+
+
 $(function (){
     let regexNumberCheck = / \d/;
     $(`.playlist${regexNumberCheck}`).on('click', function(){
