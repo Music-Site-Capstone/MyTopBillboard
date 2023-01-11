@@ -156,6 +156,12 @@ ol, li {
 
 /*the following will only show on small screens*/
 @media screen and (max-width: 575px) {
+    .carousel-item active {
+        display: flex;
+        justify-content: center;
+        background-color: #888888;
+        align-items: center;
+    }
 
 }
 /*the following will only show on mid or larger screens*/
