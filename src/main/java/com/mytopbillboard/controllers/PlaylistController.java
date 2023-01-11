@@ -83,15 +83,9 @@ public class PlaylistController {
     public String addSongToPlaylist(@PathVariable long playlistId, @PathVariable long songId, @RequestParam(name = "songTitle")String songTitle){
         Playlist playlist = playlistDao.findById(playlistId);
         List<Song> songs = playlist.getSong();
-        //Get artist information<Name>
-        //Get all the songs from artist
-        //Check if the song title exists in the list of songs in mtb_db
-        //If it does exist, get ID. Then add song, set songs to playlist, then save playlist
-        //If the song DOESNT exist than DO the following:
-        //Pull the genres from the artist, AND add genres that dont exist already (from the artist)
-        //Save the new genres
-        //Save the song with the genres associated with it
         List<Song> allSongs = songDao.findAll();
+
+        //If the song exists in the DB, then we add the song to the playlist from the database instead.
         if (allSongs.contains(songDao.findByTitle(songTitle))){
 
         }
