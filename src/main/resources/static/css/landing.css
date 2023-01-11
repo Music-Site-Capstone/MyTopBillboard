@@ -153,19 +153,6 @@ ol, li {
     }
 }
 
-.page-title {
-    text-align: center;
-}
-
-.card-text {
-    text-align: center;
-    width: 900px;
-}
-
-.card {
-    width: 900px;
-    height: 750px;
-}
 
 
 /*the following will only show on small screens*/
@@ -178,9 +165,15 @@ ol, li {
     }
 
     body {
-        background-color: red;
+        background-color: rgba(129, 0, 250, 0.58);
     }
 
+    .page-title {
+        text-align: center;
+
+    }
+
+    /*the following will only show on mid or larger screens*/
+    @media screen and (min-width: 576px) {
+    }
 }
-/*the following will only show on mid or larger screens*/
-@media screen and (min-width: 576px) {}
