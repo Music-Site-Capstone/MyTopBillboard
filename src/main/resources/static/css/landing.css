@@ -159,8 +159,12 @@ ol, li {
     .carousel-item active {
         display: flex;
         justify-content: center;
-        background-color: #888888;
         align-items: center;
+
+    }
+
+    body {
+        background-color: red;
     }
 
 }
