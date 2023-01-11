@@ -77,7 +77,7 @@ potifyAPIController = (async function() {
                     </span>
                     <button class="addButton" id="addSong${id}" data-loop-id="${i}">Add song to playlist</button>
                 </div>`);
-
+            $(document).off('click', `#addSong${id}`);
             $(document).on('click', `#addSong${id}`, async function(e){
                 e.preventDefault();
                 console.log(e)
