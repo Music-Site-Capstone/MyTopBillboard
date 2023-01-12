@@ -135,7 +135,7 @@ $('.plName').on('click', async function (){
     if(myChart!=null){
         myChart.destroy();
     }
-    let myChart = new Chart(ctx, config);
+    myChart = new Chart(ctx, config);
 
 
 
