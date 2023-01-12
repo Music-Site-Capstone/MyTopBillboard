@@ -105,6 +105,10 @@ potifyAPIController = (async function() {
 
                 $('.modal-search-bar').val("");
                 $('.modal-fill').html("");
+            }).on("keypress", '.modal-search-bar', function (event) {
+                if (event.keyCode === 13 || event.which === 13) {
+                    event.preventDefault();
+                }
             })
 
         }
