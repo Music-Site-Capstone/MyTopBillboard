@@ -132,7 +132,7 @@ $('.plName').on('click', async function (){
                 'rgb(75, 192, 192)',
                 'rgb(54, 162, 235)'
             ],
-            borderWidth: 1
+            borderWidth: 5
         }]
     };
 
