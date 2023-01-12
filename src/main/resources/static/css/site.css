@@ -3,6 +3,3 @@
 /*the following will only show on mid or larger screens*/
 @media screen and (min-width: 576px) {}
 
-.plName{
-    cursor: pointer;
-}
