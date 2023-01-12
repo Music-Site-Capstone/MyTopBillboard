@@ -100,11 +100,10 @@ potifyAPIController = (async function() {
                     body: JSON.stringify(song)
 
                 }
-                console.log(`/song/playlist/${$('#playlist-name').attr("plId")}`)
+                console.log(`/song/playlist/${$('#playlist-name').attr("plId")}`);
                 let addedSong = await fetch(`/song/playlist/${$('#playlist-name').attr("plId")}`, fetchOptions)
 
-                $('.modal-search-bar').val("");
-                $('.modal-fill').html("");
+                $(e.target.parentElement).html('');
             }).on("keypress", '.modal-search-bar', function (event) {
                 if (event.keyCode === 13 || event.which === 13) {
                     event.preventDefault();
