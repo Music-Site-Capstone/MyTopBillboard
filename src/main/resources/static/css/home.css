@@ -49,6 +49,11 @@
 #explore-item {
     justify-content: center;
 }
+.navbar-brand .vibeCheck{
+    cursor: pointer;
+}
+
+
 
 
 /*.list-group-item {*/
