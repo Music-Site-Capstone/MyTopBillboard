@@ -107,7 +107,13 @@ $('.plName').on('click', async function (){
         }
 
     }
-
+    // need to append this after the loop to ensure that only one button is created
+    if(activeUserId === userId) {
+        $('#allPlaylistSongs').append(`
+            <a class="nav-link dnModal-button" id="profile-search-music-2">
+                Add Music
+            </a>`);
+    }
 
     // import Chart from 'chart.js';
 

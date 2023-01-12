@@ -1,8 +1,6 @@
 $(function () {
 // When the user clicks on the button, open the modal
-    $('.dnModal-button').on('click' , function (/*event*/) {
-        // console.log(event);
-        // $(event.target.nextElementSibling.nextElementSibling).css('display', "block");
+    $(document).on('click', '.dnModal-button',function () {
             $('.dnModal, .dnModal-content').css('display', "block");
     });
 
