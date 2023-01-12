@@ -1,5 +1,4 @@
 $('.plName').on('click', async function (){
-    let myChart=null;
     let playlistId = $(this).attr("plId");
     let username = $(this).attr("activeUser");
     const theURL = "/profile/playlist/";
@@ -44,6 +43,7 @@ $('.plName').on('click', async function (){
     // console.log(playlistSongsLength)
     let csrfValue = document.querySelector('meta[name="_csrf"]').content
     $('#allPlaylistSongs').html('');
+    let myChart=null;
     for (let i = 0; i < playlistSongsLength; i++){
         if(activeUserId === userId) {
             $('#allPlaylistSongs').append(`
@@ -87,6 +87,7 @@ $('.plName').on('click', async function (){
               </form>
             </div>`);
         }
+
     }
 
 
@@ -95,7 +96,7 @@ $('.plName').on('click', async function (){
     const data = {
         labels: labels,
         datasets: [{
-            label: 'First 6 Playlist Ratings',
+            label: 'First 7 Playlist Ratings',
             data: [mappedArr[0], mappedArr[1], mappedArr[2], mappedArr[3], mappedArr[4], mappedArr[5], mappedArr[6]],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
