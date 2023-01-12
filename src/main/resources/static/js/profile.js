@@ -41,7 +41,7 @@ $('.plName').on('click', async function (){
             }
         })
 
-        console.log(mappedArrVal1);
+
     }
     // let ratingArr = new Array();
     // if(dataF.rating.length == 0) {}
@@ -116,7 +116,7 @@ $('.plName').on('click', async function (){
         labels: labels,
         datasets: [{
             label: 'Playlist Ratings',
-            data: [mappedArrVal1.length, mappedArrVal2.length, mappedArrVal3.length, mappedArrVal4.length, mappedArrVal5.length],
+            data: [mappedArrVal1.length.valueOf(), mappedArrVal2.length.valueOf(), mappedArrVal3.length.valueOf(), mappedArrVal4.length.valueOf(), mappedArrVal5.length.valueOf()],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -132,7 +132,7 @@ $('.plName').on('click', async function (){
                 'rgb(75, 192, 192)',
                 'rgb(54, 162, 235)'
             ],
-            borderWidth: 1
+            borderWidth: 5
         }]
     };
 
