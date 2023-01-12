@@ -11,40 +11,9 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            var info = [
-                "ActionScript",
-                "AppleScript",
-                "Asp",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-            ];
-
-            $("#code").autocomplete({
-                source: info
-            });
-        });
-    </script>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand vibeCheck" th:href="@{/homepage}">VibeCheck</a>
@@ -56,89 +25,55 @@
                 <a class="nav-link" th:href="@{|/profile/${activeUser}|}">Profile</a>
                 <a class="nav-link" th:href="@{/logout}">Logout</a>
             </div>
+            <form class="d-flex" role="search" name="codeForm">
+                <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">
+                <button class="btn btn-outline-success" id="submit" type="submit">Search</button>
+            </form>
         </div>
-        <form class="d-flex" role="search" name="codeForm">
-            <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">
-            <button class="btn btn-outline-success" id="submit" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+    </nav>
 
 
-<!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
-<form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
-<!--    <button>Logout</button>-->
-</form>
-<form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
-<!--    <button>Login</button>-->
-</form>
+    <!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
+    <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
+    <!--    <button>Logout</button>-->
+    </form>
+    <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
+    <!--    <button>Login</button>-->
+    </form>
 
-<!--loop through playlists in database and display them into bootstrap cards-->
+<!--loop through playlists in database and display them inside div calls column-for-leaderboard-->
 
-<div class="homepage-container">
-    <div class="ranked-row">
-        <div class="column-for-leaderboard-rows">
-            <h1 id="leaderboard-header">Leaderboard</h1>
-            <div th:each="user,i:${topRatedUsers}" >
-                <div th:if="${topRatedUsers.indexOf(user) < 10}" class="item-in-column" id="leaderboard-item">
-                    <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1}"></span>
-                    <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
-                    <!--Need to insert the ratingnumber from a loop-->
-                    <span th:text="${userRatingsList[i.index]}"></span>
-                </div>
+    <div class="homepage-container">
+        <div class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-leaderboard">
+                <h1 id="leaderboard-header">LEADERBOARD</h1>
+                <div th:each="user,i:${topRatedUsers}" th:if="${topRatedUsers.indexOf(user) < 10}" class="item-in-leaderboard">
+                    <div class="item-in-column" id="leaderboard-item">
+                        <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1}"></span>
+                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                        <!--Need to insert the ratingnumber from a loop-->
+                        <span th:text="${userRatingsList[i.index]}" class="rating-number"></span>
+                    </div>
 
-            </div>
-        </div>
-    </div>
-    <!--row for Explore section-->
-    <div class="ranked-row">
-        <div class="column-for-leaderboard-rows">
-            <h1 id="explore-header">EXPLORE</h1>
-            <div th:each="user:${users}" class="item-in-column" id="explore-item">
-                <div class="item-in-explore-column">
-                    <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
                 </div>
             </div>
         </div>
+        <!--row for Explore section-->
+        <div class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-explore">
+                <h1 id="explore-header">EXPLORE</h1>
+                <div th:each="user:${users}" id="explore-item">
+                    <div class="item-in-explore-column">
+                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
+</div><!--End of homepage Pagewrapper-->
 
-
-
-<!--<div class="row">-->
-<!--    <div class="text-center col-sm-6">-->
-<!--        <div class="card">-->
-<!--            <div class="card-body">-->
-<!--                <ul class="list-group">-->
-<!--                    <h2>EXPLORE</h2>-->
-<!--                    <div th:each="user:${users}">-->
-<!--                    <li class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>-->
-<!--                    </div>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--modal pops up when an item is selected? -->
-
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script>
-
-
-    $(document).ready(function () {
-        $("#submit").click(function (e) {
-            e.preventDefault();
-            let formValue = $("#code").val();
-            window.location.replace('/profile/' + formValue);
-        });
-    })
-
-    //should usernames populate as a dropdown?
-    //loop through database of users and provide in dropdown
-    //what if username is wrong? custom error page?
-
-</script>
+<script th:src="@{/js/jquery-3.6.3.min.js}"></script>
+<script th:src="@{js/homepage.js}"></script>
 </body>
 </html>
