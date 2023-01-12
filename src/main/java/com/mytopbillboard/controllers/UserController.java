@@ -38,9 +38,15 @@ public class UserController {
         this.songDao = songDao;
     }
 
+    // alternative method for getting to the profile if people are typing in the url
     @GetMapping("/profile")
     public String profileRedirect(){
-        return "siteViews/landing_page";
+        String username = userDao.findById(Utils.currentUserProfile()).getUsername();
+        if(userDao.findByUsername(username) == null){
+            return "redirect:/register";
+        } else {
+            return "redirect:/profile/" + username;
+        }
     }
 
     @GetMapping("/profile/{username}")
@@ -91,7 +97,7 @@ public class UserController {
         authWithHttpServletRequest(request, user.getUsername(), planPassword);
         return "redirect:/homepage";
     }
-
+    //used for saving username and password upon registration/login
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
         try {
             request.login(username, password);
