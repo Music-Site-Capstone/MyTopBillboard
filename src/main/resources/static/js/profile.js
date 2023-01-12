@@ -6,7 +6,6 @@ $('.plName').on('click', async function (){
     let userId = $(this).attr("userId");
     // let myChart;
 
-
 //This utilizes the controller displayPlaylistSong
     let dataF = await fetch(`${theURL}${playlistId}/${username}`).then(res => res.json());
     console.log(dataF);
@@ -42,7 +41,7 @@ $('.plName').on('click', async function (){
             }
         })
 
-        console.log(mappedArrVal1)
+        console.log(mappedArrVal1);
     }
     // let ratingArr = new Array();
     // if(dataF.rating.length == 0) {}
@@ -52,9 +51,9 @@ $('.plName').on('click', async function (){
     //     }
     // }
 
-    console.log(mappedArr)
+    console.log(mappedArr);
 
-    let playlistSongsLength = dataF.song.length
+    let playlistSongsLength = dataF.song.length;
 
     $('#playlist-name').text(dataF.playlistName).attr("plId", playlistId);
 
@@ -110,6 +109,7 @@ $('.plName').on('click', async function (){
     }
 
 
+    // import Chart from 'chart.js';
 
     const labels = "12345";
     const data = {
@@ -148,21 +148,18 @@ $('.plName').on('click', async function (){
         },
     };
 
-    let myChart;
+
     const ctx = document.getElementById('myChart');
 
-    if (myChart){
-    if(myChart!=null || myChart!=undefined){
+    const myChart = new Chart(ctx, config);
+    $('.plName').on('click', function (e){
+        e.preventDefault();
         myChart.destroy();
-        myChart = new Chart(ctx, config);
-    } else {
-        myChart = new Chart(ctx, config);
-    }
-    } else {
-        let myChart;
-        myChart = new Chart(ctx, config);
-    }
+    })
 
+
+
+    // const myChart2 = new Chart(ctx, config);
 })
 
 
