@@ -7,7 +7,9 @@ import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.RatingRepository;
 import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
+import com.mytopbillboard.services.Keys;
 import com.mytopbillboard.services.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class UserController {
     private final PlaylistRepository playlistDao;
     private final PasswordEncoder passwordEncoder;
     private final SongRepository songDao;
+
+    @Autowired
+    private Keys keys;
 
     public UserController(UserRepository userDao, PlaylistRepository playlistDao, PasswordEncoder passwordEncoder, SongRepository songDao){
         this.userDao = userDao;
@@ -62,6 +67,8 @@ public class UserController {
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("ratingCheck", playlistIdList);
         model.addAttribute("rating", new Rating());
+        //Adding a Keys Attribute and object for a hidden div in profile.html
+        model.addAttribute("keys", keys );
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
         } else {
