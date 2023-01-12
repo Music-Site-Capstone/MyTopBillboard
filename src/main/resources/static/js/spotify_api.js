@@ -1,8 +1,8 @@
 // IIFE
 potifyAPIController = (async function() {
     // check keys.js.
-    const clientId = SPOTIFY_CLIENT_ID;
-    const clientSecret = SPOTIFY_CLIENT_SECRET;
+    const clientId = $('#spotify-keys').attr('data-client-id');
+    const clientSecret = $('#spotify-keys').attr('data-client-secret');
 
     // Token is good for 1 hour, but each call should get a new one.
     const getToken = async() => {
