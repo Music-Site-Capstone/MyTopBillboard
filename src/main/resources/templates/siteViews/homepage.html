@@ -75,30 +75,51 @@
 
 <!--loop through playlists in database and display them into bootstrap cards-->
 
-<div class="row">
-    <div class="card text-center">
-        <div class="card-body">
-            <h2>LEADERBOARD</h2>
+<div class="homepage-container">
+    <div class="ranked-row">
+        <div class="column-for-leaderboard-rows">
+            <h1 id="leaderboard-header">Leaderboard</h1>
+            <div th:each="user,i:${topRatedUsers}" >
+                <div th:if="${topRatedUsers.indexOf(user) < 10}" class="item-in-column" id="leaderboard-item">
+                    <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1}"></span>
+                    <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                    <!--Need to insert the ratingnumber from a loop-->
+                    <span th:text="${userRatingsList[i.index]}"></span>
+                </div>
 
-            <ul th:each="user:${topRatedUsers}">
-                <li th:if="${topRatedUsers.indexOf(user) < 10}" class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>
-
-            </ul>
+            </div>
         </div>
     </div>
-    <div class="text-center col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <ul class="list-group">
-                    <h2>EXPLORE</h2>
-                    <div th:each="user:${users}">
-                    <li class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>
-                    </div>
-                </ul>
+    <!--row for Explore section-->
+    <div class="ranked-row">
+        <div class="column-for-leaderboard-rows">
+            <h1 id="explore-header">EXPLORE</h1>
+            <div th:each="user:${users}" class="item-in-column" id="explore-item">
+                <div class="item-in-explore-column">
+                    <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+<!--<div class="row">-->
+<!--    <div class="text-center col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <div class="card-body">-->
+<!--                <ul class="list-group">-->
+<!--                    <h2>EXPLORE</h2>-->
+<!--                    <div th:each="user:${users}">-->
+<!--                    <li class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>-->
+<!--                    </div>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!--modal pops up when an item is selected? -->
 

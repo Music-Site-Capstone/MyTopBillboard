@@ -22,3 +22,44 @@
         /*demo*/
     }
 }
+#leaderboard-header{
+    text-align: center;
+}
+
+#explore-header {
+    text-align: center;
+}
+.column-for-leaderboard-rows {
+    padding: 5px;
+    width: 90vw;
+}
+
+.item-in-column {
+    display: flex;
+    /*justify-content: space-between;*/
+    padding: 5px;
+    border: 1px solid rgba(155, 164, 190, 0.93);
+    box-shadow: 1px 1px #888888;
+}
+
+#leaderboard-item {
+    justify-content: space-between;
+}
+
+#explore-item {
+    justify-content: center;
+}
+
+
+/*.list-group-item {*/
+
+/*}*/
+
+/*.rank-number {*/
+/*    display: flex;*/
+/*}*/
+
+/*.card-body {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
