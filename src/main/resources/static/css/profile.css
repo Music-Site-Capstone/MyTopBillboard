@@ -31,3 +31,9 @@
 .plName{
     cursor: pointer;
 }
+.plName {
+    transition: all 200ms;
+}
+.plName:hover {
+    transform: scale(1.1);
+}
