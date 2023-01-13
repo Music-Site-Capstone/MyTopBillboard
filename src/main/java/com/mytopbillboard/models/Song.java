@@ -72,6 +72,16 @@ public class Song {
             this.image = image;
         }
 
+    @Column(nullable = false)
+    private String previewUrl;
+
+    public String getPreviewUrl() {
+        return previewUrl;
+    }
+
+    public void setPreviewUrl(String previewUrl) {
+        this.previewUrl = previewUrl;
+    }
 
     @ManyToOne
     private Artist artist;
