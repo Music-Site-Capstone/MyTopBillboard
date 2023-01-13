@@ -75,7 +75,9 @@ $('.plName').on('click', async function (){
               
                 <div class="song-container">
                     <div class="image-for-playlist">
-                         <img src="${dataF.song[i].image}" alt="fail">   
+                        <a href="${dataF.song[i].previewUrl}">
+                            <img src="${dataF.song[i].image}" alt="fail">   
+                        </a>
                     </div>
                     <div class="song-and-tile-playlist">
                         <p> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>
@@ -96,7 +98,9 @@ $('.plName').on('click', async function (){
               
                 <div class="song-container">
                     <div class="image-for-playlist">
-                         <img src="${dataF.song[i].image}" alt="fail">    
+                        <a href="${dataF.song[i].previewUrl}">
+                            <img src="${dataF.song[i].image}" alt="fail">   
+                        </a> 
                     </div>
                     <div class="song-and-tile-playlist">
                         <p> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>
