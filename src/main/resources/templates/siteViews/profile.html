@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="_csrf" data-th-content="${_csrf.token}">
     <title>Profile</title>
+    <link rel="icon" type="image/png" href="/img/musicnote.svg"/>
 <!--Bootstrap CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!--Boostrap JS Scripts-->
@@ -16,6 +17,7 @@
     <link rel="stylesheet" th:href="@{/css/modal.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/site.css}">
+
 </head>
 
 <body>
@@ -40,6 +42,14 @@
             </div>
         </div>
     </nav>
+
+
+
+
+    </div>
+
+
+
 <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
 <!--        <button>Logout</button>-->
