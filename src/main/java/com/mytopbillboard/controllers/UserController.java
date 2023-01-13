@@ -7,7 +7,9 @@ import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.RatingRepository;
 import com.mytopbillboard.repositories.SongRepository;
 import com.mytopbillboard.repositories.UserRepository;
+import com.mytopbillboard.services.Keys;
 import com.mytopbillboard.services.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,9 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final SongRepository songDao;
 
+    @Autowired
+    private Keys keys;
+
     public UserController(UserRepository userDao, PlaylistRepository playlistDao, PasswordEncoder passwordEncoder, SongRepository songDao){
         this.userDao = userDao;
         this.playlistDao = playlistDao;
@@ -33,9 +38,15 @@ public class UserController {
         this.songDao = songDao;
     }
 
+    // alternative method for getting to the profile if people are typing in the url
     @GetMapping("/profile")
     public String profileRedirect(){
-        return "siteViews/landing_page";
+        String username = userDao.findById(Utils.currentUserProfile()).getUsername();
+        if(userDao.findByUsername(username) == null){
+            return "redirect:/register";
+        } else {
+            return "redirect:/profile/" + username;
+        }
     }
 
     @GetMapping("/profile/{username}")
@@ -62,6 +73,8 @@ public class UserController {
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("ratingCheck", playlistIdList);
         model.addAttribute("rating", new Rating());
+        //Adding a Keys Attribute and object for a hidden div in profile.html
+        model.addAttribute("keys", keys );
         if(userDao.findByUsername(username) == null){
             return "redirect:/register";
         } else {
@@ -73,8 +86,16 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "registration";
-    }
+            try {
+                if (Utils.currentUserProfile() > 0) {
+                    return "redirect:/homepage";
+                } else {
+                    return "registration";
+                }
+            } catch (Throwable t){
+                return "registration";
+            }
+        }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user, HttpServletRequest request){
@@ -84,7 +105,7 @@ public class UserController {
         authWithHttpServletRequest(request, user.getUsername(), planPassword);
         return "redirect:/homepage";
     }
-
+    //used for saving username and password upon registration/login
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
         try {
             request.login(username, password);

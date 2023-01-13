@@ -4,18 +4,21 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="icon" type="image/png" href="/img/musicnote.svg"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{css/site.css}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" th:href="@{css/site.css}">
+    <link rel="stylesheet" th:href="@{css/home.css}">
 
 </head>
 <body>
 
-<nav class="navbar navbar-expand-custom navbar-mainbg">
+<div class="page-wrapper">
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
     <a class="navbar-brand navbar-logo" th:href="@{/homepage}">VibeCheck</a>
     <button class="navbar-toggler bg-light" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -53,85 +56,57 @@
     </div>
 </nav>
 
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--    <div class="container-fluid">-->
-<!--        <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>-->
-<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
-<!--            <div class="navbar-nav">-->
-<!--                <a class="nav-link" th:href="@{|/profile/${activeUser}|}">Profile</a>-->
-<!--                <a class="nav-link" th:href="@{/logout}">Logout</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <form class="d-flex" role="search" name="codeForm">-->
-<!--            <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">-->
-<!--            <button class="btn btn-outline-success" id="submit" type="submit">Search</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</nav>-->
 
 
-<!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
-<form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
-<!--    <button>Logout</button>-->
-</form>
-<form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
-<!--    <button>Login</button>-->
-</form>
 
-<!--loop through playlists in database and display them into bootstrap cards-->
 
-<div class="row">
-    <div class="card text-center">
-        <div class="card-body">
-            <h2>LEADERBOARD</h2>
 
-            <ul th:each="user:${topRatedUsers}">
-                <li th:if="${topRatedUsers.indexOf(user) < 10}" class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>
+    <!--<nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
+    <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
+    <!--    <button>Logout</button>-->
+    </form>
+    <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
+    <!--    <button>Login</button>-->
+    </form>
 
-            </ul>
-        </div>
-    </div>
-    <div class="text-center col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <ul class="list-group">
-                    <h2>EXPLORE</h2>
-                    <div th:each="user:${users}">
-                    <li class="list-group-item"><a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a></li>
+<!--loop through playlists in database and display them inside div calls column-for-leaderboard-->
+
+    <div class="homepage-container">
+        <div class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-leaderboard">
+                <h1 id="leaderboard-header">LEADERBOARD</h1>
+                <div th:each="user,i:${topRatedUsers}" th:if="${topRatedUsers.indexOf(user) < 10}" class="item-in-leaderboard">
+                    <div class="item-in-column" id="leaderboard-item">
+                        <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1}"></span>
+                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                        <!--Need to insert the ratingnumber from a loop-->
+                        <span th:text="${userRatingsList[i.index]}" class="rating-number rounded-edges"></span>
                     </div>
-                </ul>
+
+                </div>
+            </div>
+        </div>
+        <!--row for Explore section-->
+        <div class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-explore">
+                <h1 id="explore-header">EXPLORE</h1>
+                <div th:each="user:${users}" id="explore-item" class="item-in-explore rounded-edges">
+                    <div class="item-in-explore-column">
+                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--modal pops up when an item is selected? -->
+</div><!--End of homepage Pagewrapper-->
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script>
-
-
-    $(document).ready(function () {
-        $("#submit").click(function (e) {
-            e.preventDefault();
-            let formValue = $("#code").val();
-            window.location.replace('/profile/' + formValue);
-        });
-    })
-
-    //should usernames populate as a dropdown?
-    //loop through database of users and provide in dropdown
-    //what if username is wrong? custom error page?
-
-</script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="../../static/js/navigationbar.js"></script>
+<script th:src="@{/js/jquery-3.6.3.min.js}"></script>
 <script th:src="@{js/navigationbar.js}"></script>
-
+<script th:src="@{js/homepage.js}"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <div class="page-wrapper2">
+  <div class="page-wrapper login-image">
 
     <nav th:replace="partials/partials:: navbar-desktop"></nav>
 <!--  <nav th:replace="partials/partials:: navbar-desktop"></nav>-->
@@ -30,7 +30,7 @@
   </div>
 
   <div id="login-button">
-    <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+    <img src="/img/musicnote.svg" alt="microphone" height="40px" width="40px">
     </img>
   </div>
   <div id="container">
@@ -48,13 +48,13 @@
       <div id="remember-container">
         <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
         <span id="remember">Remember me</span>
-        <span id="forgotten">Forgotten password</span>
+        <span id="forgotten" hidden>Forgotten password</span>
       </div>
     </form>
   </div>
 
   <!-- Forgotten Password Container -->
-  <div id="forgotten-container">
+  <div id="forgotten-container"hidden>
     <h1>Forgotten</h1>
     <span class="close-btn">
       <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
@@ -72,6 +72,7 @@
           crossorigin="anonymous"></script>
 
   <script th:src="@{js/login.js}"></script>
+    <script th:src="@{js/navigationbar.js}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
   </div>
