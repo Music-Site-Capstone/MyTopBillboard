@@ -1,5 +1,6 @@
 package com.mytopbillboard.controllers;
 
+import com.mytopbillboard.services.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,7 +14,15 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginPage(){
-        return "login";
+        try {
+           if (Utils.currentUserProfile() > 0) {
+               return "redirect:/homepage";
+           } else {
+               return "login";
+           }
+        } catch (Throwable t){
+            return "login";
+        }
     }
 
 

@@ -86,8 +86,16 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "registration";
-    }
+            try {
+                if (Utils.currentUserProfile() > 0) {
+                    return "redirect:/homepage";
+                } else {
+                    return "registration";
+                }
+            } catch (Throwable t){
+                return "registration";
+            }
+        }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user, HttpServletRequest request){

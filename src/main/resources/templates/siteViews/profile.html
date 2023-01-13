@@ -103,74 +103,88 @@
     </div>
 
 
-    <!--  Card containing list of playlists  -->
-    <div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                Playlists:
-            </div>
-            <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
-                <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        Playlists:
+                    </div>
+                    <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+                        <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
-                    <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
-                    <h2 th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h2>
-                    <ul th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
-                        <li th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
+                            <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
+                            <h2 th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h2>
+                            <ul th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
+                                <li th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
+                            </ul>
+                            <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+
+
+                            <div th:if="${activeUserID} != ${userID}">
+                                <div th:if="${!ratingCheck.contains(playlist.id)}">
+                                    <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
+                                        <select th:field="*{score}" name="rating" id="rating">
+                                            <option th:value="5">5</option>
+                                            <option th:value="4">4</option>
+                                            <option th:value="3">3</option>
+                                            <option th:value="2">2</option>
+                                            <option th:value="1">1</option>
+                                        </select>
+                                        <input type="hidden" name="playlistId" th:value="${playlist.id}">
+                                        <button>rate</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
+                            <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
+                                <button>delete</button>
+                                <input  th:value="${activeUserID}" name="userId" type="hidden">
+                                <input  th:value="${playlist.id}" name="playlistId" type="hidden">
+                            </form>
+                        </li>
+
                     </ul>
-                    <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+
+                    <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
+                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
+                        <input  th:value="${activeUserID}" name="userId" type="hidden">
+                    </form>
 
 
-                    <div th:if="${activeUserID} != ${userID}">
-                        <div th:if="${!ratingCheck.contains(playlist.id)}">
-                            <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
-                                <select th:field="*{score}" name="rating" id="rating">
-                                    <option th:value="5">5</option>
-                                    <option th:value="4">4</option>
-                                    <option th:value="3">3</option>
-                                    <option th:value="2">2</option>
-                                    <option th:value="1">1</option>
-                                </select>
-                                <input type="hidden" name="playlistId" th:value="${playlist.id}">
-                                <button>rate</button>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header playlist-title text-center" id="playlist-name">click the playlist name to fill</div>
+                    <div id="allPlaylistSongs"></div>
+                    <div class="dnModal">
+                        <div id="Dropdown" class="dnModal-content">
+                            <span class="dnModal-close">&times;</span>
+                            <form class="modal-search" role="search">
+                                <div class="search-bar">
+                                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
+                                </div>
+                                <div class="modal-fill"></div>
                             </form>
                         </div>
                     </div>
-
-<!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
-                        <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
-                            <button>delete</button>
-                            <input  th:value="${activeUserID}" name="userId" type="hidden">
-                            <input  th:value="${playlist.id}" name="playlistId" type="hidden">
-                        </form>
-                </li>
-
-            </ul>
-
-            <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
-                <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
-                <input  th:value="${activeUserID}" name="userId" type="hidden">
-            </form>
-
-
-        </div>
-        <br><br><br><br><br><br><br>
-<!--Card That all the Image, Artists, and Titles of Song lives in For a playlist-->
-        <div class="card" style="width: 18rem;">
-            <div class="card-header playlist-title text-center" id="playlist-name">click the playlist name to fill</div>
-            <div id="allPlaylistSongs"></div>
-            <div class="dnModal">
-                <div id="Dropdown" class="dnModal-content">
-                    <span class="dnModal-close">&times;</span>
-                    <form class="modal-search" role="search">
-                        <div class="search-bar">
-                            <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
-                        </div>
-                        <div class="modal-fill"></div>
-                    </form>
                 </div>
+
             </div>
         </div>
     </div>
+
+
+    <!--  Card containing list of playlists  -->
+
+
+<!--        <br><br><br><br><br><br><br>-->
+<!--Card That all the Image, Artists, and Titles of Song lives in For a playlist-->
+
+
 
 
 
