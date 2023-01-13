@@ -105,6 +105,12 @@ public class UserController {
         authWithHttpServletRequest(request, user.getUsername(), planPassword);
         return "redirect:/homepage";
     }
+
+    @GetMapping("/about")
+    public String goToAboutUsPage(){
+        return "siteViews/about";
+    }
+
     //used for saving username and password upon registration/login
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
         try {
