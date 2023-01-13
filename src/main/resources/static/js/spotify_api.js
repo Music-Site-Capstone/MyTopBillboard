@@ -61,11 +61,13 @@ potifyAPIController = (async function() {
         let artist;
         let image;
         let id;
+        let previewUrl;
         for (let i = 0; i < 5; i++){
             track = await data.tracks.items[i].name;//grabbing the name of the track
             artist = await data.tracks.items[i].artists[0].name;//grabbing the name of the Artist
             image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
             id = await data.tracks.items[i].id;
+            previewUrl = await data.tracks.items[i].preview_url;
             // return track;
 
 //Appending Image, Artist, and Track Name to the Modal Search
@@ -77,6 +79,7 @@ potifyAPIController = (async function() {
                         <p>${track}</p>
                     </span>
                     <button class="addButton" id="addSong${id}" data-loop-id="${i}">Add song to playlist</button>
+                    <span hidden>${previewUrl}</span>
                 </div>`);
             $(document).off('click', `#addSong${id}`);
             $(document).on('click', `#addSong${id}`, async function(e){
@@ -85,7 +88,7 @@ potifyAPIController = (async function() {
                 let song = {
                     title: $(e.target.previousElementSibling.children[1]).text(),
                     image: $(e.target.previousElementSibling.previousElementSibling).attr('src'),
-
+                    previewUrl: $(e.target.nextElementSibling).text(),
                     artist: {
                         artistName: $(e.target.previousElementSibling.children[0]).text()
                     }
