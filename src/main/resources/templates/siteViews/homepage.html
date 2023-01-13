@@ -4,6 +4,7 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/home.css">
@@ -13,6 +14,8 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
+<div class="homepage-page-wrapper">
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -52,7 +55,7 @@
                         <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1}"></span>
                         <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
                         <!--Need to insert the ratingnumber from a loop-->
-                        <span th:text="${userRatingsList[i.index]}" class="rating-number"></span>
+                        <span th:text="${userRatingsList[i.index]}" class="rating-number rounded-edges"></span>
                     </div>
 
                 </div>
@@ -62,7 +65,7 @@
         <div class="ranked-row">
             <div class="column-for-leaderboard-rows" id="column-explore">
                 <h1 id="explore-header">EXPLORE</h1>
-                <div th:each="user:${users}" id="explore-item">
+                <div th:each="user:${users}" id="explore-item" class="item-in-explore rounded-edges">
                     <div class="item-in-explore-column">
                         <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
                     </div>
