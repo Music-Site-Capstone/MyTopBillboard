@@ -144,6 +144,12 @@ a {
     color: #810ff2;
     text-decoration: none;
 }
+div .item-in-leaderboard .leaderboard-users{
+    transition: all 200ms;
+}
+div .item-in-leaderboard .leaderboard-users:hover {
+    transform: scale(1.1);
+}
 
 /*.list-group-item {*/
 
