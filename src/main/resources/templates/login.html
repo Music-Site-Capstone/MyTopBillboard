@@ -11,10 +11,40 @@
 </head>
 <body>
 
-  <div class="page-wrapper login-image">
+  <div class="page-wrapper">
 
-    <nav th:replace="partials/partials:: navbar-desktop"></nav>
-<!--  <nav th:replace="partials/partials:: navbar-desktop"></nav>-->
+    <nav class="navbar navbar-expand-custom navbar-mainbg"th:fragment="navbar-desktop">
+      <a class="navbar-brand navbar-logo">VibeCheck</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="javascript:void(0);"th:href="@{/register}"><i class="far fa-address-book"></i>Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" th:href="@{/}"><i class="far fa-clone"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <!--  <nav th:replace="partials/partials:: navbar-desktop"></nav>-->
 <!--  <nav class="nav">-->
 <!--    <a class="nav-link text-dark" th:href="@{/}">VibeCheck</a>-->
 <!--    <a class="nav-link" th:href="@{/register}">Dont have an account? Register!</a>-->
