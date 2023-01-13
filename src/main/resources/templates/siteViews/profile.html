@@ -21,6 +21,7 @@
 </head>
 
 <body>
+<div class="page-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>
@@ -39,10 +40,6 @@
         </div>
     </nav>
 
-
-
-
-    </div>
 
 
 
@@ -200,7 +197,7 @@
         </div>
     </div>
 
-
+</div>
     <!--Hidden Div for keys object and properties-->
     <div th:data-client-id="${keys.clientId}" th:data-client-secret="${keys.clientSecret}" id="spotify-keys" hidden></div>
 
