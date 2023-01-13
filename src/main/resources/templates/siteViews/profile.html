@@ -22,6 +22,7 @@
 
 <body>
 <div class="page-wrapper">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>
@@ -41,8 +42,6 @@
     </nav>
 
 
-
-
 <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
 <!--        <button>Logout</button>-->
@@ -51,53 +50,10 @@
 <!--        <button>Login</button>-->
     </form>
 
-
-
-
-<!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <ul>-->
-<!--                    <li th:each="song : ${songs}">-->
-<!--                        <div th:if="${song.getPlaylist().contains(playlist.id)}">-->
-<!--                            <a th:href="@{|/song/${song.getId()}|}">-->
-<!--                            <span th:text="${song.title}"></span>-->
-<!--                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>-->
-<!--                        </a>-->
-<!--                        </div>-->
-
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-
-
-
     <h2 th:text="${pageOwner}"></h2>
 
     <div>
-        <span>
+        <span class="profile-rank">
             rank: <span th:text="${rank}"></span>
         </span>
         <span>
@@ -189,8 +145,6 @@
 
 
 
-
-
     <div class="container">
         <div>
             <canvas id="myChart"></canvas>
@@ -200,7 +154,7 @@
 </div>
     <!--Hidden Div for keys object and properties-->
     <div th:data-client-id="${keys.clientId}" th:data-client-secret="${keys.clientSecret}" id="spotify-keys" hidden></div>
-
+</div><!--End of Page Wrapper-->
 <!--chart.js link-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!--JQuery-->

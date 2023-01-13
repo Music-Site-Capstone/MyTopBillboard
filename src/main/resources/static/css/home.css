@@ -47,7 +47,7 @@
     /*}*/
 }
 
-.homepage-page-wrapper {
+.page-wrapper {
     overflow: hidden;
     background: rgb(90,64,87);
     background: radial-gradient(circle, rgba(90,64,87,1) 0%, rgb(37, 35, 35) 100%);
