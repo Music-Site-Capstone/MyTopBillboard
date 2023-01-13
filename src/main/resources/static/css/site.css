@@ -8,8 +8,42 @@
     src: url(../fonts/SoundsEroded.ttf); /* IE9 Compat Modes */
 }
 
+@font-face {
+    font-family: "LibelSuit";
+    src: url(static/fonts/libel-suit.rg-regular.otf);
+}
+
+@font-face {
+    font-family: "openSans-Italic";
+    src: url(static/fonts/open-sans.italic.ttf);
+}
+
+@font-face {
+    font-family: "openSans-Regular";
+    src: url(static/fonts/open-sans.regular.ttf);
+}
+
+@font-face {
+    font-family: "openSans-Semibold";
+    src: url(static/fonts/open-sans.semibold.ttf);
+}
+
+@font-face {
+    font-family: "openSans-Semibold-Italic";
+    src: url(static/fonts/open-sans.semibold-italic.ttf);
+}
+
+
 .page-title {
-    font-family: DistorterDemoRegular;
+    font-family: "DistorterDemoRegular", serif;
+}
+
+h1 {
+    font-family: "LibelSuit", serif;
+}
+
+body {
+    font-family: "openSans-Regular", sans-serif;
 }
 
 .page-wrapper {

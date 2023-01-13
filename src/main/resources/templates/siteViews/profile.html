@@ -46,7 +46,7 @@
 
 
 
-    </div>
+
 
 
 
@@ -57,49 +57,6 @@
     <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
 <!--        <button>Login</button>-->
     </form>
-
-
-
-
-<!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <ul>-->
-<!--                    <li th:each="song : ${songs}">-->
-<!--                        <div th:if="${song.getPlaylist().contains(playlist.id)}">-->
-<!--                            <a th:href="@{|/song/${song.getId()}|}">-->
-<!--                            <span th:text="${song.title}"></span>-->
-<!--                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>-->
-<!--                        </a>-->
-<!--                        </div>-->
-
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-
-
 
     <h2 th:text="${pageOwner}"></h2>
 
