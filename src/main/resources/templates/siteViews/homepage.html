@@ -78,7 +78,7 @@
                 <div th:each="user,i:${topRatedUsers}" th:if="${topRatedUsers.indexOf(user) < 10}" class="item-in-leaderboard">
                     <div class="item-in-column" id="leaderboard-item">
                         <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1}"></span>
-                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="leaderboard-users"></a>
                         <!--Need to insert the ratingnumber from a loop-->
                         <span th:text="${userRatingsList[i.index]}" class="rating-number rounded-edges"></span>
                     </div>
@@ -92,7 +92,7 @@
                 <h1 id="explore-header">EXPLORE</h1>
                 <div th:each="user:${users}" id="explore-item" class="item-in-explore rounded-edges">
                     <div class="item-in-explore-column">
-                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}"></a>
+                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="exploreUsers"></a>
                     </div>
                 </div>
             </div>
