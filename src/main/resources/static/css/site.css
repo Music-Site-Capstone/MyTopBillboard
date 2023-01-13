@@ -3,3 +3,13 @@
 /*the following will only show on mid or larger screens*/
 @media screen and (min-width: 576px) {}
 
+
+.page-wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(90,64,87);
+    background: radial-gradient(circle, rgba(90,64,87,1) 0%, rgb(37, 35, 35) 100%);
+
+}
