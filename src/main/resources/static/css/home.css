@@ -1,4 +1,6 @@
 /*the following will only show on small screens*/
+
+
 @media screen and (max-width: 575px) {
     .row {
         display: flex;
@@ -12,6 +14,7 @@
 }
 /*the following will only show on mid or larger screens*/
 @media screen and (min-width: 576px) {
+
     .row {
         display: flex;
         flex-wrap: wrap;

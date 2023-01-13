@@ -6,16 +6,15 @@
 @media screen and (min-width: 576px) {
 
 }
-.page-wrapper {
-    background: url(../img/registration-page.jpeg) no-repeat center center fixed;
+
+.page-wrapper2{
+    background: url(../img/login-page.jpeg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    overflow: hidden;
+    overflow:hidden;
 }
-
-
 
 img{
     display: block;
@@ -25,7 +24,7 @@ img{
 }
 
 form{
-   padding-top: 50px;
+    padding-top: 50px;
     padding-bottom: 30px;
 }
 #login-button{
