@@ -73,16 +73,15 @@ $('.plName').on('click', async function (){
                   <input  value=${dataF.playlistName} name="playlistName" type="hidden">
                   <input  value=${dataF.song[i].id} name="playlistSongId" type="hidden">
               
-                <div class="song-container">
-                    <div class="image-for-playlist">
-                        <a href="${dataF.song[i].previewUrl}">
-                            <img src="${dataF.song[i].image}" alt="fail">   
-                        </a>
+                <div class="song-container d-flex align-items-center justify-content-center">
+                    <a href="${dataF.song[i].previewUrl}">
+                        <img src="${dataF.song[i].image}" alt="fail">   
+                    </a> 
+                    <div class="song-and-tile-playlist text-center mx-4 my-2">
+                        <p>${dataF.song[i].artist.artistName}</p>
+                        <p>${dataF.song[i].title}</p>          
                     </div>
-                    <div class="song-and-tile-playlist">
-                        <p> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>
-                        <button>delete</button>
-                    </div>
+                    <button>Delete</button>
                 </div>
               </form>
             </div>`);
@@ -97,14 +96,13 @@ $('.plName').on('click', async function (){
                   <input  value=${dataF.playlistName} name="playlistName" type="hidden">
                   <input  value=${dataF.song[i].id} name="playlistSongId" type="hidden">
               
-                <div class="song-container">
-                    <div class="image-for-playlist">
-                        <a href="${dataF.song[i].previewUrl}">
-                            <img src="${dataF.song[i].image}" alt="fail">   
-                        </a> 
-                    </div>
-                    <div class="song-and-tile-playlist">
-                        <p> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>
+                <div class="song-container d-flex align-items-center justify-content-center">
+                    <a href="${dataF.song[i].previewUrl}">
+                        <img src="${dataF.song[i].image}" alt="fail">   
+                    </a> 
+                    <div class="song-and-tile-playlist text-center mx-4 my-2">
+                        <p>${dataF.song[i].artist.artistName} </p>
+                        <p>${dataF.song[i].title}</p>
                     </div>
                 </div>
               </form>
