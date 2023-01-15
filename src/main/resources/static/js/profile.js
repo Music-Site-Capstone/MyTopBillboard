@@ -4,7 +4,9 @@ $('.plName').on('click', async function (){
     const theURL = "/profile/playlist/";
     let activeUserId = $(this).attr("activeUserId");
     let userId = $(this).attr("userId");
-    // let myChart;
+    let theHiddenChartDiv = document.getElementById('myChartContainer');
+    theHiddenChartDiv.style.display = "block";
+
 
 //This utilizes the controller displayPlaylistSong
     let dataF = await fetch(`${theURL}${playlistId}/${username}`).then(res => res.json());
@@ -164,6 +166,7 @@ $('.plName').on('click', async function (){
         e.preventDefault();
         myChart.destroy();
     })
+
 })
 
 
