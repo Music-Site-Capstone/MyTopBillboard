@@ -7,7 +7,6 @@
 
 }
 
-
 img{
     display: block;
     margin: auto;
@@ -16,7 +15,7 @@ img{
 }
 
 form{
-   padding-top: 50px;
+    padding-top: 50px;
     padding-bottom: 30px;
 }
 #login-button{
@@ -90,6 +89,7 @@ h1{
 }
 
 /* Inputs */
+
 input{
     font-family: 'Open Sans Condensed', sans-serif;
     text-decoration: none;
@@ -130,12 +130,12 @@ input:focus{
 /*    font-family: 'Open Sans Condensed', sans-serif;*/
 /*    text-align: center;*/
 /*    padding: 4px 8px;*/
-/*    background: rgba(107,255,3,0.3);*/
+/*    background: rgba(138, 43, 226, 0.58);*/
 /*}*/
 
-/*a:hover{*/
-/*    opacity: 0.7;*/
-/*}*/
+/*a:hover{
+    opacity: 0.7;
+}*/
 
 #remember-container{
     position: relative;

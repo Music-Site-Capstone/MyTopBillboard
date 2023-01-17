@@ -38,9 +38,15 @@ public class UserController {
         this.songDao = songDao;
     }
 
+    // alternative method for getting to the profile if people are typing in the url
     @GetMapping("/profile")
     public String profileRedirect(){
-        return "siteViews/landing_page";
+        String username = userDao.findById(Utils.currentUserProfile()).getUsername();
+        if(userDao.findByUsername(username) == null){
+            return "redirect:/register";
+        } else {
+            return "redirect:/profile/" + username;
+        }
     }
 
     @GetMapping("/profile/{username}")
@@ -80,8 +86,16 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "registration";
-    }
+            try {
+                if (Utils.currentUserProfile() > 0) {
+                    return "redirect:/homepage";
+                } else {
+                    return "registration";
+                }
+            } catch (Throwable t){
+                return "registration";
+            }
+        }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user, HttpServletRequest request){
@@ -92,6 +106,12 @@ public class UserController {
         return "redirect:/homepage";
     }
 
+    @GetMapping("/about")
+    public String goToAboutUsPage(){
+        return "siteViews/about";
+    }
+
+    //used for saving username and password upon registration/login
     private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
         try {
             request.login(username, password);

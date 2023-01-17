@@ -28,3 +28,21 @@
 
 
 }
+.plName{
+    cursor: pointer;
+}
+.plName {
+    transition: all 200ms;
+}
+.plName:hover {
+    transform: scale(1.1);
+}
+.image-for-playlist {
+    transition: all 200ms;
+}
+.image-for-playlist:hover {
+    transform: scale(1.1);
+}
+div .card{
+    box-shadow: 0px 0px 10px 0px #000000;
+}

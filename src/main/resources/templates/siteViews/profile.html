@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="_csrf" data-th-content="${_csrf.token}">
     <title>Profile</title>
+    <link rel="icon" type="image/png" href="/img/musicnote.svg"/>
 <!--Bootstrap CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!--Boostrap JS Scripts-->
@@ -15,9 +16,13 @@
 <!--Custom CSS-->
     <link rel="stylesheet" th:href="@{/css/modal.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/site.css}">
+
 </head>
 
 <body>
+<div class="page-wrapper">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>
@@ -35,6 +40,8 @@
             </div>
         </div>
     </nav>
+
+
 <!--    <nav th:replace="partials/partials.html :: navbar-mobile"></nav>-->
     <form th:action="@{/logout}" sec:authorize="isAuthenticated()"  th:method="post">
 <!--        <button>Logout</button>-->
@@ -43,53 +50,10 @@
 <!--        <button>Login</button>-->
     </form>
 
-
-
-
-<!--// To connect to JS, give the form inputs and the submit button an id. Put a script tag at the bottom of the body of this page connecting to the js page-->
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="dnModal">-->
-<!--        <div id="Dropdown" class="dnModal-content">-->
-<!--            <span class="dnModal-close">&times;</span>-->
-<!--            <form class="modal-search" role="search">-->
-<!--                <ul>-->
-<!--                    <li th:each="song : ${songs}">-->
-<!--                        <div th:if="${song.getPlaylist().contains(playlist.id)}">-->
-<!--                            <a th:href="@{|/song/${song.getId()}|}">-->
-<!--                            <span th:text="${song.title}"></span>-->
-<!--                            <button class="add" th:data-song-id="${song.id}" th:data-playlist-id="9">Add Song</button>-->
-<!--                        </a>-->
-<!--                        </div>-->
-
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <div class="search-bar">-->
-<!--                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">-->
-<!--                </div>-->
-<!--                <div class="modal-fill"></div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-
-
-
     <h2 th:text="${pageOwner}"></h2>
 
     <div>
-        <span>
+        <span class="profile-rank">
             rank: <span th:text="${rank}"></span>
         </span>
         <span>
@@ -97,89 +61,100 @@
         </span>
     </div>
 
-    <div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                Playlists:
-            </div>
-            <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
-                <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
-                    <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
-                    <h2 th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h2>
-                    <ul th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
-                        <li th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
+    <div class="container-fluid text-center flex-wrap">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
+                <div class="card m-auto justify-content-center">
+                    <div class="card-header">
+                        Playlists:
+                    </div>
+                    <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush">
+                        <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
+
+                            <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
+                            <h2 th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h2>
+                            <ul th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
+                                <li th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
+                            </ul>
+                            <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+
+
+                            <div th:if="${activeUserID} != ${userID}">
+                                <div th:if="${!ratingCheck.contains(playlist.id)}">
+                                    <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
+                                        <select th:field="*{score}" name="rating" id="rating">
+                                            <option th:value="5">5</option>
+                                            <option th:value="4">4</option>
+                                            <option th:value="3">3</option>
+                                            <option th:value="2">2</option>
+                                            <option th:value="1">1</option>
+                                        </select>
+                                        <input type="hidden" name="playlistId" th:value="${playlist.id}">
+                                        <button>rate</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
+                            <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
+                                <button>delete</button>
+                                <input  th:value="${activeUserID}" name="userId" type="hidden">
+                                <input  th:value="${playlist.id}" name="playlistId" type="hidden">
+                            </form>
+                        </li>
+
                     </ul>
-                    <div hidden th:text="${playlist.id}" id="playlist-id"></div>
+
+                    <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
+                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
+                        <input  th:value="${activeUserID}" name="userId" type="hidden">
+                    </form>
 
 
-                    <div th:if="${activeUserID} != ${userID}">
-                        <div th:if="${!ratingCheck.contains(playlist.id)}">
-                            <form th:action="@{|/rating/${pageOwner}|}" th:method="post" th:object="${rating}" >
-                                <select th:field="*{score}" name="rating" id="rating">
-                                    <option th:value="1">1</option>
-                                    <option th:value="2">2</option>
-                                    <option th:value="3">3</option>
-                                    <option th:value="4">4</option>
-                                    <option th:value="5">5</option>
-                                </select>
-                                <input type="hidden" name="playlistId" th:value="${playlist.id}">
-                                <button>rate</button>
+                </div>
+
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
+                <div class="card m-auto d-flex justify-content-between">
+                    <div class="card-header playlist-title text-center" id="playlist-name">click the playlist name to fill</div>
+                    <div id="allPlaylistSongs"></div>
+                    <div class="dnModal">
+                        <div id="Dropdown" class="dnModal-content">
+                            <span class="dnModal-close">&times;</span>
+                            <form class="modal-search" role="search">
+                                <div class="search-bar">
+                                    <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
+                                </div>
+                                <div class="modal-fill"></div>
                             </form>
                         </div>
                     </div>
-
-<!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
-                        <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
-                            <button>delete</button>
-                            <input  th:value="${activeUserID}" name="userId" type="hidden">
-                            <input  th:value="${playlist.id}" name="playlistId" type="hidden">
-                        </form>
-                </li>
-
-            </ul>
-
-            <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
-                <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="+ Add New Playlist" th:if="${userID} == ${activeUserID}">
-                <input  th:value="${activeUserID}" name="userId" type="hidden">
-            </form>
-
-
-        </div>
-        <br><br><br><br><br><br><br>
-<!--Card That all the Image, Artists, and Titles of Song lives in For a playlist-->
-        <div class="card" style="width: 18rem;">
-            <div class="card-header playlist-title text-center" id="playlist-name">click the playlist name to fill</div>
-            <div id="allPlaylistSongs"></div>
-            <a th:if="${userID} == ${activeUserID}" class="nav-link dnModal-button" id="profile-search-music-2">
-                Add Music
-            </a>
-            <div class="dnModal">
-                <div id="Dropdown" class="dnModal-content">
-                    <span class="dnModal-close">&times;</span>
-                    <form class="modal-search" role="search">
-                        <div class="search-bar">
-                            <input type="text" class="modal-search-bar" id="modal-search-form" placeholder="Search for Songs">
-                        </div>
-                        <div class="modal-fill"></div>
-                    </form>
                 </div>
+
             </div>
         </div>
     </div>
+
+
+    <!--  Card containing list of playlists  -->
+
+
+<!--        <br><br><br><br><br><br><br>-->
+<!--Card That all the Image, Artists, and Titles of Song lives in For a playlist-->
 
 
 
     <div class="container">
-        <div class="row">
+        <div>
             <canvas id="myChart"></canvas>
         </div>
     </div>
 
-
+</div>
     <!--Hidden Div for keys object and properties-->
     <div th:data-client-id="${keys.clientId}" th:data-client-secret="${keys.clientSecret}" id="spotify-keys" hidden></div>
-
+</div><!--End of Page Wrapper-->
 <!--chart.js link-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!--JQuery-->

@@ -8,7 +8,6 @@ import com.mytopbillboard.services.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +15,9 @@ import java.util.List;
 public class PlaylistController {
     private final RatingRepository ratingDao;
     private final UserRepository userDao;
-
     private final PlaylistRepository playlistDao;
-
     private final SongRepository songDao;
-
     private final ArtistRepository artistDao;
-
     private final GenreRepository genreDao;
 
     public PlaylistController(RatingRepository ratingDao, UserRepository userDao, PlaylistRepository playlistDao, SongRepository songDao, ArtistRepository artistDao, GenreRepository genreDao) {
@@ -34,14 +29,14 @@ public class PlaylistController {
         this.genreDao = genreDao;
     }
 
-
+    //used for saving playlists
     @PostMapping("/profile/{username}")
     public String addPlaylist(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "userId") long userId){
         Playlist playlist = new Playlist();
         playlist.setPlaylistName(playlistName);
         playlist.setUser(userDao.findById(userId));
         playlistDao.save(playlist);
-        return "redirect:/profile/" + username; //return response object with a set status method
+        return "redirect:/profile/" + username; // (idea for not redirecting) return response object with a set status method
     }
 
     @GetMapping("/profile/{username}/{plId}")
@@ -96,6 +91,8 @@ public class PlaylistController {
         return "redirect:/profile";
     }
 
+    //the following is a failed attempt to save songs, it is still here in case any of the code is salvageable, but should be deleted if not used by tue, jan 18.
+
 //    @PostMapping("/song/playlist/{playlistId}")
 //    public @ResponseBody void addSongToDB(@PathVariable long playlistId, @RequestBody Song song) throws JsonProcessingException {
 //        //Object Mapper
@@ -142,6 +139,8 @@ public class PlaylistController {
 //        System.out.println(mapper.writeValueAsString(song));
 //    }
 
+
+    // method for adding songs to database and playlist on button click.
     @PostMapping("/song/playlist/{playlistId}")
     public @ResponseBody void addSongToDB(@PathVariable long playlistId, @RequestBody Song song) throws JsonProcessingException {
         //Object Mapper
@@ -152,7 +151,7 @@ public class PlaylistController {
         //finding artist by artist name but getting around duplicates
         Artist artistDB = artistDao.findByArtistName(song.getArtist().getArtistName());
         if (artistDB == null) {
-            //if not there then add
+            //if not there then add, add song to db, and add to playlist
             Artist artist = new Artist();
             artist.setArtistName(song.getArtist().getArtistName());
             artistDB = artistDao.save(artist);
@@ -162,18 +161,20 @@ public class PlaylistController {
             playlist.getSong().add(song);
             playlistDao.save(playlist);
         } else {
+            // since artist exists in DB need to check if song exists for that artist
             List<String> songDB = new ArrayList<>();
             artistDB.getSongs().forEach(artistSong -> {
                 songDB.add(artistSong.getTitle());
             });
             if (!songDB.contains(song.getTitle())) {
+                // song does not exist for artist, so add song and add to playlist
                 song.setArtist(artistDB);
                 song = songDao.save(song);
                 Playlist playlist = playlistDao.findById(playlistId);
                 playlist.getSong().add(song); //it may be better to use findbytitleandartist like below
                 playlistDao.save(playlist);
             } else {
-                //find playlist by id and then add song into playlist and then save
+                //song does exist, so add it to the playlist from the DB
                 Playlist playlist = playlistDao.findById(playlistId);
                 playlist.getSong().add(songDao.findByTitleAndArtist(song.getTitle(), artistDB));
                 playlistDao.save(playlist);
@@ -182,8 +183,7 @@ public class PlaylistController {
 
     }
 
-    //for genre table put default value of 1 for all songs when saving songs
-
+    //this method is used to save ratings
     @PostMapping("/rating/{owner}")
     public String rate(@ModelAttribute Rating rating, @RequestParam(name="playlistId") long playListId, @PathVariable("owner")String owner){
         User user = userDao.findById(Utils.currentUserProfile());
@@ -195,14 +195,12 @@ public class PlaylistController {
 
     }
 
+    // returns playlist object to load individual songs onto page
     @GetMapping("profile/playlist/{plId}/{username}")
     @ResponseBody
-    public Playlist displayPlaylistSongs(@PathVariable("plId") Long plId,@PathVariable("username") String username, Model model){
-        System.out.println("the string inside display playlist songs");
+    public Playlist displayPlaylistSongs(@PathVariable("plId") Long plId){
         Playlist playlist = playlistDao.findById(plId).get();
         System.out.println(playlist.getSong());
-//        model.addAttribute("displaySinglePlaylist", playlist);
-        System.out.println(username);
         return playlist;
     }
 

@@ -5,130 +5,102 @@
 <head>
     <meta charset="UTF-8">
     <title>VibeCheck</title>
+    <link rel="icon" type="image/png" href="/img/musicnote.svg"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{css/landing.css}">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" th:href="@{css/site.css}">
 </head>
+<!-- THE BODY -->
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/homepage}">VibeCheck</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" th:href="@{/login}">Login</a>
-                <a class="nav-link" th:href="@{/register}">Register</a>
-            </div>
+
+
+
+    <!-- THE PAGE WRAPPER -->
+        <div class="page-wrapper">
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-custom navbar-mainbg">
+                <a class="navbar-brand navbar-logo">VibeCheck</a>
+                <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <i class="fas fa-bars text-white"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);"th:href="@{/login}"><i class="fas fa-tachometer-alt"></i>Login</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="javascript:void(0);"th:href="@{/register}"><i class="far fa-address-book"></i>Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- CONTAINER -->
+
+
+            <!-- ROW -->
+                <div class="row">
+
+                    <!-- COLUMN(S) -->
+
+                    <div class="column">
+                        <p>
+                            Music is a central part of our world, and we all have different tastes, but how will you know if yours is good or bad?<br>
+                            VibeCheck lets you engage with others to see how your tastes compare to others!<br>
+                            Create a profile!<br>
+                            Build playlists!<br>
+                            Find new music that you love!<br>
+                            Rate other people's playlists!<br>
+                            Rise to the top of the leaderboard!<br>
+                        </p>
+                    </div>
+
+                </div>
+
+
         </div>
-    </div>
-</nav>
-<div class="text-inside-image">
-    <h1 class="page-title">Welcome to VibeCheck!</h1>
-    <img src=" img/laptop-with-headphones.png" class="img-fluid" alt="Responsive image">
-    <img class="vibe-check-image" src="img/vibe-check-icon.png" alt="vibe check icon">
-</div>
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="../../static/js/navigationbar.js"></script>
+<script th:src="@{js/navigationbar.js}">
 
-<!--<div id="carouselExampleCaptions" class="carousel slide" style="margin-left: auto; margin-right: auto">-->
-<!--    <div class="carousel-indicators">-->
-<!--        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>-->
-<!--        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
-<!--        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
-<!--    </div>-->
-<!--    <div class="carousel-inner">-->
-<!--        <div class="carousel-item active">-->
-<!--            <div class="card .img-fluid">-->
-<!--                <div>-->
-<!--                    <img src="img/pexels-andrea-piacquadio-3776557.jpg" class="card-img-top .img-fluid" alt="...">-->
-<!--                </div>-->
-<!--&lt;!&ndash;                <div class="card-body" style="width: 900px">&ndash;&gt;-->
-<!--                    <p class="card-text">Create a BUSSIN' playlist with LIT songs!</p>-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="carousel-item">-->
-<!--            <div class="card .img-fluid">-->
-<!--                <img src="img/Screen Shot 2020-11-12 at 3.53.19 PM.png" class="card-img-top" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <p class="card-text">Prove your GREATNESS by getting to the top of the leaderboards!</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="carousel-item">-->
-<!--            <div class="card .img-fluid">-->
-<!--                <img src="img/614dfaed9cdcb08628f3b1cc_5-star-rating.jpeg" class="card-img-top" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <p class="card-text">Judge your friends' terrible or great music taste!</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">-->
-<!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--        <span class="visually-hidden">Previous</span>-->
-<!--    </button>-->
-<!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">-->
-<!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--        <span class="visually-hidden">Next</span>-->
-<!--    </button>-->
-<!--</div>-->
-
-<!--    <main>-->
-<!--    <div>-->
-<!--        <section class="carousel w-auto p-3" aria-label="Gallery">-->
-<!--            <ol class="carousel__viewportv">-->
-<!--                <li id="carousel__slide1v"-->
-<!--                    tabindex="0"-->
-<!--                    class="carousel__slide">-->
-<!--                    <h3>Create a BUSSIN' playlist with LIT songs!</h3>-->
-<!--                    <div class="carousel__snapper"></div>-->
-<!--                </li>-->
-
-<!--                <li id="carousel__slide2v"-->
-<!--                    tabindex="0"-->
-<!--                    class="carousel__slide">-->
-<!--                    <h3>Prove your GREATNESS by getting to the top of the leaderboards!</h3>-->
-<!--                    <div class="carousel__snapper"></div>-->
-<!--                </li>-->
-
-<!--                <li id="carousel__slide3v"-->
-<!--                    tabindex="0"-->
-<!--                    class="carousel__slide">-->
-<!--                    <h3>Judge your friends' terrible or great music taste!</h3>-->
-<!--                    <div class="carousel__snapper" style="width: 100%"></div>-->
-<!--                </li>-->
-<!--            </ol>-->
-<!--        </section>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <section class="carousel w-auto p-3" aria-label="Gallery">-->
-<!--            <ol class="carousel__viewport">-->
-<!--                <li id="carousel__slide1"-->
-<!--                    tabindex="0"-->
-<!--                    class="carousel__slide">-->
-<!--                    <img th:src="@{img/lily-allenmyspace_trans_NvBQzQNjv4Bq3U9-D5U2JffhMhmF-FT3huN_okDYFaF5uKA7PWJo3RI.webp}" alt="profile">-->
-<!--                    <div class="carousel__snapper"></div>-->
-<!--                </li>-->
-<!--                <li id="carousel__slide2"-->
-<!--                    tabindex="0"-->
-<!--                    class="carousel__slide">-->
-<!--                    <img th:src="@{img/Screen Shot 2020-11-12 at 3.53.19 PM.png}" alt="leaderboard">-->
-<!--                    <div class="carousel__snapper"></div>-->
-<!--                </li>-->
-<!--                <li id="carousel__slide3"-->
-<!--                    tabindex="0"-->
-<!--                    class="carousel__slide">-->
-<!--                    <img th:src="@{img/614dfaed9cdcb08628f3b1cc_5-star-rating.jpeg}" alt="rating">-->
-<!--                    <div class="carousel__snapper"></div>-->
-<!--                </li>-->
-<!--            </ol>-->
-<!--        </section>-->
-<!--    </div>-->
-
-<!--    </main>-->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</script>
 </body>
 </html>
+
+
+
+<!--<nav class="navbar bg-dark opacity-50 movienav">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand"th:href="@{/homepage}"><text id="text-color"><h3>VibeCheck</h3></text></a>-->
+<!--        <button class="navbar-toggler bg-light opacity-50" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+<!--            <div class="navbar-nav">-->
+<!--                <a class="nav-link" th:href="@{/login}">Login</a>&ndash;&gt;-->
+<!--                <a class="nav-link" th:href="@{/register}">Register</a>-->
+<!--                &lt;!&ndash;                            <a class="nav-link" role="button" href="#modal-div" data-bs-toggle="modal"><text id="text-color">ADD Movie</text></a>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
