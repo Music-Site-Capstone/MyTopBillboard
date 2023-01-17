@@ -189,6 +189,9 @@ ol, li {
 
 .card-container {
     margin-top: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .card {
@@ -207,6 +210,13 @@ ol, li {
     .card-container {
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
+        margin-top: 30px;
+
+    }
+
+    .card {
+        margin-bottom: 30px;
     }
 
     /*the following will only show on mid or larger screens*/
