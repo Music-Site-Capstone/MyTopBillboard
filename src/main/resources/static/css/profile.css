@@ -34,11 +34,8 @@
     padding: 2px;
     align-self: center;
     transition: all 200ms;
-
-
 }
-
-.plName {
+.plName{
     cursor: pointer;
 }
 .plName, .card-header {
