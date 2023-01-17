@@ -20,7 +20,6 @@
     width:85px;
 }
 
-
 .song-container {
     display: flex;
     justify-content: space-between;
@@ -68,16 +67,13 @@ div .card {
     background-color: #f8f8f8;
 }
 .playlistScroll {
-    height: 600px; /* Set the height of the container */
+    max-height: 45vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
 }
 .songScroll{
-    height: 600px; /* Set the height of the container */
+    max-height: 40vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
 }
-
-
-
 
 
 

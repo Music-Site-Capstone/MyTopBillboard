@@ -31,6 +31,7 @@ $('.plName').on('click', async function (){
         for (let i = 0; i < playlistRatingsLength; i++){
             mappedArr.push(dataF.rating[i].score);
         }
+<<<<<<< HEAD
         //ratings are checked and added to the appropriate array
         const filteredArray = mappedArr.filter(rating => {
             if (rating == 1){
@@ -63,6 +64,12 @@ $('.plName').on('click', async function (){
     // need to append this before the loop to ensure that only one button is created
     if(activeUserId === userId) {
         $('#allPlaylistSongs').append(`
+=======
+
+        // need to append this after the loop to ensure that only one button is created
+        if (profile.activeUserId === profile.userId) {
+                $('#addButton').html("").append(`
+>>>>>>> main
             <a class="nav-link dnModal-button" id="profile-search-music-2">
                 Add Music
             </a>`);
