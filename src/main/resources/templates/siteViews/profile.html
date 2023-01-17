@@ -29,7 +29,7 @@
 <body>
 <div class="page-wrapper">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="navbar-brand navbar-logo" th:href="@{/}">VibeCheck</a>
+        <a class="navbar-brand navbar-logo" th:href="@{/homepage}">VibeCheck</a>
         <button class="navbar-toggler bg-light" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
             <i class="fas fa-bars text-white"></i>
@@ -72,14 +72,14 @@
     <form th:action="@{/login}" sec:authorize="!isAuthenticated()"  th:method="post">
 <!--        <button>Login</button>-->
     </form>
+    <div class="user-rank-rating-container">
+    <h2 th:text="${pageOwner}" class="profile-username"></h2>
 
-    <h2 th:text="${pageOwner}"></h2>
 
-    <div>
         <span class="profile-rank">
             rank: <span th:text="${rank}"></span>
         </span>
-        <span>
+        <span class="profile-rating">
             rating: <span th:text="${averageRating}"></span>
         </span>
     </div>
@@ -139,7 +139,7 @@
 
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
-                <div class="card m-auto d-flex justify-content-between">
+                <div class="card m-auto song-container">
                     <div class="card-header playlist-title text-center" id="playlist-name">click the playlist name to fill</div>
                     <div id="allPlaylistSongs"></div>
                     <div class="dnModal hidden">
