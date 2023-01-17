@@ -65,9 +65,10 @@ const profile = {
         </div>`);
             }
         }
+
         // need to append this after the loop to ensure that only one button is created
         if (profile.activeUserId === profile.userId) {
-                $('#allPlaylistSongs').append(`
+                $('#addButton').html("").append(`
             <a class="nav-link dnModal-button" id="profile-search-music-2">
                 Add Music
             </a>`);
