@@ -60,10 +60,11 @@ div .card {
 
 .list-group-item {
     background-color: var(--navbar-gray);
+>>>>>>> main
 }
 
 #myChartContainer {
-    background-color: whitesmoke;
+    background-color: #f8f8f8;
 }
 .playlistScroll {
     max-height: 45vh; /* Set the height of the container */

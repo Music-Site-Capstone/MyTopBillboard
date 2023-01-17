@@ -62,8 +62,10 @@ body {
 }
 
 #search-bar {
-    margin-left: 17vw;
+    margin-left: 47vw;
     align-self: center;
+    z-index: 10;
+
 }
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
