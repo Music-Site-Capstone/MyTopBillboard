@@ -38,6 +38,7 @@
 .plName{
     cursor: pointer;
 }
+
 .plName, .card-header {
     transition: all 200ms;
     color:white;
@@ -65,6 +66,17 @@ div .card {
 #myChartContainer {
     background-color: whitesmoke;
 }
+.playlistScroll {
+    height: 600px; /* Set the height of the container */
+    overflow-y: scroll; /* Enable scrolling on the y-axis */
+}
+.songScroll{
+    height: 600px; /* Set the height of the container */
+    overflow-y: scroll; /* Enable scrolling on the y-axis */
+}
+
+
+
 
 
 

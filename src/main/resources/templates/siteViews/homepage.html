@@ -69,7 +69,7 @@
     <div class="homepage-container">
         <div class="ranked-row">
             <div class="column-for-leaderboard-rows" id="column-leaderboard">
-                <h1 id="leaderboard-header">LEADERBOARD</h1>
+                <h1 id="leaderboard-header" class="shadow">LEADERBOARD</h1>
                 <!--  The following containsthe start of the rankings loop as well as the limiter of that loop to 10m entries  -->
                 <div th:each="user,i:${topRatedUsers}" th:if="${topRatedUsers.indexOf(user) < 10}" class="item-in-leaderboard">
                     <div class="item-in-column" id="leaderboard-item">
@@ -86,7 +86,7 @@
         <!--row for Explore section-->
         <div class="ranked-row">
             <div class="column-for-leaderboard-rows" id="column-explore">
-                <h1 id="explore-header">EXPLORE</h1>
+                <h1 id="explore-header" class="shadow">EXPLORE</h1>
                 <!-- the following takes the list from the randomizer and loops through it to showcase 5 users -->
                 <div th:each="user:${users}" id="explore-item" class="item-in-explore rounded-edges">
                     <div class="item-in-explore-column">
