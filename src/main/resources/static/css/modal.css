@@ -1,5 +1,6 @@
 .dnModal {
-    display: none; /* Hidden by default */
+    display: flex;
+    justify-content: center;
     position: fixed; /* Stay in place */
     z-index: 1000; /* Sit on top */
     left: 0;
@@ -20,7 +21,8 @@
     border: none;
     cursor: pointer;
     text-align: center;
-    background-color: #0dcc00;
+    background: rgb(144,129,134);
+    background: radial-gradient(circle, rgba(144,129,134,1) 0%, rgba(109,0,191,1) 100%);
     color: #FFFFFF;
     margin: 0;
 }
@@ -30,10 +32,12 @@
     width: 100%;
     height: 84.5%;
     z-index: 1001;
-    background-color: #fefefe;
+    color: #FFFFFF;
+    background: rgba(87, 87, 87, 1.78);
     margin: 8vh auto 7vh auto;
     padding: 20px;
     border: 1px solid #888;
+    border-radius: 10px;
 }
 .dnModal-close {
     color: #aaa;
@@ -53,4 +57,23 @@
     border-radius: 50%;
     padding-left: .6rem;
     padding-right: .6rem;
+}
+
+
+#Dropdown{
+    width: 50vw;
+}
+
+.hidden{
+    display:none;
+}
+
+.searchline{
+    display:flex;
+    justify-content: space-between;
+}
+
+.modal-fill{
+    margin-top: 2em;
+    border-radius: 10px;
 }
