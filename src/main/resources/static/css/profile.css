@@ -60,6 +60,8 @@ div .card {
 
 .list-group-item {
     background-color: var(--navbar-gray);
+    border: none;
+    margin: 2px;
 }
 
 #myChartContainer {
