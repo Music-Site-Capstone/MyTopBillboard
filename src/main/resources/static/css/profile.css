@@ -26,6 +26,7 @@
     text-align: end;
     color:white;
 }
+
 .song-and-title-playlist{
     text-align: right;
 }
@@ -36,6 +37,16 @@
 }
 .plName{
     cursor: pointer;
+}
+
+.searchline > .addButton {
+    background-color: green;
+    color: whitesmoke;
+
+}
+
+.searchline > .addButton:hover {
+    transform: scale(1.1);
 }
 
 .plName, .card-header {

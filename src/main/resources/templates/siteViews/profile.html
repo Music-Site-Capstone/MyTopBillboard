@@ -65,10 +65,10 @@
 
 
         <span class="profile-rank">
-            rank: <span th:text="${rank}"></span>
+            Rank: <span th:text="${rank}"></span>
         </span>
         <span class="profile-rating">
-            rating: <span th:text="${averageRating}"></span>
+            Rating: <span th:text="${averageRating}"></span>
         </span>
     </div>
 
@@ -119,7 +119,7 @@
                         </ul>
                     </div>
                     <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
-                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Enter New Playlist" th:if="${userID} == ${activeUserID}">
+                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Enter A New Playlist Name" th:if="${userID} == ${activeUserID}">
                         <input  th:value="${activeUserID}" name="userId" type="hidden">
                     </form>
 
@@ -180,6 +180,7 @@
 <script th:src="@{/js/spotify_api.js}"></script>
 <script th:src="@{/js/profile.js}"></script>
 <script th:src="@{/js/navigationbar.js}"></script>
+<script th:src="@{/js/homepage.js}"></script>
 
 
 </body>
