@@ -65,7 +65,7 @@ div .card {
 }
 
 #myChartContainer {
-    background-color: whitesmoke;
+    background-color: #f8f8f8;
 }
 .playlistScroll {
     max-height: 45vh; /* Set the height of the container */
@@ -75,8 +75,6 @@ div .card {
     max-height: 40vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
 }
-
-
 
 .user-rank-rating-container {
     display: flex;
