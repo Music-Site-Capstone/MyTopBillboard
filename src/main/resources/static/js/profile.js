@@ -60,6 +60,13 @@ $('.plName').on('click', async function (){
     //this line clears the playlist search before loading in a new playlist
     $('#allPlaylistSongs').html('');
 
+    // need to append this before the loop to ensure that only one button is created
+    if(activeUserId === userId) {
+        $('#allPlaylistSongs').append(`
+            <a class="nav-link dnModal-button" id="profile-search-music-2">
+                Add Music
+            </a>`);
+    }
     //this loop loads in songs in a playlist
     for (let i = 0; i < playlistSongsLength; i++){
         // you can only delete or add more songs on your own playlists
@@ -75,15 +82,14 @@ $('.plName').on('click', async function (){
               
                 <div class="song-container d-flex align-items-center justify-content-center">
                     <div class="image-for-playlist">
-                    <a href="${dataF.song[i].previewUrl}">
-                        <img src="${dataF.song[i].image}" alt="fail">   
-                    </a>
-                    </div>                    
-                    <div class="song-and-tile-playlist text-center mx-4 my-2">
-                        <p>${dataF.song[i].artist.artistName}</p>
-                        <p>${dataF.song[i].title}</p>          
+                        <a href="${dataF.song[i].previewUrl}">
+                            <img src="${dataF.song[i].image}" alt="fail">   
+                        </a>
                     </div>
-                    <button>Delete</button>
+                    <div class="song-and-tile-playlist">
+                        <p> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>
+                               <button>delete</button   
+                   </div>
                 </div>
               </form>
             </div>`);
@@ -104,9 +110,8 @@ $('.plName').on('click', async function (){
                         <img src="${dataF.song[i].image}" alt="fail">   
                     </a>
                     </div>
-                    <div class="song-and-tile-playlist text-center mx-4 my-2">
-                        <p>${dataF.song[i].artist.artistName} </p>
-                        <p>${dataF.song[i].title}</p>
+                    <div class="song-and-title-playlist">
+                        <p class="title-color"> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>
                     </div>
                 </div>
               </form>
@@ -114,13 +119,7 @@ $('.plName').on('click', async function (){
         }
 
     }
-    // need to append this after the loop to ensure that only one button is created
-    if(activeUserId === userId) {
-        $('#allPlaylistSongs').append(`
-            <a class="nav-link dnModal-button" id="profile-search-music-2">
-                Add Music
-            </a>`);
-    }
+
 
     // import Chart from 'chart.js';
     // this loads the data for constructing the graph

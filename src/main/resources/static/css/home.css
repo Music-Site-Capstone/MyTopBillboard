@@ -151,6 +151,18 @@ div .item-in-leaderboard .leaderboard-users:hover {
     transform: scale(1.1);
 }
 
+.goldTrophy{
+    color: darkgoldenrod;
+}
+
+.silverTrophy{
+    color: silver;
+}
+
+.bronzeTrophy{
+    color: saddlebrown;
+}
+
 /*.list-group-item {*/
 
 /*}*/
