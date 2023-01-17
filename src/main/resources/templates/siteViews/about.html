@@ -11,14 +11,54 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script th:src="@{/js/jquery-3.6.3.min.js}"></script>
+  <link rel="stylesheet" th:href="@{css/site.css}">
   <link rel="stylesheet" th:href="@{css/about.css}">
 </head>
 
 <body>
 
+<div class="page-wrapper">
 
-  <!--  space for nav-->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" th:href="@{/homepage}">VibeCheck</a>
+    <button class="navbar-toggler bg-light" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
+      <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"th:href="@{|/profile/${activeUser}|}"><i class="fas fa-tachometer-alt"></i>Profile</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:void(0);"th:href="@{/logout}"><i class="far fa-address-book"></i>Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+        </li>
+        <li class="nav-item" id="search-bar">
+          <form class="d-flex" role="search" name="codeForm">
+            <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">
+            <button class="btn btn-outline-success" id="submit" type="submit">Search</button>
+          </form>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- carousel start -->
   <section class="carousel" aria-label="Gallery">
     <ol class="carousel__viewport">
       <li id="carousel__slide1"
@@ -29,11 +69,11 @@
           <div class="card-header text-center">
             Aaron Morris
           </div>
-          <img th:src="@{img/aaron_pic.jpeg}" class="card-img-top" alt="Aaron Morris">
-          <div class="card-body d-flex flex-column justify-content-center text-center"></div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="https://github.com/aarmorris" class="github-button">Go to my Github!</a><a href="https://www.linkedin.com/in/morrisar8/" class="linkedin-button">Go to my LinkedIn!</a></li>
-          </ul>
+          <div class="card-body d-flex justify-content-center text-center">
+            <a href="https://github.com/aarmorris" class="github-button">Go to my Github!</a>
+            <img th:src="@{img/aaron_pic.jpeg}" class="card-img-top" alt="Aaron Morris">
+            <a href="https://www.linkedin.com/in/morrisar8/" class="linkedin-button">Go to my LinkedIn!</a>
+          </div>
           <p class="card-text">
             About me:<br>
 
@@ -42,9 +82,9 @@
           </p>
         </div>
         <div class="carousel__snapper">
-          <a href="#carousel__slide5"
+          <a th:href="@{#carousel__slide5}"
              class="carousel__prev">Go to last slide</a>
-          <a href="#carousel__slide2"
+          <a th:href="@{#carousel__slide2}"
              class="carousel__next">Go to next slide</a>
         </div>
       </li>
@@ -59,12 +99,12 @@
             Caleb O'Kane
           </div>
           <!--        find a good image of Caleb for the source-->
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body d-flex flex-column justify-content-center text-center"></div>
-          <ul class="list-group list-group-flush">
-            <!--          insert links to git and linkedin-->
-            <li class="list-group-item"><a href="https://github.com/theCEO1999" class="github-button">Go to my Github!</a><a class="linkedin-button">Go to my LinkedIn!</a></li>
-          </ul>
+
+          <div class="card-body d-flex justify-content-center text-center">
+            <a href="https://github.com/theCEO1999" class="github-button">Go to my Github!</a>
+            <img src="..." class="card-img-top" alt="...">
+            <a class="linkedin-button">Go to my LinkedIn!</a>
+          </div>
           <p class="card-text">
             <!--          insert description here-->
             About me:<br>
@@ -73,9 +113,9 @@
           </p>
         </div>
         <div class="carousel__snapper"></div>
-        <a href="#carousel__slide1"
+        <a th:href="@{#carousel__slide1}"
            class="carousel__prev">Go to previous slide</a>
-        <a href="#carousel__slide3"
+        <a th:href="@{#carousel__slide3}"
            class="carousel__next">Go to next slide</a>
       </li>
 
@@ -88,11 +128,11 @@
           <div class="card-header text-center">
             Daniel Name
           </div>
-          <img th:src="@{img/daniel_pic.jpeg}" class="card-img-top" alt="Daniel Name">
-          <div class="card-body d-flex flex-column justify-content-center text-center"></div>
-          <ul class="list-group list-group-flush d-flex">
-            <li class="list-group-item"><a href="https://github.com/danielname" class="github-button">Go to my Github!</a><a href="https://www.linkedin.com/in/daniel-name/" class="linkedin-button">Go to my LinkedIn!</a></li>
-          </ul>
+          <div class="card-body d-flex justify-content-center text-center">
+            <a href="https://github.com/danielname" class="github-button">Go to my Github!</a>
+            <img th:src="@{img/daniel_pic.jpeg}" class="card-img-top" alt="Daniel Name">
+            <a href="https://www.linkedin.com/in/daniel-name/" class="linkedin-button">Go to my LinkedIn!</a>
+          </div>
           <p class="card-text">
             <!--          insert description here-->
             About me:<br>
@@ -101,9 +141,9 @@
           </p>
         </div>
         <div class="carousel__snapper"></div>
-        <a href="#carousel__slide2"
+        <a th:href="@{#carousel__slide2}"
            class="carousel__prev">Go to previous slide</a>
-        <a href="#carousel__slide4"
+        <a th:href="@{#carousel__slide4}"
            class="carousel__next">Go to next slide</a>
       </li>
 
@@ -116,12 +156,11 @@
           <div class="card-header text-center">
             Joshua Sprouse
           </div>
-          <img th:src="@{img/Josh_pic.jpeg}" class="card-img-top" alt="Joshua Sprouse">
-          <div class="card-body d-flex flex-column justify-content-center text-center "></div>
-          <ul class="list-group list-group-flush">
-            <!--          insert links to git and linkedin-->
-            <li class="list-group-item"><a href="https://github.com/thevaliantjosh" class="github-button">Go to my Github!</a><a href="https://www.linkedin.com/in/joshuacalebsprouse/" class="linkedin-button">Go to my LinkedIn!</a></li>
-          </ul>
+          <div class="card-body d-flex justify-content-center text-center ">
+            <a href="https://github.com/thevaliantjosh" class="github-button">Go to my Github!</a>
+            <img th:src="@{img/Josh_pic.jpeg}" class="card-img-top" alt="Joshua Sprouse">
+            <a href="https://www.linkedin.com/in/joshuacalebsprouse/" class="linkedin-button">Go to my LinkedIn!</a>
+          </div>
           <p class="card-text">
             <!--          insert description here-->
             About me:<br>
@@ -129,9 +168,9 @@
           </p>
         </div>
         <div class="carousel__snapper"></div>
-        <a href="#carousel__slide3"
+        <a th:href="@{#carousel__slide3}"
            class="carousel__prev">Go to previous slide</a>
-        <a href="#carousel__slide5"
+        <a th:href="@{#carousel__slide5}"
            class="carousel__next">Go to next slide</a>
       </li>
 
@@ -144,12 +183,11 @@
           <div class="card-header text-center">
             Richard Kim
           </div>
-          <img th:src="@{img/rich_pic.png}" class="card-img-top" alt="Richard Kim">
-          <div class="card-body d-flex flex-column justify-content-center text-center"></div>
-          <ul class="list-group list-group-flush">
-            <!--          insert links to git and linkedin-->
-            <li class="list-group-item"><a href="https://github.com/richy088" class="github-button">Go to my Github!</a><a class="linkedin-button">Go to my LinkedIn!</a></li>
-          </ul>
+          <div class="card-body d-flex flex-column justify-content-center text-center">
+            <a href="https://github.com/richy088" class="github-button">Go to my Github!</a>
+            <img th:src="@{img/rich_pic.png}" class="card-img-top" alt="Richard Kim">
+            <a class="linkedin-button">Go to my LinkedIn!</a>
+          </div>
           <p class="card-text">
             <!--          insert description here-->
             About me:<br>
@@ -158,13 +196,14 @@
           </p>
         </div>
         <div class="carousel__snapper"></div>
-        <a href="#carousel__slide4"
+        <a th:href="@{#carousel__slide4}"
            class="carousel__prev">Go to previous slide</a>
-        <a href="#carousel__slide1"
+        <a th:href="@{#carousel__slide1}"
            class="carousel__next">Go to first slide</a>
       </li>
     </ol>
 
   </section>
+</div>
 </body>
 </html>

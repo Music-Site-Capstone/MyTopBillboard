@@ -79,6 +79,10 @@ ol, li {
     padding: 0;
 }
 
+img {
+    max-width: 50vw;
+}
+
 .carousel {
     position: relative;
     padding-top: 75%;
