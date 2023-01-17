@@ -38,9 +38,7 @@
 .plName{
     cursor: pointer;
 }
-div .card-header .border {
-    position: fixed;
-}
+
 .plName, .card-header {
     transition: all 200ms;
     color:white;
