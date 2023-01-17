@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" th:href="@{css/site.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{css/landing.css}">
 </head>
 <!-- THE BODY -->
 
@@ -54,23 +55,43 @@
 
 
             <!-- ROW -->
-                <div class="row">
+<!--                <div class="row">-->
 
-                    <!-- COLUMN(S) -->
+<!--                    &lt;!&ndash; COLUMN(S) &ndash;&gt;-->
 
-                    <div class="column">
-                        <p>
-                            Music is a central part of our world, and we all have different tastes, but how will you know if yours is good or bad?<br>
-                            VibeCheck lets you engage with others to see how your tastes compare to others!<br>
-                            Create a profile!<br>
-                            Build playlists!<br>
-                            Find new music that you love!<br>
-                            Rate other people's playlists!<br>
-                            Rise to the top of the leaderboard!<br>
-                        </p>
+<!--                    <div class="column">-->
+<!--                        <p>-->
+<!--                            Music is a central part of our world, and we all have different tastes, but how will you know if yours is good or bad?<br>-->
+<!--                            VibeCheck lets you engage with others to see how your tastes compare to others!<br>-->
+<!--                            Create a profile!<br>-->
+<!--                            Build playlists!<br>-->
+<!--                            Find new music that you love!<br>-->
+<!--                            Rate other people's playlists!<br>-->
+<!--                            Rise to the top of the leaderboard!<br>-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--            d-flex justify-content-around-->
+<!--                </div>-->
+            <div class="card-container">
+                <div class="card" style="width: 30rem;">
+                    <img src="img/leaderboard-screenshot.png" style="height: 400px" class="card-pic card-img-top" alt="screen shot of leaderboard">
+                    <div class="card-body">
+                        <p class="card-text">Rise to the top of the leaderboard!</p>
                     </div>
-
                 </div>
+                <div class="card" style="width: 30rem;">
+                    <img src="img/add-songs-screenshot.png" style="height: 400px" class="card-pic card-img-top" alt="screen shot of leaderboard">
+                    <div class="card-body">
+                        <p class="card-text">Find new music that you love!</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 30rem;">
+                    <img src="img/profile-screenshot.png" style="height: 400px" class="card-pic card-img-top" alt="screen shot of leaderboard">
+                    <div class="card-body">
+                        <p class="card-text">Create a profile!</p>
+                    </div>
+                </div>
+            </div>
 
 
         </div>

@@ -159,7 +159,6 @@ ol, li {
 }
 
 .card-text {
-    text-align: center;
     width: 900px;
 }
 
@@ -182,15 +181,43 @@ ol, li {
 
 .vibe-check-image {
     position: absolute;
-    bottom: 250px;
+    bottom: 240px;
     right: 540px;
     width: 200px;
     height: auto;
 }
 
+.card-container {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card {
+    width: 100px;
+    height: auto;
+}
+
+/*.card-pic {*/
+/*    height: 800px;*/
+/*}*/
+
 
 /*the following will only show on small screens*/
 @media screen and (max-width: 575px) {
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-top: 30px;
+
+    }
+
+    .card {
+        margin-bottom: 30px;
+    }
 
     /*the following will only show on mid or larger screens*/
     @media screen and (min-width: 576px) {

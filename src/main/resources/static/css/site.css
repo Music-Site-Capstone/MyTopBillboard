@@ -33,6 +33,11 @@
     src: url(static/fonts/open-sans.semibold-italic.ttf);
 }
 
+:root {
+    --navbar-gray: #575757C6;
+    --vibecheck-purple: rgba(90, 64, 87, 1);
+    --login-gray: rgba(3, 3, 3, 0.1);
+}
 
 .page-title {
     font-family: "DistorterDemoRegular", serif;
