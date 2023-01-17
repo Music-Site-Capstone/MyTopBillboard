@@ -159,7 +159,8 @@ ol, li {
 }
 
 .card-text {
-    width: 900px;
+    width: 440px;
+    text-align: center;
 }
 
 .card {
@@ -206,7 +207,11 @@ h3 {
 h3, h4 {
     color: #fdfdfd;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-style: italic;
 }
 
 /*.card-pic {*/
@@ -233,3 +238,50 @@ h3, h4 {
     @media screen and (min-width: 576px) {
     }
 }
+
+:root {
+    /*--main-color: #ecf0f1;*/
+    --point-color: #fdfdfd;
+    --size: 7px;
+}
+
+.loader {
+    /*background-color: var(--main-color);*/
+    overflow: hidden;
+    width: 100%;
+    /*position: fixed;*/
+    top: 0; left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    z-index: 100000;
+    height: 200px;
+}
+
+.icon-loader__element {
+    /*border-radius: 100%;*/
+    /*border: var(--size) solid var(--point-color);*/
+    margin: calc(var(--size)*3);
+}
+
+.icon-loader__element:nth-child(1) {
+    animation: preloader .6s ease-in-out alternate infinite;
+}
+.icon-loader__element:nth-child(2) {
+    animation: preloader .6s ease-in-out alternate .2s infinite;
+}
+
+.icon-loader__element:nth-child(3) {
+    animation: preloader .6s ease-in-out alternate .4s infinite;
+}
+
+.icon-loader__element {
+    width: 30px;
+    height: auto;
+}
+
+@keyframes preloader {
+    100% { transform: scale(2); }
+}
+
