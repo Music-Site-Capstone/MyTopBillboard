@@ -26,6 +26,7 @@
     text-align: end;
     color:white;
 }
+
 .song-and-title-playlist{
     text-align: right;
 }
@@ -36,6 +37,16 @@
 }
 .plName{
     cursor: pointer;
+}
+
+.searchline > .addButton {
+    background-color: green;
+    color: whitesmoke;
+
+}
+
+.searchline > .addButton:hover {
+    transform: scale(1.1);
 }
 
 .plName, .card-header {
@@ -60,7 +71,8 @@ div .card {
 
 .list-group-item {
     background-color: var(--navbar-gray);
->>>>>>> main
+    border: none;
+    margin: 2px;
 }
 
 #myChartContainer {
@@ -74,8 +86,6 @@ div .card {
     max-height: 40vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
 }
-
-
 
 .user-rank-rating-container {
     display: flex;
