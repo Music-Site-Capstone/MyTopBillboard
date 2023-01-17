@@ -159,7 +159,6 @@ ol, li {
 }
 
 .card-text {
-    text-align: center;
     width: 900px;
 }
 
@@ -188,9 +187,27 @@ ol, li {
     height: auto;
 }
 
+.card-container {
+    margin-top: 200px;
+}
+
+.card {
+    width: 100px;
+    height: auto;
+}
+
+/*.card-pic {*/
+/*    height: 800px;*/
+/*}*/
+
 
 /*the following will only show on small screens*/
 @media screen and (max-width: 575px) {
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+    }
 
     /*the following will only show on mid or larger screens*/
     @media screen and (min-width: 576px) {
