@@ -113,6 +113,7 @@ img {
 .carousel::after,
 .carousel__prev,
 .carousel__next {
+    z-index: 3;
     position: absolute;
     top: 0;
     margin-top: 37.5%;
