@@ -15,6 +15,7 @@
     font-size: 1rem;
 }
 
+
 .search-image{
     width:85px;
 }
@@ -29,12 +30,10 @@
 .song-and-title-playlist{
     text-align: right;
 }
-.image-for-playlist{
+.image-for-playlist {
     padding: 2px;
     align-self: center;
     transition: all 200ms;
-
-
 }
 .plName{
     cursor: pointer;
@@ -62,5 +61,7 @@ div .card{
 background: black;
 }
 
-
+#myChartContainer {
+    background-color: whitesmoke;
+}
 
