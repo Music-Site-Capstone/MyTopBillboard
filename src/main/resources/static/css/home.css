@@ -163,6 +163,11 @@ div .item-in-leaderboard .leaderboard-users:hover {
     color: saddlebrown;
 }
 
+.shadow {
+    text-shadow: 1px 1px 5px #ddd, 2px 2px 10px #000;
+}
+
+
 /*.list-group-item {*/
 
 /*}*/
