@@ -159,7 +159,8 @@ ol, li {
 }
 
 .card-text {
-    width: 900px;
+    width: 440px;
+    text-align: center;
 }
 
 .card {
@@ -276,7 +277,7 @@ h4 {
 }
 
 .icon-loader__element {
-    width: 50px;
+    width: 30px;
     height: auto;
 }
 
