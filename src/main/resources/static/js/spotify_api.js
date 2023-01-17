@@ -72,11 +72,11 @@ potifyAPIController = (async function() {
 
 //Appending Image, Artist, and Track Name to the Modal Search
             $('.modal-fill').append(
-                `<div class="searchline border">
+                `<div class="searchline border d-flex align-items-center justify-content-center">
                     <img src="${image}" alt="fail">
-                    <span>
-                        <p>${artist}</p>
-                        <p>${track}</p>
+                    <span class="text-center mx-4 my-2">
+                        <h5>${artist}</h5>
+                        <h5>${track}</h5>
                     </span>
                     <button class="addButton" id="addSong${id}" data-loop-id="${i}">Add song to playlist</button>
                     <span hidden>${previewUrl}</span>
