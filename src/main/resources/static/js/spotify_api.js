@@ -62,7 +62,7 @@ potifyAPIController = (async function() {
         let image;
         let id;
         let previewUrl;
-        for (let i = 0; i < 5; i++){
+        for (let i = 0; i < 6; i++){
             track = await data.tracks.items[i].name;//grabbing the name of the track
             artist = await data.tracks.items[i].artists[0].name;//grabbing the name of the Artist
             image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
