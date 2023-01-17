@@ -54,14 +54,14 @@ div .card{
 }
 
 #playlist-background, .playlist-title{
-   background:black;
+   background: #090909;
 }
 
 .list-group-item, .song-container{
-background: black;
+background: #000000;
 }
 
 #myChartContainer {
-    background-color: whitesmoke;
+    background-color: #f8f8f8;
 }
 
