@@ -43,6 +43,7 @@
     transition: all 200ms;
     color:white;
 }
+
 .plName:hover {
     transform: scale(1.1);
 }
@@ -50,16 +51,16 @@
 .image-for-playlist:hover {
     transform: scale(1.1);
 }
-div .card{
+div .card {
     box-shadow: 0px 0px 10px 0px #000000;
 }
 
-#playlist-background, .playlist-title{
-   background:black;
+#playlist-background, .song-container {
+   background-color: var(--login-gray);
 }
 
-.list-group-item, .song-container{
-background: black;
+.list-group-item {
+    background-color: var(--navbar-gray);
 }
 
 #myChartContainer {
@@ -76,4 +77,22 @@ background: black;
 
 
 
+
+
+
+.user-rank-rating-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 20px;
+    align-items: center;
+    border: 5px solid var(--navbar-gray);
+    box-shadow: 2px 3px 5px 2px var(--vibecheck-purple);
+    background-color: var(--login-gray);
+    width: 95%
+}
+
+.profile-username, .profile-rank, .profile-rating{
+    font-size: 2rem;
+    color: whitesmoke;
+}
 
