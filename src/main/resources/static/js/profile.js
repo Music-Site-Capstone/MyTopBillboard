@@ -79,8 +79,7 @@ $('.plName').on('click', async function (){
                   <input  value=${playlistId} name="userId" type="hidden">
                   <input  value=${dataF.playlistName} name="playlistName" type="hidden">
                   <input  value=${dataF.song[i].id} name="playlistSongId" type="hidden">
-              
-                <div class="song-container d-flex align-items-center justify-content-center">
+                <div class="song-container">
                     <div class="image-for-playlist">
                         <a href="${dataF.song[i].previewUrl}">
                             <img src="${dataF.song[i].image}" alt="fail">   
@@ -104,11 +103,11 @@ $('.plName').on('click', async function (){
                   <input  value=${dataF.playlistName} name="playlistName" type="hidden">
                   <input  value=${dataF.song[i].id} name="playlistSongId" type="hidden">
               
-                <div class="song-container d-flex align-items-center justify-content-center">
+                <div class="song-container">
                     <div class="image-for-playlist">
-                    <a href="${dataF.song[i].previewUrl}">
-                        <img src="${dataF.song[i].image}" alt="fail">   
-                    </a>
+                        <a href="${dataF.song[i].previewUrl}">
+                            <img src="${dataF.song[i].image}" alt="fail">   
+                        </a> 
                     </div>
                     <div class="song-and-title-playlist">
                         <p class="title-color"> ${dataF.song[i].title} - ${dataF.song[i].artist.artistName} </p>

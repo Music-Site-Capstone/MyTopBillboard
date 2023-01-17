@@ -30,14 +30,11 @@
 .song-and-title-playlist{
     text-align: right;
 }
-.image-for-playlist{
+.image-for-playlist {
     padding: 2px;
     align-self: center;
     transition: all 200ms;
-
-
-
-/*}*/
+}
 .plName{
     cursor: pointer;
 }
