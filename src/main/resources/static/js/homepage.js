@@ -6,4 +6,3 @@ $(document).ready(function () {
         window.location.replace('/profile/' + formValue);
     });
 })
-

@@ -14,35 +14,54 @@
     padding: 0 3.5rem 0 1.5rem;
     font-size: 1rem;
 }
+
+
+.search-image{
+    width:85px;
+}
+
+
 .song-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     text-align: end;
+    color:white;
 }
 .song-and-title-playlist{
     text-align: right;
 }
-.image-for-playlist{
+.image-for-playlist {
     padding: 2px;
     align-self: center;
-
-
+    transition: all 200ms;
 }
 .plName{
     cursor: pointer;
 }
-.plName {
+.plName, .card-header {
     transition: all 200ms;
+    color:white;
 }
 .plName:hover {
     transform: scale(1.1);
 }
-.image-for-playlist {
-    transition: all 200ms;
-}
+
 .image-for-playlist:hover {
     transform: scale(1.1);
 }
 div .card{
     box-shadow: 0px 0px 10px 0px #000000;
 }
+
+#playlist-background, .playlist-title{
+   background:black;
+}
+
+.list-group-item, .song-container{
+background: black;
+}
+
+#myChartContainer {
+    background-color: whitesmoke;
+}
+

@@ -1,12 +1,12 @@
 $(function () {
 // When the user clicks on the button, open the modal
     $(document).on('click', '.dnModal-button',function () {
-            $('.dnModal, .dnModal-content').css('display', "block");
+            $('.dnModal, .dnModal-content').removeClass("hidden");
     });
 
 // When the user clicks on <span> (x), close the modal
     $('.dnModal-close').on('click', function () {
-        $('.dnModal, .dnModal-content').css('display', "none");
+        $('.dnModal, .dnModal-content').addClass("hidden");
     });
 
 

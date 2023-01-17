@@ -1,3 +1,4 @@
+
 const profile = {
     playlistId: "",
     username: "",
@@ -56,7 +57,8 @@ const profile = {
                     </a> 
                 </div>
                 <div class="song-and-tile-playlist">
-                    <p> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
+                    <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
+
                 </div>
             </div>
           </form>
@@ -101,6 +103,7 @@ const profile = {
                 }
             })
         }
+
 
         // this loads the data for constructing the graph
         const labels = "12345";
@@ -157,6 +160,8 @@ $('.plName').on('click',async function () {
 
 //This utilizes the controller displayPlaylistSong
     profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
+    let theHiddenChartDiv = document.getElementById('myChartContainer');
+    theHiddenChartDiv.style.display = "block";
     profile.playlistUpdate();
     profile.graphUpdate();
 })
