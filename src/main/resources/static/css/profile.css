@@ -1,3 +1,11 @@
+:root {
+    --bg-leaderboard-row: #d3d3da;
+    --bg-leaderboard-row-darker: #bcbcbd;
+    --leaderboard-color: #23cd23;
+    --explore-color: #eaae40;
+    --rating-circle-color: #696767;
+}
+
 /*the following will only show on small screens*/
 @media screen and (max-width: 575px) {}
 /*the following will only show on mid or larger screens*/
@@ -67,10 +75,16 @@ div .card {
 
 #playlist-background, .song-container {
    background-color: var(--login-gray);
+
 }
 
-.list-group-item {
-    background-color: var(--navbar-gray);
+.profile-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+ul > .list-group-item {
+    background-color: rgba(87,87,87,1);
     border: none;
     margin: 2px;
 }
@@ -81,6 +95,7 @@ div .card {
 .playlistScroll {
     max-height: 45vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
+    overflow-x: hidden;
 }
 .songScroll{
     max-height: 40vh; /* Set the height of the container */
@@ -90,12 +105,11 @@ div .card {
 .user-rank-rating-container {
     display: flex;
     justify-content: space-around;
-    margin: 5px 20px;
+    margin: 5px 15px 10px 15px;
     align-items: center;
-    border: 5px solid var(--navbar-gray);
+    border: 7px solid var(--navbar-gray);
     box-shadow: 2px 3px 5px 2px var(--vibecheck-purple);
     background-color: var(--login-gray);
-    width: 95%
 }
 
 .profile-username, .profile-rank, .profile-rating{
@@ -103,3 +117,25 @@ div .card {
     color: whitesmoke;
 }
 
+div > h5 {
+    color: #02a102;
+}
+
+ul > .displayedRating {
+    list-style: none;
+    font-size: 1.2em;
+    color: #02a102;
+    padding: 0;
+}
+
+.goldTrophy{
+    color: darkgoldenrod;
+}
+
+.silverTrophy{
+    color: silver;
+}
+
+.bronzeTrophy{
+    color: saddlebrown;
+}

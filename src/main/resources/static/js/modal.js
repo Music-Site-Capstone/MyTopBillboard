@@ -10,20 +10,33 @@ $(function () {
     });
 
 
+
+
 // When the user clicks anywhere outside of the modal, close it
-    const modal = document.getElementsByClassName('dnModal')[0];
+    let modal = document.getElementsByClassName('dnModal')[0];
+    let modalContent = document.getElementsByClassName('.dnModal-content')[0];
     window.onclick = function (event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+            modal.classList.add("hidden");
+            modalContent.classList.add("hidden");
         }
     }
-
 })
 
-$(document).ready(function(){
-    $(".add").on('click', function(){
+
+
+$(document).ready(async function(){
+    $(".add").on('click', async function(){
         let playlistId = $(this).attr("data-playlist-id");
         let songId = $(this).attr("data-song-id");
-        $.post("/song/playlist/" + playlistId + "/add/" + songId);
+        console.log(`About to post a song with an id of ${songId} to playlist ${playlistId}`);
+        // $.post("/song/playlist/" + playlistId + "/add/" + songId);
+    });
+    $(document).on('click', '.addButton', function(){
+        let playListId = $('#playlist-name').attr('plid');
+        setTimeout(function(){
+            console.log(`about to trigger the playlist with the id of ${playListId}`);
+            $(`.plName[plid="${playListId}"]`).trigger('click');
+        }, 120);
     });
 });

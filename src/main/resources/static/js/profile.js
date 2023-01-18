@@ -1,3 +1,8 @@
+$('.list-group-item').each(function(index) {
+    if (index % 2 !== 0) {
+        $(this).css('background-color', '#575757b0')
+    }
+});
 const profile = {
     playlistId: "",
     username: "",
@@ -21,7 +26,7 @@ const profile = {
           <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
                           
               <input type="hidden" name="_csrf" value=${csrfValue}>
-              <input  value=${profile.playlistId} name="userId" type="hidden">
+              <input  value=${profile.playlistId} name="playlistId" type="hidden">
               <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
               <input  value=${profile.dataF.song[i].id} name="playlistSongId" type="hidden">
           
@@ -57,7 +62,6 @@ const profile = {
                 </div>
                 <div class="song-and-tile-playlist">
                     <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
-
                 </div>
             </div>
           </form>
@@ -164,3 +168,15 @@ $('.plName').on('click',async function () {
     profile.playlistUpdate();
     profile.graphUpdate();
 })
+
+// Displays Trophy Icons on Profile Page Top 3
+
+if($(".profile-rank span").text() === "1")
+$(".profile-rank").append('<i class="bi goldTrophy bi-trophy-fill"></i>');
+
+if($(".profile-rank span").text() === "2")
+$(".profile-rank").append('<i class= "bi silverTrophy bi-trophy-fill"></i>');
+
+if($(".profile-rank span").text() === "3")
+$(".profile-rank").append('<i class="bi bronzeTrophy bi-trophy-fill"></i>');
+
