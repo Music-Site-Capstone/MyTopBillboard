@@ -85,10 +85,12 @@
                             <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
 
                                 <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
-                                <h2 th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h2>
-                                <ul th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
-                                    <li th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
-                                </ul>
+                                <div class="d-flex">
+                                    <h5 class="ms-auto" th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h5>
+                                    <ul class="me-auto" th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
+                                        <li class="displayedRating" th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
+                                    </ul>
+                                </div>
                                 <div hidden th:text="${playlist.id}" id="playlist-id"></div>
 
 
@@ -122,8 +124,6 @@
                         <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Enter A New Playlist Name" th:if="${userID} == ${activeUserID}">
                         <input  th:value="${activeUserID}" name="userId" type="hidden">
                     </form>
-
-
                 </div>
 
             </div>
@@ -153,7 +153,6 @@
     <!--  Card containing list of playlists  -->
 
 
-<!--        <br><br><br><br><br><br><br>-->
 <!--Card That all the Image, Artists, and Titles of Song lives in For a playlist-->
 
 
@@ -181,7 +180,5 @@
 <script th:src="@{/js/profile.js}"></script>
 <script th:src="@{/js/navigationbar.js}"></script>
 <script th:src="@{/js/homepage.js}"></script>
-
-
 </body>
 </html>

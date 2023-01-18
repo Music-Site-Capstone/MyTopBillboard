@@ -103,3 +103,13 @@ div .card {
     color: whitesmoke;
 }
 
+div > h5 {
+    color: #02a102;
+}
+
+ul > .displayedRating {
+    list-style: none;
+    font-size: 1.2em;
+    color: #02a102;
+    padding: 0;
+}
