@@ -163,3 +163,12 @@ $('.plName').on('click',async function () {
     profile.playlistUpdate();
     profile.graphUpdate();
 })
+if($(".profile-rank span").text() === "1")
+$(".profile-rank").append('<i class="bi goldTrophy bi-trophy-fill"></i>');
+
+if($(".profile-rank span").text() === "2")
+$(".profile-rank").append('<i class= "bi silverTrophy bi-trophy-fill"></i>');
+
+if($(".profile-rank span").text() === "3")
+$(".profile-rank").append('<i class "bi bronzeTrophy bi-trophy-fill"></i>');
+
