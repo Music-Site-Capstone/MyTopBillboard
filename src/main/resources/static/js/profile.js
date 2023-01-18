@@ -1,3 +1,8 @@
+$('.list-group-item').each(function(index) {
+    if (index % 2 !== 0) {
+        $(this).css('background-color', '#575757b0')
+    }
+});
 const profile = {
     playlistId: "",
     username: "",

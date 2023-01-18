@@ -77,8 +77,8 @@ div .card {
    background-color: var(--login-gray);
 }
 
-.list-group-item {
-    background-color: var(--navbar-gray);
+ul > .list-group-item {
+    background-color: rgba(87,87,87,1);
     border: none;
     margin: 2px;
 }
@@ -131,14 +131,4 @@ ul > .displayedRating {
 
 .bronzeTrophy{
     color: saddlebrown;
-}
-[role*=listitem]{
-    background-color: var(--bg-leaderboard-row);
-    border: 1px solid var(--bg-leaderboard-row-darker);
-    box-shadow: 1px 1px #888888;
-    margin: 5px;
-}
-
-[role*=listitem]:nth-of-type(odd){
-    background-color: var(--bg-leaderboard-row-darker);
 }
