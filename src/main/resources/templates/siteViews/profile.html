@@ -84,9 +84,9 @@
                         <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush" >
                             <li th:if="${userID} == ${playlist.user.id}" class="list-group-item listOfPlaylists">
                                 <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
-                                <div class="d-flex">
-                                    <h5 class="ms-auto" th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h5>
-                                    <ul class="me-auto" th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
+                                <div class="d-flex justify-content-center">
+                                    <h5 th:if="${ratingCheck.contains(playlist.id)}">My Rating:_</h5>
+                                    <ul class="ratingClass" th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
                                         <li class="displayedRating" th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
                                     </ul>
                                 </div>
