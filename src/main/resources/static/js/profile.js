@@ -33,7 +33,12 @@ const profile = {
                 </div>
                 <div class="song-and-tile-playlist">
                     <p> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
-                    <button>delete</button>
+                    <div class="icon-wrapper">
+                      <div class="lid"></div>
+                      <div class="can">
+                        <button style="opacity: 0%;" id="delete-song">delete</button>
+                      </div>
+                    </div>
                 </div>
             </div>
           </form>
@@ -163,6 +168,8 @@ $('.plName').on('click',async function () {
     profile.playlistUpdate();
     profile.graphUpdate();
 })
+
+
 
 // Displays Trophy Icons on Profile Page Top 3
 
