@@ -1,3 +1,11 @@
+:root {
+    --bg-leaderboard-row: #d3d3da;
+    --bg-leaderboard-row-darker: #bcbcbd;
+    --leaderboard-color: #23cd23;
+    --explore-color: #eaae40;
+    --rating-circle-color: #696767;
+}
+
 /*the following will only show on small screens*/
 @media screen and (max-width: 575px) {}
 /*the following will only show on mid or larger screens*/
@@ -75,8 +83,8 @@ div .card {
     overflow-x: hidden;
 }
 
-.list-group-item {
-    background-color: var(--navbar-gray);
+ul > .list-group-item {
+    background-color: rgba(87,87,87,1);
     border: none;
     margin: 2px;
 }
