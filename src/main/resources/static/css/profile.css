@@ -97,12 +97,11 @@ div .card {
 .user-rank-rating-container {
     display: flex;
     justify-content: space-around;
-    margin: 5px 20px;
+    margin: 5px 15px 10px 15px;
     align-items: center;
-    border: 5px solid var(--navbar-gray);
+    border: 7px solid var(--navbar-gray);
     box-shadow: 2px 3px 5px 2px var(--vibecheck-purple);
     background-color: var(--login-gray);
-    width: 95%
 }
 
 .profile-username, .profile-rank, .profile-rating{
