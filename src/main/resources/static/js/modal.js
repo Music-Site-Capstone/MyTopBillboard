@@ -13,13 +13,14 @@ $(function () {
 
 
 // When the user clicks anywhere outside of the modal, close it
-    const modal = document.getElementsByClassName('dnModal')[0];
+    let modal = document.getElementsByClassName('dnModal')[0];
+    let modalContent = document.getElementsByClassName('.dnModal-content')[0];
     window.onclick = function (event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+            modal.classList.add("hidden");
+            modalContent.classList.add("hidden");
         }
     }
-
 })
 
 
