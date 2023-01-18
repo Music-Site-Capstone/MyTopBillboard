@@ -58,13 +58,11 @@ public class PlaylistController {
     }
 
     @PostMapping("/profile/playlist/song/delete/{username}")
-    public String deletePlaylistSong(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "userId") long userId, @RequestParam(name = "playlistSongId" )long songId){
-        System.out.println("song id" + songId);
+    public String deletePlaylistSong(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "playlistId") long playlistId, @RequestParam(name = "playlistSongId" )long songId){
         Song songToDelete = songDao.findById(songId);
-        Playlist playlistToUpdate = playlistDao.findByPlaylistName(playlistName);
+        Playlist playlistToUpdate = playlistDao.findById(playlistId);
         playlistToUpdate.getSong().remove(songToDelete);
         playlistDao.save(playlistToUpdate);
-//        songDao.delete(songToDelete);
         return "redirect:/profile/" + username; //return response object with a set status method
     }
 
@@ -90,54 +88,6 @@ public class PlaylistController {
         playlistDao.save(playlist);
         return "redirect:/profile";
     }
-
-    //the following is a failed attempt to save songs, it is still here in case any of the code is salvageable, but should be deleted if not used by tue, jan 18.
-
-//    @PostMapping("/song/playlist/{playlistId}")
-//    public @ResponseBody void addSongToDB(@PathVariable long playlistId, @RequestBody Song song) throws JsonProcessingException {
-//        //Object Mapper
-//        //save song with songDao;
-//        Song songData = new Song();
-//        songData.setTitle(song.getTitle());
-//        songData.setArtist(song.getArtist());
-//        songDao.save(songData);
-//        //the following checks if the artist is already in the database and adds if not
-//        if(artistDao.findByartistName(song.getArtist().getArtistName()) == null){
-//            Artist artistData = new Artist();
-//            artistData.setArtistName(song.getArtist().getArtistName());
-//            List<Song> songList = new ArrayList<Song>(){{
-//                add(songData);
-//            }};
-//            artistDao.save(artistData);
-//        }
-//        artistDao.findByartistName(song.getArtist().getArtistName()).getSongs().add(songData);
-//        //we may need to save the above step
-//
-//        //the following checks if the genre is already in the database and adds if not, and also the genre/artist relationship
-//        for(int i = 0; i < song.getArtist().getGenres().size(); i++){
-//            if(genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()) == null){
-//                Genre genreData = new Genre();
-//                genreData.setGenreName(song.getArtist().getGenres().get(i).getGenreName());
-//                List<Artist> artistList = new ArrayList<Artist>(){{
-//                    add(song.getArtist());
-//                    }};
-//                System.out.println(artistList);
-//                genreData.setArtists(artistList);
-//                genreDao.save(genreData);
-//            } else
-//            {
-//                if (!genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().contains(song.getArtist())){
-//                    genreDao.findByGenreName(song.getArtist().getGenres().get(i).getGenreName()).getArtists().add(song.getArtist());
-//                    //we may need to save the above step
-//                    }
-//            }
-//        }
-//
-//
-//        System.out.println("inside addSongToDB");
-//        ObjectMapper mapper = new ObjectMapper();
-//        System.out.println(mapper.writeValueAsString(song));
-//    }
 
 
     // method for adding songs to database and playlist on button click.
