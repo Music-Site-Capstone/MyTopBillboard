@@ -107,7 +107,9 @@ public class UserController {
     }
 
     @GetMapping("/about")
-    public String goToAboutUsPage(){
+    public String goToAboutUsPage(Model model){
+        long userId = Utils.currentUserProfile();
+        model.addAttribute("activeUser", userDao.findById(userId).getUsername());
         return "siteViews/about";
     }
 
