@@ -1,15 +1,16 @@
-// IIFE
-potifyAPIController = (async function() {
-    // check keys.js.
-    const clientId = $('#spotify-keys').attr('data-client-id');
-    const clientSecret = $('#spotify-keys').attr('data-client-secret');
-
+const Spotify = {
+    // check keys.js
+    clientId: $('#spotify-keys').attr('data-client-id'),
+    clientSecret: $('#spotify-keys').attr('data-client-secret'),
+    bearerToken: "",
+    usersSearch: "",
+    // artistID: "",
     // Token is good for 1 hour, but each call should get a new one.
-    const getToken = async() => {
+    getToken: async () => {
         const response = await fetch('https://accounts.spotify.com/api/token',{
             method: 'POST',
             headers: {
-                'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret),
+                'Authorization' : 'Basic ' + btoa(Spotify.clientId + ':' + Spotify.clientSecret),
                 'Content-Type' : 'application/x-www-form-urlencoded'
             },
             body: 'grant_type=client_credentials'
@@ -18,31 +19,10 @@ potifyAPIController = (async function() {
         const data = await response.json()
         console.log(data);
         console.log(data.access_token);
-        return data.access_token;
-    }
-
-    // The following is the function that times the API call on key up in the search bar
-    let bearerToken = await getToken();
-    let usersSearch;
-    $('.modal-search-bar').on('keyup', function() {
-        let searchValue = $(this).val();
-        if (usersSearch === searchValue) {
-            usersSearch = searchValue;
-        } else {
-            setTimeout(async function () {
-                let timedSearch = $('.modal-search-bar').val();
-                if (searchValue === timedSearch) {
-                    await getSearch(bearerToken, timedSearch);
-                } else {
-                    usersSearch = timedSearch;
-                }
-            }, 300);
-        }
-    })
-
+        Spotify.bearerToken = data.access_token;
+    },
     // The following is the actual API call function
-    let artistID;
-    const getSearch = async(bearer, search = usersSearch, artistID) => {
+    getSearch: async(bearer, search = Spotify.usersSearch) => {
         const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${search}`,{
             method: 'GET',
             headers: {
@@ -51,8 +31,8 @@ potifyAPIController = (async function() {
             }
         });
         const data = await response.json()
-        artistID = data.tracks.items[0].artists[0].id;
-        console.log(artistID);
+        // Spotify.artistID = data.tracks.items[0].artists[0].id;
+        // console.log(Spotify.artistID);
         $('.modal-fill').html('');
         console.log(data);
 
@@ -68,7 +48,6 @@ potifyAPIController = (async function() {
             image = await data.tracks.items[i].album.images[data.tracks.items[i].album.images.length - 1].url;
             id = await data.tracks.items[i].id;
             previewUrl = await data.tracks.items[i].preview_url;
-            // return track;
 
 //Appending Image, Artist, and Track Name to the Modal Search
             $('.modal-fill').append(
@@ -101,10 +80,9 @@ potifyAPIController = (async function() {
                         'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
                     },
                     body: JSON.stringify(song)
-
                 }
                 console.log(`/song/playlist/${$('#playlist-name').attr("plId")}`);
-                let addedSong = await fetch(`/song/playlist/${$('#playlist-name').attr("plId")}`, fetchOptions)
+                let addedSong = await fetch(`/song/playlist/${$('#playlist-name').attr("plId")}`, fetchOptions);
 
                 $(e.target.parentElement).html('');
             }).on("keypress", '.modal-search-bar', function (event) {
@@ -112,10 +90,25 @@ potifyAPIController = (async function() {
                     event.preventDefault();
                 }
             })
-
         }
     }
+}
 
+Spotify.getToken();
 
-
-})();
+// The following is the function that times the API call on key up in the search bar
+$('.modal-search-bar').on('keyup', function() {
+    let searchValue = $(this).val();
+    if (Spotify.usersSearch === searchValue) {
+        Spotify.usersSearch = searchValue;
+    } else {
+        setTimeout(async function () {
+            let timedSearch = $('.modal-search-bar').val();
+            if (searchValue === timedSearch) {
+                await Spotify.getSearch(Spotify.bearerToken, timedSearch);
+            } else {
+                Spotify.usersSearch = timedSearch;
+            }
+        }, 300);
+    }
+})
