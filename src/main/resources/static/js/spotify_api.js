@@ -109,3 +109,4 @@ $('.modal-search-bar').on('keyup', function() {
         }, 300);
     }
 })
+
