@@ -4,7 +4,6 @@ const Spotify = {
     clientSecret: $('#spotify-keys').attr('data-client-secret'),
     bearerToken: "",
     usersSearch: "",
-    // artistID: "",
     // Token is good for 1 hour, but each call should get a new one.
     getToken: async () => {
         const response = await fetch('https://accounts.spotify.com/api/token',{
@@ -31,8 +30,6 @@ const Spotify = {
             }
         });
         const data = await response.json()
-        // Spotify.artistID = data.tracks.items[0].artists[0].id;
-        // console.log(Spotify.artistID);
         $('.modal-fill').html('');
         console.log(data);
 

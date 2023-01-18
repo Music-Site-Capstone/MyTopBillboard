@@ -1,4 +1,3 @@
-
 const profile = {
     playlistId: "",
     username: "",
@@ -74,7 +73,6 @@ const profile = {
             </a>`);
         }
     },
-
     graphUpdate(){
         //mapps all ratings of a single playlist into an array
         let mappedArr = [];
