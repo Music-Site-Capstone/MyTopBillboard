@@ -170,5 +170,5 @@ if($(".profile-rank span").text() === "2")
 $(".profile-rank").append('<i class= "bi silverTrophy bi-trophy-fill"></i>');
 
 if($(".profile-rank span").text() === "3")
-$(".profile-rank").append('<i class "bi bronzeTrophy bi-trophy-fill"></i>');
+$(".profile-rank").append('<i class="bi bronzeTrophy bi-trophy-fill"></i>');
 
