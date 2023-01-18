@@ -51,7 +51,6 @@
                     </form>
                 </li>
             </ul>
-
         </div>
     </nav>
 
@@ -76,7 +75,7 @@
 
     <div class="container-fluid text-center flex-wrap">
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
+            <div class="profileContainer col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
                 <div class="card m-auto justify-content-center" id="playlist-background">
                     <div class="card-header border">
                         Playlists:
@@ -84,7 +83,6 @@
                     <div class="playlistScroll">
                         <ul  th:each="playlist : ${allPlaylists}" class="list-group list-group-flush ">
                             <li th:if="${userID} == ${playlist.user.id}" class="list-group-item">
-
                                 <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
                                 <div class="d-flex">
                                     <h5 class="ms-auto" th:if="${ratingCheck.contains(playlist.id)}">My Rating: </h5>
@@ -110,7 +108,6 @@
                                         </form>
                                     </div>
                                 </div>
-
                                 <!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
                                 <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
                                     <button>delete</button>
@@ -118,7 +115,6 @@
                                     <input  th:value="${playlist.id}" name="playlistId" type="hidden">
                                 </form>
                             </li>
-
                         </ul>
                     </div>
                     <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
@@ -126,9 +122,9 @@
                         <input  th:value="${activeUserID}" name="userId" type="hidden">
                     </form>
                 </div>
-
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
+
+            <div class="profileContainer col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
                 <div class="card m-auto song-container">
                     <div class="card-header playlist-title text-center" id="playlist-name">click the playlist name to fill</div>
                     <div id="allPlaylistSongs" class="songScroll"></div>
@@ -145,7 +141,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
