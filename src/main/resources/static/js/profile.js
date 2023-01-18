@@ -21,7 +21,7 @@ const profile = {
           <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
                           
               <input type="hidden" name="_csrf" value=${csrfValue}>
-              <input  value=${profile.playlistId} name="userId" type="hidden">
+              <input  value=${profile.playlistId} name="playlistId" type="hidden">
               <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
               <input  value=${profile.dataF.song[i].id} name="playlistSongId" type="hidden">
           
