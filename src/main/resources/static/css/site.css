@@ -52,6 +52,7 @@ body {
 }
 
 .page-wrapper {
+    position: fixed;
     overflow-x:hidden;
     overflow-y:auto;
     height: 100vh;
