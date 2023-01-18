@@ -113,3 +113,15 @@ ul > .displayedRating {
     color: #02a102;
     padding: 0;
 }
+
+.goldTrophy{
+    color: darkgoldenrod;
+}
+
+.silverTrophy{
+    color: silver;
+}
+
+.bronzeTrophy{
+    color: saddlebrown;
+}
