@@ -163,6 +163,9 @@ $('.plName').on('click',async function () {
     profile.playlistUpdate();
     profile.graphUpdate();
 })
+
+// Displays Trophy Icons on Profile Page Top 3
+
 if($(".profile-rank span").text() === "1")
 $(".profile-rank").append('<i class="bi goldTrophy bi-trophy-fill"></i>');
 
