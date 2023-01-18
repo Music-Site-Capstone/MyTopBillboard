@@ -67,6 +67,12 @@ div .card {
 
 #playlist-background, .song-container {
    background-color: var(--login-gray);
+
+}
+
+.profile-container {
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .list-group-item {
@@ -81,6 +87,7 @@ div .card {
 .playlistScroll {
     max-height: 45vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
+    overflow-x: hidden;
 }
 .songScroll{
     max-height: 40vh; /* Set the height of the container */
