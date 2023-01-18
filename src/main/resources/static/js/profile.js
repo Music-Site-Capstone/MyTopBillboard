@@ -57,7 +57,6 @@ const profile = {
                 </div>
                 <div class="song-and-tile-playlist">
                     <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
-
                 </div>
             </div>
           </form>
