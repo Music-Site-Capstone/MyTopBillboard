@@ -110,7 +110,13 @@
                                 </div>
                                 <!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
                                 <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
-                                    <button>delete</button>
+                                    <div class="icon-wrapper">
+                                        <div class="lid"></div>
+                                        <div class="can">
+                                    <button style="opacity: 0%;" id="delete-button">button</button>
+                                        </div>
+                                    </div>
+
                                     <input  th:value="${activeUserID}" name="userId" type="hidden">
                                     <input  th:value="${playlist.id}" name="playlistId" type="hidden">
                                 </form>
@@ -118,7 +124,7 @@
                         </ul>
                     </div>
                     <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
-                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Enter A New Playlist Name" th:if="${userID} == ${activeUserID}">
+                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Click To Create Playlist" th:if="${userID} == ${activeUserID}">
                         <input  th:value="${activeUserID}" name="userId" type="hidden">
                     </form>
                 </div>
