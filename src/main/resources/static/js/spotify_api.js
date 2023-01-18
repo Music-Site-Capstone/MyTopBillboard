@@ -69,7 +69,7 @@ const Spotify = {
                         artistName: $(e.target.previousElementSibling.children[0]).text()
                     }
                 }
-                console.log(song);
+                console.log('test', song);
                 let fetchOptions = {
                     method: 'POST',
                     headers: {
