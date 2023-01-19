@@ -72,8 +72,8 @@
 /*}*/
 
 
-.navbar-submit-button {
-    background: var(--vibecheck-purple-gradient);
+.navbar-submit-button, .navbar-submit-button-2 {
+    background: radial-gradient(circle, rgba(144,129,134,1) 0%, rgba(109,0,191,1) 100%);
     color: whitesmoke;
 }
 
