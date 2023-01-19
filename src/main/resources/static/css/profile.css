@@ -37,12 +37,13 @@
     color:white;
 }
 
-.song-and-title-playlist{
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    margin-right: 1rem;
+.song-and-title-playlist {
+    display: flex !important;
+    flex-flow: wrap !important;
+    align-items: center !important;
+    margin-right: 1rem !important;
 }
+
 .image-for-playlist {
     padding: 5px;
     margin-left: 1rem;
