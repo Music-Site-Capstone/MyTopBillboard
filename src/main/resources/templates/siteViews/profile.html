@@ -113,7 +113,7 @@
                                 </div>
                                 <!--                    <a th:href="@{#}"><p th:text="${playlist.playlistName}" th:class="@{|playlist${playlist.id}|}"></p> &lt;!&ndash;need to make the href fill the other table&ndash;&gt;-->
                                 <form th:if="${activeUserID} == ${userID}" th:action="@{|/profile/playlist/delete/${activeUser}|}" method="post" class="playlistForm">
-                                        <div>
+                                        <div class="icon-wrapper-container">
                                             <div>
                                                 <div class="icon-wrapper">
                                                     <div class="lid"></div>
