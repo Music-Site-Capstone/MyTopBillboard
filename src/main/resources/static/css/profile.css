@@ -30,17 +30,23 @@
 
 .song-container {
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
-    text-align: end;
+    /*justify-content: space-between;*/
+    /*text-align: end;*/
     color:white;
 }
 
-.song-and-title-playlist{
-    text-align: right;
+.song-and-title-playlist {
+    display: flex !important;
+    flex-flow: wrap !important;
+    align-items: center !important;
+    margin-right: 1rem !important;
 }
+
 .image-for-playlist {
-    padding: 2px;
-    align-self: center;
+    padding: 5px;
+    margin-left: 1rem;
     transition: all 200ms;
 }
 .plName{
@@ -82,7 +88,10 @@ div .card {
     overflow-y: auto;
     overflow-x: hidden;
 }
-
+li.list-group-item.listOfPlaylists {
+    float: left;
+    clear: both;
+}
 ul > .list-group-item {
     background-color: rgba(87,87,87,1);
     border: none;
