@@ -34,6 +34,9 @@
     #column-leaderboard {
         width: 65vw;
         margin: 5vw;
+        max-height: 100vh; /* Set the height of the container */
+        overflow-y: scroll; /* Enable scrolling on the y-axis */
+
     }
 
     #column-explore {
@@ -90,6 +93,7 @@
     border: 1px solid var(--bg-leaderboard-row-darker);
     box-shadow: 1px 1px #888888;
     margin: 5px;
+
 }
 .item-in-leaderboard:nth-of-type(odd){
     background-color: var(--bg-leaderboard-row-darker);
