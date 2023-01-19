@@ -34,7 +34,7 @@ public class Utils {
     public static float averageRating (User user){
         List<Playlist> playlists = user.getPlaylist();
         float score = 0F;
-        int counter = 0;
+        float counter = 0F;
         for (int i = 0; i < playlists.size(); i++){
             List<Rating> ratings = playlists.get(i).getRating();
             for (int j = 0; j < ratings.size(); j++){
