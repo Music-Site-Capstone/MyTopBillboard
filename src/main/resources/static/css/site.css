@@ -194,6 +194,10 @@ body {
     padding: 1px 0 10px 0;
 }
 
+.icon-wrapper-container{
+    display:flex;
+    justify-content: flex-end;
+}
 
 
 .lid{
