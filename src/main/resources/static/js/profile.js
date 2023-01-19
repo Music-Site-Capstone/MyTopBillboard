@@ -41,7 +41,7 @@ const profile = {
                     <div class="icon-wrapper">
                       <div class="lid"></div>
                       <div class="can">
-                        <button style="opacity: 0%;" id="delete-song">delete</button>
+                        <button hidden id="delete-song">delete</button>
                       </div>
                     </div>
                 </div>
@@ -174,6 +174,10 @@ $('.plName').on('click',async function () {
     profile.graphUpdate();
 })
 
+//
+$(document).on('click','.icon-wrapper',function(e){
+    $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
+})
 
 
 // Displays Trophy Icons on Profile Page Top 3
