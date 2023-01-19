@@ -71,6 +71,12 @@
 /*    margin-left: auto;*/
 /*}*/
 
+
+.navbar-submit-button {
+    background: var(--vibecheck-purple-gradient);
+    color: whitesmoke;
+}
+
 .rank-number {
     padding: 20px;
 }

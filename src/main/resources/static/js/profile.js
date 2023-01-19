@@ -32,7 +32,7 @@ const profile = {
           
             <div class="song-container">
                 <div class="image-for-playlist">
-                    <a href="${profile.dataF.song[i].previewUrl}">
+                    <a href="${profile.dataF.song[i].previewUrl}" target="_blank">
                         <img src="${profile.dataF.song[i].image}" alt="fail">   
                     </a>
                 </div>
