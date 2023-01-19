@@ -22,46 +22,45 @@ const profile = {
             // you can only delete or add more songs on your own playlists
             if (profile.activeUserId === profile.userId) {
                 $('#allPlaylistSongs').append(`
-        <div class="search-line border">
-          <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
-                          
-              <input type="hidden" name="_csrf" value=${csrfValue}>
-              <input  value=${profile.playlistId} name="playlistId" type="hidden">
-              <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
-              <input  value=${profile.dataF.song[i].id} name="playlistSongId" type="hidden">
-          
-            <div class="song-container">
-                <div class="image-for-playlist">
-                    <a href="${profile.dataF.song[i].previewUrl}">
-                        <img src="${profile.dataF.song[i].image}" alt="fail">   
-                    </a>
-                </div>
-                <div class="song-and-tile-playlist">
-                    <p> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
-                    <div class="icon-wrapper">
-                      <div class="lid"></div>
-                      <div class="can">
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </form>
-        </div>`);
+                    <div class="search-line border">
+                      <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
+                                      
+                        <input type="hidden" name="_csrf" value=${csrfValue}>
+                        <input  value=${profile.playlistId} name="playlistId" type="hidden">
+                        <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
+                        <input  value=${profile.dataF.song[i].id} name="playlistSongId" type="hidden">
+                      
+                        <div class="song-container">
+                            <div class="image-for-playlist">
+                                <a href="${profile.dataF.song[i].previewUrl}">
+                                    <img src="${profile.dataF.song[i].image}" alt="fail">   
+                                </a>
+                            </div>
+                            <div class="song-and-tile-playlist">
+                                <p> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
+                                <div class="icon-wrapper">
+                                  <div class="lid"></div>
+                                  <div class="can"></div>
+                                </div>
+                            </div>
+                        </div>
+                      </form>
+                    </div>`);
                 //else is the version for someone else to view your playlist. delete and add songs will not be added.
             } else {
                 $('#allPlaylistSongs').append(`
-        <div class="search-line border">
-            <div class="song-container">
-                <div class="image-for-playlist">
-                    <a href="${profile.dataF.song[i].previewUrl}">
-                        <img src="${profile.dataF.song[i].image}" alt="fail">   
-                    </a> 
-                </div>
-                <div class="song-and-tile-playlist d-flex align-items-center" id="song-and-title-playlist">
-                    <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
-                </div>
-            </div>
-        </div>`);
+                    <div class="search-line border">
+                        <div class="song-container">
+                            <div class="image-for-playlist">
+                                <a href="${profile.dataF.song[i].previewUrl}">
+                                    <img src="${profile.dataF.song[i].image}" alt="fail">   
+                                </a> 
+                            </div>
+                            <div class="song-and-tile-playlist" d-flex align-items-center" id="song-and-title-playlist">
+                                <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
+                            </div>
+                        </div>
+                    </div>`);
             }
         }
 
@@ -138,7 +137,7 @@ const profile = {
                         beginAtZero: true
                     }
                 }
-            },
+            }
         };
 
         const ctx = document.getElementById('myChart');
@@ -174,11 +173,11 @@ $(document).on('click','.icon-wrapper',function(e){
 // Displays Trophy Icons on Profile Page Top 3
 
 if($(".profile-rank span").text() === "1")
-$(".profile-rank").append('<i class="bi goldTrophy bi-trophy-fill"></i>');
+    $(".profile-rank").append('<i class="bi goldTrophy bi-trophy-fill"></i>');
 
 if($(".profile-rank span").text() === "2")
-$(".profile-rank").append('<i class= "bi silverTrophy bi-trophy-fill"></i>');
+    $(".profile-rank").append('<i class= "bi silverTrophy bi-trophy-fill"></i>');
 
 if($(".profile-rank span").text() === "3")
-$(".profile-rank").append('<i class="bi bronzeTrophy bi-trophy-fill"></i>');
+    $(".profile-rank").append('<i class="bi bronzeTrophy bi-trophy-fill"></i>');
 
