@@ -37,14 +37,17 @@ ol, li {
 }
 
 img {
-    max-width: 40vw;
+    max-width: 30vw;
+    height: 45vh;
 }
 
 .carousel {
-    position: relative;
     padding-top: 75%;
     filter: drop-shadow(0 0 10px #0003);
     perspective: 100px;
+    width: 80%;
+    margin: 0 10vw;
+    position: fixed;
 }
 
 .carousel__viewport {
@@ -171,7 +174,7 @@ img {
 
 
 .github-button {
-    background-color: red;
+    background-color: #ff3f3f;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -182,13 +185,13 @@ img {
     background-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
     background-size: contain;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 3em;
+    height: 3em;
     margin-right: 10px;
 }
 
 .linkedin-button {
-    background-color: #0077B5;
+    background-color: #97e3ff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -200,7 +203,12 @@ img {
     background-image: url("https://icons-for-free.com/iconfiles/png/512/super+tiny+icons+linkedin-1324450747503589428.png");
     background-size: contain;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 3em;
+    height: 3em;
     margin-right: 10px;
+}
+
+p {
+    padding-left: 3em;
+    padding-right: 3em;
 }
