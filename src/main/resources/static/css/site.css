@@ -190,7 +190,8 @@ body {
 .icon-wrapper {
     position: relative;
     cursor: pointer;
-    margin: 0 48%;
+    margin: 0 1rem;
+    padding: 1px 0 10px 0;
 }
 .lid{
     position: relative;
