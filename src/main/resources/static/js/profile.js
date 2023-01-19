@@ -36,7 +36,7 @@ const profile = {
                                     <img src="${profile.dataF.song[i].image}" alt="fail">   
                                 </a>
                             </div>
-                            <div class="song-and-tile-playlist">
+                            <div class="song-and-title-playlist">
                                 <p> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
                                 <div class="icon-wrapper">
                                   <div class="lid"></div>
@@ -56,7 +56,7 @@ const profile = {
                                     <img src="${profile.dataF.song[i].image}" alt="fail">   
                                 </a> 
                             </div>
-                            <div class="song-and-tile-playlist" id="song-and-title-playlist">
+                            <div class="song-and-title-playlist" id="song-and-title-playlist">
                                 <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
                             </div>
                         </div>

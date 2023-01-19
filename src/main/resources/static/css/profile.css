@@ -41,10 +41,11 @@
 }
 
 .song-and-title-playlist {
-    display: flex !important;
-    flex-flow: wrap !important;
-    align-items: center !important;
-    margin-right: 1rem !important;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
 }
 
 .image-for-playlist {
