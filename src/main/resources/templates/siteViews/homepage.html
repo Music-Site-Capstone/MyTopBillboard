@@ -62,16 +62,19 @@
             <div class="column-for-leaderboard-rows" id="column-leaderboard">
                 <h1 id="leaderboard-header" class="shadow">LEADERBOARD</h1>
                 <!--  The following containsthe start of the rankings loop as well as the limiter of that loop to 10m entries  -->
-                <div th:each="user,i:${topRatedUsers}" class="item-in-leaderboard">
-                    <div class="item-in-column" id="leaderboard-item">
-                      <!-- The following inserts the user's current rank, name, and rating in that order -->
-                       <div class="rank-wrapper">
-                           <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1} "></span>
-                       </div>
-                        <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="leaderboard-users"></a>
-                        <span th:text="${userRatingsList[i.index]}" class="rating-number rounded-edges"></span>
+                <div class="leaderboardScroll">
+                    <div th:each="user,i:${topRatedUsers}" class="item-in-leaderboard">
+                        <div class="item-in-column" id="leaderboard-item">
+                            <!-- The following inserts the user's current rank, name, and rating in that order -->
+                            <div class="rank-wrapper">
+                                <span class="rank-number" th:text="${topRatedUsers.indexOf(user) + 1} "></span>
+                            </div>
+                            <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="leaderboard-users"></a>
+                            <span th:text="${userRatingsList[i.index]}" class="rating-number rounded-edges"></span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!--row for Explore section-->

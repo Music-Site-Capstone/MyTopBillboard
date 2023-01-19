@@ -29,14 +29,19 @@
 @media screen and (min-width: 576px) {
     .homepage-container {
         display: flex;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     #column-leaderboard {
         width: 65vw;
         margin: 5vw;
+
+
+    }
+  .leaderboardScroll {
         max-height: 100vh; /* Set the height of the container */
         overflow-y: scroll; /* Enable scrolling on the y-axis */
-
     }
 
     #column-explore {
