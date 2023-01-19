@@ -40,7 +40,7 @@
 
     }
   .leaderboardScroll {
-        max-height: 100vh; /* Set the height of the container */
+        max-height: 93vh; /* Set the height of the container */
         overflow-y: scroll; /* Enable scrolling on the y-axis */
     }
 
