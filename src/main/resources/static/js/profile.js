@@ -41,7 +41,6 @@ const profile = {
                     <div class="icon-wrapper">
                       <div class="lid"></div>
                       <div class="can">
-                        <button style="opacity: 0%;" id="delete-song">delete</button>
                       </div>
                     </div>
                 </div>
@@ -52,13 +51,6 @@ const profile = {
             } else {
                 $('#allPlaylistSongs').append(`
         <div class="search-line border">
-          <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
-                          
-              <input type="hidden" name="_csrf" value=${csrfValue}>
-              <input  value=${profile.playlistId} name="userId" type="hidden">
-              <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
-              <input  value=${profile.dataF.song[i].id} name="playlistSongId" type="hidden">
-          
             <div class="song-container">
                 <div class="image-for-playlist">
                     <a href="${profile.dataF.song[i].previewUrl}">
@@ -69,7 +61,6 @@ const profile = {
                     <p  class="title-color"> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
                 </div>
             </div>
-          </form>
         </div>`);
             }
         }
@@ -174,6 +165,10 @@ $('.plName').on('click',async function () {
     profile.graphUpdate();
 })
 
+//
+$(document).on('click','.icon-wrapper',function(e){
+    $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
+})
 
 
 // Displays Trophy Icons on Profile Page Top 3
