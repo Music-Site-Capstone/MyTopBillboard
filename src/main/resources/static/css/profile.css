@@ -4,6 +4,7 @@
     --leaderboard-color: #23cd23;
     --explore-color: #eaae40;
     --rating-circle-color: #696767;
+    --vibecheck-purple-gradient: radial-gradient(circle, rgba(144,129,134,1) 0%, rgba(109,0,191,1) 100%);
 }
 
 /*the following will only show on small screens*/
@@ -27,6 +28,8 @@
 .search-image{
     width:85px;
 }
+
+
 
 .song-container {
     display: flex;
@@ -54,13 +57,35 @@
 }
 
 .searchline > .addButton {
-    background-color: green;
+    background: var(--vibecheck-purple-gradient);
     color: whitesmoke;
+    width: 22%;
 
 }
 
 .searchline > .addButton:hover {
     transform: scale(1.1);
+}
+
+.navbar-submit-button {
+    background: var(--vibecheck-purple-gradient);
+    color: whitesmoke;
+}
+
+
+.rate-button {
+    background: var(--vibecheck-purple-gradient);
+    color: whitesmoke;
+    text-align: center;
+    width: 20%;
+}
+
+.rate-button:hover {
+    transform: scale(1.1);
+}
+
+select#rating {
+    width: 15%;
 }
 
 .plName, .card-header {

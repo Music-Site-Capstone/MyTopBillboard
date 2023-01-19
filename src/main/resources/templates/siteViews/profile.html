@@ -51,7 +51,7 @@
                 <li class="nav-item" id="search-bar">
                     <form class="d-flex" role="search" name="codeForm">
                         <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">
-                        <button class="btn btn-outline-success" id="submit" type="submit">Search</button>
+                        <button class="btn navbar-submit-button" id="submit" type="submit">Search</button>
                     </form>
                 </li>
             </ul>
@@ -108,7 +108,7 @@
                                                 <option th:value="1">1</option>
                                             </select>
                                             <input type="hidden" name="playlistId" th:value="${playlist.id}">
-                                            <button>rate</button>
+                                            <button class="rate-button">rate</button>
                                         </form>
                                     </div>
                                 </div>
@@ -132,7 +132,7 @@
                         </ul>
                     </div>
                     <form th:action="@{|/profile/${activeUser}|}" method="post" class="playlistForm">
-                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Click To Create Playlist" th:if="${userID} == ${activeUserID}">
+                        <input name="playlistName" id="newPlaylistInput" autocomplete="off" placeholder="Enter new Playlist Name" th:if="${userID} == ${activeUserID}">
                         <input  th:value="${activeUserID}" name="userId" type="hidden">
                     </form>
                 </div>
