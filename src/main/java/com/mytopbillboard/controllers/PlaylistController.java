@@ -57,13 +57,13 @@ public class PlaylistController {
         return "redirect:/profile/" + username; //return response object with a set status method
     }
 
-    @PostMapping("/profile/playlist/song/delete/{username}")
-    public String deletePlaylistSong(@PathVariable("username") String username, @RequestParam(name = "playlistName") String playlistName, @RequestParam(name = "playlistId") long playlistId, @RequestParam(name = "playlistSongId" )long songId){
+    @PostMapping("/profile/playlist/{songId}/delete/{username}")
+    public @ResponseBody void deletePlaylistSong(@PathVariable("username") String username, @PathVariable("songId") long songId, @RequestBody Playlist playlist) throws JsonProcessingException{
         Song songToDelete = songDao.findById(songId);
-        Playlist playlistToUpdate = playlistDao.findById(playlistId);
+        Playlist playlistToUpdate = playlistDao.findById(playlist.getId());
         playlistToUpdate.getSong().remove(songToDelete);
         playlistDao.save(playlistToUpdate);
-        return "redirect:/profile/" + username; //return response object with a set status method
+//        return "redirect:/profile/" + username; //return response object with a set status method
     }
 
 
