@@ -33,8 +33,8 @@ public class Utils {
 
     public static float averageRating (User user){
         List<Playlist> playlists = user.getPlaylist();
-        float score = 0F;
-        float counter = 0F;
+        float score = 0.00F;
+        float counter = 0.00F;
         for (int i = 0; i < playlists.size(); i++){
             List<Rating> ratings = playlists.get(i).getRating();
             for (int j = 0; j < ratings.size(); j++){
@@ -43,7 +43,7 @@ public class Utils {
             }
         }
         if (counter > 0){
-            return Math.round(score/counter * 100.0f) / 100.0f;
+            return Math.round(score/counter * 100.0F) / 100.0F;
         }
         return 0.00F;
     }
