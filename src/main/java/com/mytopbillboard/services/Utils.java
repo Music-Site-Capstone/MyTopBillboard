@@ -39,7 +39,7 @@ public class Utils {
             List<Rating> ratings = playlists.get(i).getRating();
             for (int j = 0; j < ratings.size(); j++){
                 score += ratings.get(j).getScore();
-                counter++;
+                counter = counter + 1.00F;
             }
         }
         if (counter > 0){

@@ -61,7 +61,7 @@ public class UserController {
         });
         // the next 3 lines set up the rank to be displayed on the page
         List<User> users = userDao.findAll();
-        users.sort((user2, user1) -> Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername())) * 1000) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))) * 1000);
+        users.sort((user2, user1) -> (Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername())) * 1000)) - (Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))) * 1000));
         model.addAttribute("rank", users.indexOf(userDao.findByUsername(username)) + 1);
         model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
         model.addAttribute("userID", userDao.findByUsername(username).getId());
