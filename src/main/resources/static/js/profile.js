@@ -22,9 +22,7 @@ const profile = {
             // you can only delete or add more songs on your own playlists
             if (profile.activeUserId === profile.userId) {
                 $('#allPlaylistSongs').append(`
-                    <div class="search-line border">
-                      <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
-                                      
+                    <div class="search-line border">                                      
                         <input type="hidden" name="_csrf" value=${csrfValue}>
                         <input  value=${profile.playlistId} name="playlistId" type="hidden">
                         <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
@@ -44,7 +42,6 @@ const profile = {
                                 </div>
                             </div>
                         </div>
-                      </form>
                     </div>`);
                 //else is the version for someone else to view your playlist. delete and add songs will not be added.
             } else {
@@ -165,8 +162,29 @@ $('.plName').on('click',async function () {
 })
 
 //
-$(document).on('click','.icon-wrapper',function(e){
-    $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
+$(document).on('click','.icon-wrapper',async function(e){
+    // $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
+    let songId = $(e.target.parentElement.parentElement.parentElement.previousElementSibling).val();
+    let playlistIdToUpdate = $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling).val();
+
+    let playlist = {
+        playlistName: $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling).val(),
+        id: playlistIdToUpdate
+        }
+    let fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling).val()
+        },
+        body: JSON.stringify(playlist)
+    }
+    let deletedSong = await fetch(`/profile/playlist/${songId}/delete/${profile.username}`, fetchOptions);
+
+    // the following reloads the playlist with current songs
+    profile.playlistId = playlistIdToUpdate;
+    profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
+    profile.playlistUpdate();
 })
 
 
