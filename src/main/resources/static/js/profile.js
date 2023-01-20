@@ -36,7 +36,7 @@ const profile = {
                             </div>
                             <div class="song-and-title-playlist">
                                 <p> ${profile.dataF.song[i].title} - ${profile.dataF.song[i].artist.artistName} </p>
-                                <div class="icon-wrapper">
+                                <div class="icon-wrapper" searchId="target">
                                   <div class="lid"></div>
                                   <div class="can"></div>
                                 </div>
@@ -162,29 +162,33 @@ $('.plName').on('click',async function () {
 })
 
 //
-$(document).on('click','.icon-wrapper',async function(e){
-    // $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
-    let songId = $(e.target.parentElement.parentElement.parentElement.previousElementSibling).val();
-    let playlistIdToUpdate = $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling).val();
+$(document).on('click',".icon-wrapper[searchId='target']",async function(e){
+        // $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
+        let songId = $(e.target.parentElement.parentElement.parentElement.previousElementSibling).val();
+        let playlistIdToUpdate = $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling).val();
 
-    let playlist = {
-        playlistName: $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling).val(),
-        id: playlistIdToUpdate
+        let playlist = {
+            playlistName: $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling).val(),
+            id: playlistIdToUpdate
         }
-    let fetchOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling).val()
-        },
-        body: JSON.stringify(playlist)
-    }
-    let deletedSong = await fetch(`/profile/playlist/${songId}/delete/${profile.username}`, fetchOptions);
+        let fetchOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $(e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling).val()
+            },
+            body: JSON.stringify(playlist)
+        }
+        let deletedSong = await fetch(`/profile/playlist/${songId}/delete/${profile.username}`, fetchOptions);
 
-    // the following reloads the playlist with current songs
-    profile.playlistId = playlistIdToUpdate;
-    profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
-    profile.playlistUpdate();
+        // the following reloads the playlist with current songs
+        profile.playlistId = playlistIdToUpdate;
+        profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
+        profile.playlistUpdate();
+
+})
+$(document).on('click',".icon-wrapper[searchId='not-target']",async function(e){
+    $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
 })
 
 
