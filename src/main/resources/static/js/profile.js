@@ -22,9 +22,7 @@ const profile = {
             // you can only delete or add more songs on your own playlists
             if (profile.activeUserId === profile.userId) {
                 $('#allPlaylistSongs').append(`
-                    <div class="search-line border">
-                      <form action="/profile/playlist/song/delete/${profile.username}" method="post" class="playlistForm"> 
-                                      
+                    <div class="search-line border">                                      
                         <input type="hidden" name="_csrf" value=${csrfValue}>
                         <input  value=${profile.playlistId} name="playlistId" type="hidden">
                         <input  value=${profile.dataF.playlistName} name="playlistName" type="hidden">
@@ -44,7 +42,6 @@ const profile = {
                                 </div>
                             </div>
                         </div>
-                      </form>
                     </div>`);
                 //else is the version for someone else to view your playlist. delete and add songs will not be added.
             } else {
