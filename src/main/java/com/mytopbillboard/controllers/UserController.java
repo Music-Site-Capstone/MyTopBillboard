@@ -61,8 +61,21 @@ public class UserController {
         });
         // the next 3 lines set up the rank to be displayed on the page
         List<User> users = userDao.findAll();
-        users.sort((user2, user1) -> (Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername())) * 1000)) - (Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))) * 1000));
-        model.addAttribute("rank", users.indexOf(userDao.findByUsername(username)) + 1);
+        List<User> rankingList = new ArrayList<>();
+        User testuser;
+        for (int i = 0; i < users.size(); i++){
+            testuser = users.get(i);
+            for (int j = i; j < users.size(); j++){
+                if (Utils.averageRating(testuser) < Utils.averageRating(users.get(j))){
+                    testuser = users.get(j);
+                }
+            }
+            rankingList.add(testuser);
+            users.remove(testuser);
+                i--;
+        }
+//        users.sort((user2, user1) -> (Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername())) * 1000)) - (Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))) * 1000));
+        model.addAttribute("rank", (rankingList.indexOf(userDao.findByUsername(username))) + 1);
         model.addAttribute("pageOwner",userDao.findByUsername(username).getUsername());
         model.addAttribute("userID", userDao.findByUsername(username).getId());
         model.addAttribute("activeUser", userDao.findById(userId).getUsername());

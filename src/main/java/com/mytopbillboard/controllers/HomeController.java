@@ -42,14 +42,24 @@ public class HomeController {
                 firstFive.add(userDao.findAll().get(randomUserId + i - 1));
             }
         }
-
         // The following contains the logic for the leaderboard and organizing user ranks. creates a sorted list of all users.
         //consider moving to utils to also use with profile.
-        users.sort((user2, user1) -> Math.round(Utils.averageRating(userDao.findByUsername(user1.getUsername())) * 1000) - Math.round(Utils.averageRating(userDao.findByUsername(user2.getUsername()))) * 1000);
-        model.addAttribute("topRatedUsers", users);
+        List<User> rankingList = new ArrayList<>();
+        User testuser;
+        for (int i = 0; i < users.size(); i++){
+            testuser = users.get(i);
+            for (int j = i; j < users.size(); j++){
+                if (Utils.averageRating(testuser) < Utils.averageRating(users.get(j))){
+                    testuser = users.get(j);
+                }
+            }
+            rankingList.add(testuser);
+            users.remove(testuser);
+            i--;
+        }        model.addAttribute("topRatedUsers", rankingList);
         //the following must be below "topratedusers" and is responsible for getting the list of userRatings
         List<Float> ratingnumber = new ArrayList<>();
-        users.forEach(user -> {
+        rankingList.forEach(user -> {
             ratingnumber.add(Utils.averageRating(user));
         });
         model.addAttribute("userRatingsList", ratingnumber);

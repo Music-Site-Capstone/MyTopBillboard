@@ -5,6 +5,7 @@ body {
     font-family: 'Lato', sans-serif;
     background: rgb(90,64,87);
     background: radial-gradient(circle, rgba(90,64,87,1) 0%, rgb(37, 35, 35) 100%);
+    color: white;
 }
 
 * {
@@ -174,7 +175,7 @@ img {
 
 
 .github-button {
-    background-color: #ff3f3f;
+    background-color: #878787;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -191,7 +192,7 @@ img {
 }
 
 .linkedin-button {
-    background-color: #97e3ff;
+    background-color: #bcbcbd;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -211,4 +212,14 @@ img {
 p {
     padding-left: 3em;
     padding-right: 3em;
+}
+
+
+a {
+    color: #810ff2;
+    text-decoration: none;
+}
+
+.card {
+    background-color: #ffffff00;
 }
