@@ -1,7 +1,7 @@
 /*the following will only show on small screens*/
 
 :root {
-    --bg-leaderboard-row: #d3d3da;
+    --bg-leaderboard-row: #878787;
     --bg-leaderboard-row-darker: #bcbcbd;
     --leaderboard-color: #23cd23;
     --explore-color: #eaae40;
@@ -132,7 +132,7 @@
     margin: 5px;
 }
 
-.item-in-explore:nth-of-type(odd) {
+.item-in-explore:nth-of-type(even) {
     background-color: var(--bg-leaderboard-row-darker);
 }
 .navbar-brand .vibeCheck{
