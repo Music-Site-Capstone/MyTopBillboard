@@ -53,7 +53,7 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    margin: 5rem;
+    margin: .5rem 5rem 0rem 5rem;
 }
 
 .landing-content-column-img {
@@ -82,7 +82,7 @@
     position: relative;
     align-items: center;
     justify-content: left;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .landing-content-row3 {
@@ -90,7 +90,7 @@
     justify-content: center;
     align-items: center;
     color: whitesmoke;
-    margin-top: 10rem;
+    margin-top: .5rem;
     padding: 1rem;
 }
 
@@ -109,8 +109,8 @@
     justify-content: space-around;
     align-items: center;
     color: whitesmoke;
-    margin-top: 10rem;
-    margin-bottom: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 0;
     padding: 1rem;
 }
 
@@ -122,33 +122,4 @@
 .landing-content-column-leaderboard-img > img {
     width: inherit;
     height: inherit;
-}
-carousel {
-    width: 100%;
-    text-align: center;
-    display: block;
-
-    page {
-        position: absolute;
-        top: 2em;
-        left: 0;
-        width: 100%;
-        transition: transform 0.5s;
-        transform: scale(0);
-//div {
-  //  padding: 3em;
-  //}
-        label {
-            cursor: pointer;
-            background: #d9ff4f;
-            padding: 1em 2em;
-        }
-    }
-    @for $i from 1 through 5 {
-        #page#{$i}cb:checked ~ {
-            #page#{$i} {
-                transform: scale(1);
-            }
-        }
-    }
 }

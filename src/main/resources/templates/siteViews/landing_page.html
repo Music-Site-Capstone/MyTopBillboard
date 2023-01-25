@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" th:href="@{/css/site.css}">
 <!--    <link rel="stylesheet" th:href="@{/css/landing.css}">-->
-    <link rel="stylesheet" th:href="@{/css/landing2.scss}">
+    <link rel="stylesheet" th:href="@{/css/landing2.css}">
+    <link rel="stylesheet" th:href="@{/css/landingEffect.css}">
 </head>
 <!-- THE BODY -->
 
@@ -73,6 +74,10 @@
             <!--LANDING CONTENT CONTAINER-->
             <div class="landing-content-container">
                 <carousel>
+                    <input type="radio" id="page1cb" checked name="pages" />
+                    <input type="radio" id="page2cb" name="pages" />
+                    <input type="radio" id="page3cb" name="pages" />
+                    <input type="radio" id="page4cb" name="pages" />
                     <!-- page 1 -->
                     <page id="page1">
                         <div>
@@ -87,7 +92,7 @@
                                 </div>
                             </div>
                         </div>
-                        <label for="page2cb" title="Start"><b>START</b></label>
+<!--                        <label for="page2cb" title="Start"><b>START</b></label>-->
                     </page>
                     <!-- page 2 -->
                     <page id="page2">
@@ -102,7 +107,7 @@
                                 </div>
                             </div>
                         </div>
-                        <label for="page3cb" title="Next"><b>NEXT</b></label>
+<!--                        <label for="page3cb" title="Next"><b>NEXT</b></label>-->
                     </page>
                     <!-- page 3 -->
                     <page id="page3">
@@ -119,7 +124,7 @@
                                 </div>
                             </div>
                         </div>
-                        <label for="page4cb" title="Next"><b>NEXT</b></label>
+<!--                        <label for="page4cb" title="Next"><b>NEXT</b></label>-->
                     </page>
                     <!-- page 4 -->
                     <page id="page4">
@@ -133,13 +138,9 @@
                                 </div>
                             </div>
                         </div>
-                        <label for="page1cb" title="That's all folks!"><b>START AGAIN?</b></label>
+<!--                        <label for="page1cb" title="That's all folks!"><b>START AGAIN?</b></label>-->
                     </page>
-                    <input type="radio" id="page1cb" checked name="pages" />
-                    <input type="radio" id="page2cb" name="pages" />
-                    <input type="radio" id="page3cb" name="pages" />
-                    <input type="radio" id="page4cb" name="pages" />
-                    <input type="radio" id="page5cb" name="pages" />
+
                 </carousel>
             </div>
         </div><!--End of Page wrapper-->
