@@ -75,9 +75,7 @@ body {
     margin: 0;
     padding: 0;
 }
-/*i {*/
-/*    margin-right: 10px;*/
-/*}*/
+
 /*----------bootstrap-navbar-css------------*/
 .navbar-logo{
     padding: 15px;
@@ -85,15 +83,15 @@ body {
 }
 .navbar-mainbg{
     background: rgb(87,87,87);
-    padding: 0px;
+    padding: 0;
 }
 #navbarSupportedContent{
     overflow: hidden;
     position: relative;
 }
 #navbarSupportedContent ul{
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 #navbarSupportedContent ul li a i{
     margin-right: 10px;
