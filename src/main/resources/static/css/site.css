@@ -3,6 +3,8 @@
 /*the following will only show on mid or larger screens*/
 @media screen and (min-width: 576px) {}
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 @font-face {
     font-family: "DistorterDemoRegular";
     src: url(../fonts/SoundsEroded.ttf); /* IE9 Compat Modes */
@@ -39,16 +41,17 @@
     --login-gray: rgba(3, 3, 3, 0.1);
 }
 
-.page-title {
-    font-family: "DistorterDemoRegular", serif;
-}
-
-h1 {
-    font-family: "LibelSuit", serif;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: "openSans-Regular", 'Roboto', sans-serif;
+}
+
+h1 {
+    font-family: "LibelSuit", serif;
 }
 
 .page-wrapper {
@@ -59,25 +62,18 @@ body {
     width:100vw;
     background: rgb(90,64,87);
     background: radial-gradient(circle, rgba(90,64,87,1) 0%, rgb(37, 35, 35) 100%);
+}
 
+.page-title {
+    font-family: "DistorterDemoRegular", serif;
 }
 
 #search-bar {
     margin-left: 47vw;
     align-self: center;
     z-index: 10;
-
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-* {
-    margin: 0;
-    padding: 0;
-}
-/*i {*/
-/*    margin-right: 10px;*/
-/*}*/
 /*----------bootstrap-navbar-css------------*/
 .navbar-logo{
     padding: 15px;
@@ -85,15 +81,15 @@ body {
 }
 .navbar-mainbg{
     background: rgb(87,87,87);
-    padding: 0px;
+    padding: 0;
 }
 #navbarSupportedContent{
     overflow: hidden;
     position: relative;
 }
 #navbarSupportedContent ul{
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 #navbarSupportedContent ul li a i{
     margin-right: 10px;
@@ -187,84 +183,7 @@ body {
 }
 
 
-.icon-wrapper {
-    position: relative;
-    cursor: pointer;
-    margin: 0 1rem;
-    padding: 1px 0 10px 0;
-}
 
-.icon-wrapper-container{
-    display:flex;
-    justify-content: flex-end;
-}
-
-
-.lid{
-    position: relative;
-    top: 2px;
-    width: 24px;
-    height: 6px;
-    background: white;
-    border: solid 2px rgb(100,100,100);
-    transition: all .2s ease-in-out;
-    transform-origin: left;
-    transform: rotate(0deg) translateY(0px);
-}
-.lid:before,
-.lid:after{
-    content: '';
-    position: absolute;
-}
-.lid:before{
-    width: 10px;
-    height: 5px;
-    top: -5px;
-    left: 5px;
-    background: rgb(100,100,100);
-}
-.lid:after{
-    width: 6px;
-    height: 4px;
-    top: -3px;
-    left: 7px;
-    background: white;
-}
-.can{
-    position: relative;
-    left: 2px;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: solid 2px rgb(100,100,100);
-    border-radius: 0 0 3px 3px;
-}
-.can:before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    box-shadow: 4px 5px 0px 1px rgb(100,100,100),
-    4px 7px 0px 1px rgb(100,100,100),
-    4px 9px 0px 1px rgb(100,100,100),
-    4px 11px 0px 1px rgb(100,100,100),
-    4px 13px 0px 1px rgb(100,100,100),
-    8px 5px 0px 1px rgb(100,100,100),
-    8px 7px 0px 1px rgb(100,100,100),
-    8px 9px 0px 1px rgb(100,100,100),
-    8px 11px 0px 1px rgb(100,100,100),
-    8px 13px 0px 1px rgb(100,100,100),
-    12px 5px 0px 1px rgb(100,100,100),
-    12px 7px 0px 1px rgb(100,100,100),
-    12px 9px 0px 1px rgb(100,100,100),
-    12px 11px 0px 1px rgb(100,100,100),
-    12px 13px 0px 1px rgb(100,100,100);
-}
-.icon-wrapper:hover .lid{
-    transform: rotate(-30deg) translateY(-2px);
-}
 
 #newPlaylistInput {
     background-color: transparent;
@@ -279,10 +198,6 @@ body {
 }
 
 
-
-#delete-button{
-    text-decoration: none;
-}
 
 @media(min-width: 992px){
     .navbar-expand-custom {

@@ -2,7 +2,7 @@
 
 .landing-header-container {
     width: 100vw;
-    height: 15rem;
+    height: 13rem;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -21,17 +21,17 @@
 
 .header-column > h1 {
     color: whitesmoke;
-    font-size: 4rem;
+    font-size: 3.5rem;
 }
 
 .header-column > h3 {
-    font-size: 3rem;
+    font-size: 2.75rem;
     color: whitesmoke;
 }
 
 .header-column-image {
-    width: 10rem;
-    height: 10rem;
+    width: 8.5rem;
+    height: 8.5rem;
     margin-right: 35rem;
 }
 
@@ -44,7 +44,7 @@
 
 .landing-content-container{
     width: 100vw;
-    height: 100vh;
+    height: 85vh;
     position: absolute;
     overflow: scroll
 }
@@ -53,7 +53,7 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    margin: 5rem;
+    margin: .5rem 5rem 0rem 5rem;
 }
 
 .landing-content-column-img {
@@ -82,7 +82,7 @@
     position: relative;
     align-items: center;
     justify-content: left;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .landing-content-row3 {
@@ -90,7 +90,7 @@
     justify-content: center;
     align-items: center;
     color: whitesmoke;
-    margin-top: 10rem;
+    margin-top: .5rem;
     padding: 1rem;
 }
 
@@ -109,8 +109,8 @@
     justify-content: space-around;
     align-items: center;
     color: whitesmoke;
-    margin-top: 10rem;
-    margin-bottom: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 0;
     padding: 1rem;
 }
 

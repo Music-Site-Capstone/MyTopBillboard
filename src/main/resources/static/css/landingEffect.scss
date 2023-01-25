@@ -1,0 +1,26 @@
+carousel {
+  width: 100%;
+  text-align: center;
+  display: block;
+
+  page {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    width: 100%;
+    transition: transform 0.5s;
+    transform: scale(0);
+    label {
+      cursor: pointer;
+      background: #d9ff4f;
+      padding: 1em 2em;
+    }
+  }
+  @for $i from 1 through 5 {
+    #page#{$i}cb:checked ~ {
+      #page#{$i} {
+        transform: scale(1);
+      }
+    }
+  }
+}
