@@ -88,7 +88,7 @@
                             <li th:if="${userID} == ${playlist.user.id}" class="list-group-item listOfPlaylists">
                                 <h3 th:text="${playlist.playlistName}" class="plName" th:plId="${playlist.id}" th:activeUser="${activeUser}" th:activeUserId="${activeUserID}" th:userId="${userID}"></h3>
                                 <div class="d-flex justify-content-center">
-                                    <h5 th:if="${ratingCheck.contains(playlist.id)}">My Rating:_</h5>
+                                    <h5 th:if="${ratingCheck.contains(playlist.id)}" style="margin-right: 1rem">My Rating:</h5>
                                     <ul class="ratingClass" th:if="${ratingCheck.contains(playlist.id)}" th:each="rating : ${myRatings}">
                                         <li class="displayedRating" th:if="${rating.playlist.id} == ${playlist.id}" th:text="${rating.score}"></li>
                                     </ul>
@@ -155,6 +155,11 @@
                     </div>
                 </div>
             </div>
+            <div class="toxicUsersContainer col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
+                <div id="toxicUsers">
+                    users who rated playlist will be appended here
+                </div>
+            </div>
         </div>
     </div>
 
@@ -166,11 +171,12 @@
 
 
 
-    <div class="container" id="myChartContainer" style="display:none;">
+    <div class="container-fluid" id="myChartContainer" style="display:none;">
         <div>
             <canvas id="myChart"></canvas>
         </div>
     </div>
+
 
 </div>
     <!--Hidden Div for keys object and properties-->

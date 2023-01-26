@@ -16,6 +16,7 @@ const profile = {
 
         //this line clears the playlist search before loading in a new playlist
         $('#allPlaylistSongs').html('');
+        $('#toxicUsers').html('');
 
         //this loop loads in songs in a playlist
         for (let i = 0; i < playlistSongsLength; i++) {
@@ -69,9 +70,11 @@ const profile = {
             </a>`);
         }
     },
+
     graphUpdate(){
         //mapps all ratings of a single playlist into an array
         let mappedArr = [];
+        let mappedArr2 = [];
         // the following arrays will catch individual ratings from 1-5
         let mappedArrVal1 = [];
         let mappedArrVal2 = [];
@@ -82,6 +85,15 @@ const profile = {
         if (profile.dataF.rating.length > 0) {
             for (let i = 0; i < profile.dataF.rating.length; i++) {
                 mappedArr.push(profile.dataF.rating[i].score);
+                mappedArr2.push(profile.dataF.rating[i].userId);
+                $('#toxicUsers').append(`
+                    <div class="search-line border">
+                        <div class="song-container">
+                            <div>
+                                <p class="title-color"> ${profile.dataF.rating[i].userId} </p>
+                            </div>
+                        </div>
+                    </div>`);
             }
             //ratings are checked and added to the appropriate array
             const filteredArray = mappedArr.filter(rating => {
@@ -97,6 +109,7 @@ const profile = {
                     mappedArrVal5.push(rating);
                 }
             })
+            // exposes the toxic users by displaying their username and their rating
         }
 
 
@@ -159,6 +172,8 @@ $('.plName').on('click',async function () {
     theHiddenChartDiv.style.display = "block";
     profile.playlistUpdate();
     profile.graphUpdate();
+    console.log(profile.dataF);
+    console.log(profile.dataF.rating[0].userId)
 })
 
 //
