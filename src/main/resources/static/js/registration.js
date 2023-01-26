@@ -32,6 +32,12 @@ $('.input2').on('keyup',function(){
         || ($('#confirmPassword').val().length === 0)
         || ($('#password').val() !== $('#confirmPassword').val())){
         $("input[type=submit]").prop("disabled", true);
+        if ($('#password').val() !== $('#confirmPassword').val()){
+            $('#confirmPassword').css('border', '2px solid red');
+        } else{
+            $('#confirmPassword').css('border', 'none');
+
+        }
     } else{
         $("input[type=submit]").prop("disabled", false);
     }
