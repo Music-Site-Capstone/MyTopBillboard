@@ -19,11 +19,6 @@
         width: 50vw;
         margin: 3vw 25vw;
     }
-    /*.row > div {*/
-    /*    flex: 100%; !* or - flex: 0 50% - or - flex-basis: 50% - *!*/
-    /*    !*demo*!*/
-    /*}*/
-
 }
 /*the following will only show on mid or larger screens*/
 @media screen and (min-width: 576px) {
@@ -48,11 +43,6 @@
         width: 20vw;
         margin: 15vw 3vw;
     }
-
-    /*.row > div {*/
-    /*    flex: 50%; !* or - flex: 0 50% - or - flex-basis: 50% - *!*/
-    /*    !*demo*!*/
-    /*}*/
 }
 
 .page-wrapper {
@@ -68,16 +58,11 @@
     color: var(--leaderboard-color);
 }
 
-#explore-header {
+#explore-header, #newPlaylist-header {
     text-align: center;
     color: var(--explore-color)
 }
-/*.column-for-leaderboard-rows {*/
-/*    padding: 14px;*/
-/*    width: 65vw;*/
-/*    margin-right: auto;*/
-/*    margin-left: auto;*/
-/*}*/
+
 
 
 .navbar-submit-button, .navbar-submit-button-2 {
@@ -115,7 +100,7 @@
 
 }
 
-#explore-item {
+#explore-item, #newPlaylist-item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,24 +166,3 @@ div .item-in-leaderboard .leaderboard-users:hover {
 .shadow {
     text-shadow: 1px 1px 5px #ddd, 2px 2px 10px #000;
 }
-
-/*::-webkit-scrollbar{*/
-/*    box-shadow: inset 0 0 5px grey;*/
-/*    border-radius: 5px;*/
-/*}*/
-
-
-
-
-/*.list-group-item {*/
-
-/*}*/
-
-/*.rank-number {*/
-/*    display: flex;*/
-/*}*/
-
-/*.card-body {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/

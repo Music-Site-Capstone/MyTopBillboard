@@ -76,7 +76,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--row for Explore section-->
@@ -87,6 +86,12 @@
                 <div th:each="user:${users}" id="explore-item" class="item-in-explore rounded-edges">
                     <div class="item-in-explore-column">
                         <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="exploreUsers"></a>
+                    </div>
+                </div>
+                <h1 id="newPlaylist-header" class="shadow">Newest Playlists</h1>
+                <div th:each="playlist:${newPlaylists}" id="newPlaylist-item" class="item-in-explore rounded-edges">
+                    <div class="item-in-explore-column">
+                        <a th:text="${playlist.getPlaylistName()}" th:href="@{|/profile/${playlist.getUser().getUsername()}|}" class="exploreUsers"></a>
                     </div>
                 </div>
             </div>

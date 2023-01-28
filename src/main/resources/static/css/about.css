@@ -92,8 +92,8 @@ img {
 @media (hover: hover) {
     .carousel__snapper {
         animation-name: tonext, snap;
-        animation-timing-function: ease;
-        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-duration: .125s;
         animation-iteration-count: infinite;
     }
 

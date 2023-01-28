@@ -1,6 +1,8 @@
 package com.mytopbillboard.controllers;
 
+import com.mytopbillboard.models.Playlist;
 import com.mytopbillboard.models.User;
+import com.mytopbillboard.repositories.PlaylistRepository;
 import com.mytopbillboard.repositories.UserRepository;
 import com.mytopbillboard.services.Utils;
 import org.springframework.stereotype.Controller;
@@ -8,17 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
 public class HomeController {
 
     private final UserRepository userDao;
+    private final PlaylistRepository playlistDao;
 
-    public HomeController(UserRepository userDao) {
+    public HomeController(UserRepository userDao, PlaylistRepository playlistDao) {
         this.userDao = userDao;
+        this.playlistDao = playlistDao;
     }
 
     @GetMapping("/")
@@ -62,6 +64,13 @@ public class HomeController {
         rankingList.forEach(user -> {
             ratingnumber.add(Utils.averageRating(user));
         });
+
+        List<Playlist> allPlaylists = playlistDao.findAll();
+        List<Playlist> newPlaylists = new ArrayList<>();
+        for (int i = 1; i <= 5; i++){
+            newPlaylists.add(allPlaylists.get(allPlaylists.size() - i));
+        }
+        model.addAttribute("newPlaylists", newPlaylists);
         model.addAttribute("userRatingsList", ratingnumber);
         model.addAttribute("users", firstFive);
         long userId = Utils.currentUserProfile();
