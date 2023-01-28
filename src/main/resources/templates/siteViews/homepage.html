@@ -60,9 +60,19 @@
     <!--loop through playlists in database and display them inside div calls column-for-leaderboard-->
 
     <div class="homepage-container">
+        <div id="newDesktop" class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-newPlaylists">
+                <h1 id="newPlaylist-header" class="shadow">NewVibes</h1>
+                <div th:each="playlist:${newPlaylists}" id="newPlaylist-item" class="item-in-explore rounded-edges">
+                    <div class="item-in-explore-column">
+                        <a th:text="${playlist.getPlaylistName()}" th:href="@{|/profile/${playlist.getUser().getUsername()}|}" class="exploreUsers"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="ranked-row">
             <div class="column-for-leaderboard-rows" id="column-leaderboard">
-                <h1 id="leaderboard-header" class="shadow">LEADERBOARD</h1>
+                <h1 id="leaderboard-header" class="shadow">TopVibes</h1>
                 <!--  The following containsthe start of the rankings loop as well as the limiter of that loop to 10m entries  -->
                 <div class="leaderboardScroll">
                     <div th:each="user,i:${topRatedUsers}" class="item-in-leaderboard">
@@ -88,7 +98,11 @@
                         <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="exploreUsers"></a>
                     </div>
                 </div>
-                <h1 id="newPlaylist-header" class="shadow">Newest Playlists</h1>
+            </div>
+        </div>
+        <div id="newMobile" class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-newPlaylists">
+                <h1 id="newPlaylist-header" class="shadow">NewVibes</h1>
                 <div th:each="playlist:${newPlaylists}" id="newPlaylist-item" class="item-in-explore rounded-edges">
                     <div class="item-in-explore-column">
                         <a th:text="${playlist.getPlaylistName()}" th:href="@{|/profile/${playlist.getUser().getUsername()}|}" class="exploreUsers"></a>
