@@ -21,9 +21,6 @@
 <!-- THE BODY -->
 
 <body>
-
-
-
     <!-- THE PAGE WRAPPER -->
         <div class="page-wrapper">
 
@@ -74,10 +71,10 @@
             <!--LANDING CONTENT CONTAINER-->
             <div class="landing-content-container">
                 <carousel>
-                    <input type="radio" id="page1cb" checked name="pages" />
-                    <input type="radio" id="page2cb" name="pages" />
-                    <input type="radio" id="page3cb" name="pages" />
-                    <input type="radio" id="page4cb" name="pages" />
+                    <input type="radio" id="page1cb" checked name="pages" hidden>
+                    <input type="radio" id="page2cb" name="pages" hidden>
+                    <input type="radio" id="page3cb" name="pages" hidden>
+                    <input type="radio" id="page4cb" name="pages" hidden>
                     <!-- page 1 -->
                     <page id="page1">
                         <div>
@@ -144,5 +141,6 @@
                 </carousel>
             </div>
         </div><!--End of Page wrapper-->
+    <script th:src="@{/js/landing.js}"></script>
 </body>
 </html>
