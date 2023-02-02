@@ -150,8 +150,18 @@ public class PlaylistController {
     @ResponseBody
     public Playlist displayPlaylistSongs(@PathVariable("plId") Long plId){
         Playlist playlist = playlistDao.findById(plId).get();
-        System.out.println(playlist.getSong());
+        System.out.println("here are the playlist songs" + playlist.getSong());
         return playlist;
+
     }
 
+
+    // returns user object to display individual usernames that rated te playlist
+    @GetMapping("profile/playlist/{ratedUsersIds}")
+    @ResponseBody
+    public User displayToxicUsers(@PathVariable("ratedUsersIds") Long ratedUsersIds){
+        User user = userDao.findById(ratedUsersIds).get();
+        System.out.println("Here are the usernames for the id's passed into the method: " + user.getUsername());
+        return user;
+    }
 }

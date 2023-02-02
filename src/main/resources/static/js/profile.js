@@ -72,25 +72,29 @@ const profile = {
     },
 
     graphUpdate(){
-        //mapps all ratings of a single playlist into an array
+        //maps all ratings of a single playlist into an array
         let mappedArr = [];
-        let mappedArr2 = [];
+        // this is to push the user id values into
+        let toxicUserIds = [];
         // the following arrays will catch individual ratings from 1-5
         let mappedArrVal1 = [];
         let mappedArrVal2 = [];
         let mappedArrVal3 = [];
         let mappedArrVal4 = [];
         let mappedArrVal5 = [];
+        // let getUsernamesFromId =
+
         //only want loop to run if the playlist has ratings
         if (profile.dataF.rating.length > 0) {
             for (let i = 0; i < profile.dataF.rating.length; i++) {
                 mappedArr.push(profile.dataF.rating[i].score);
-                mappedArr2.push(profile.dataF.rating[i].userId);
+                toxicUserIds.push(profile.dataF.rating[i].userId);
+
                 $('#toxicUsers').append(`
                     <div class="search-line border">
                         <div class="song-container">
-                            <div>
-                                <p class="title-color"> ${profile.dataF.rating[i].userId} </p>
+                            <div class="toxicUsersScroll">
+                                <p class="title-color" th:id="toxicUsersIds" th:value="${profile.dataF.rating[i].userId}" th:href="(profile/playlist/{ratedUsersIds}|${profile.dataF.rating[i].userId})"|> ${profile.dataF.rating[i].userId} </p>
                             </div>
                         </div>
                     </div>`);
@@ -173,7 +177,7 @@ $('.plName').on('click',async function () {
     profile.playlistUpdate();
     profile.graphUpdate();
     console.log(profile.dataF);
-    console.log(profile.dataF.rating[0].userId)
+
 })
 
 //

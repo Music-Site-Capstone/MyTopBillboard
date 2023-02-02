@@ -86,6 +86,7 @@ public class UserController {
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("ratingCheck", playlistIdList);
         model.addAttribute("rating", new Rating());
+        model.addAttribute("allUsers", userDao.findAll());
         //Adding a Keys Attribute and object for a hidden div in profile.html
         model.addAttribute("keys", keys );
         if(userDao.findByUsername(username) == null){

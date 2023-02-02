@@ -159,6 +159,13 @@
                 <div id="toxicUsers">
                     users who rated playlist will be appended here
                 </div>
+                <div class="toxicUsersScroll">
+                    <ul th:each="user : ${allUsers}">
+                        <li th:if="${toxicUsersIds}">
+
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
