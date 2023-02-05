@@ -172,7 +172,7 @@ const profile = {
                             console.log(dataT.username)
                             $('#toxicUsers').append(`
                         <div class="search-line border">
-                            <div class="song-container">
+                            <div class="song-container" id="showsUsersContainer">
                                 <div class="toxicUsersScroll">
                                     <p class="title-color" th:id="toxicUsersIds" > ${dataT.username}</p>
                                 </div>
@@ -234,6 +234,7 @@ $(document).on('click',".icon-wrapper[searchId='target']",async function(e){
         profile.playlistId = playlistIdToUpdate;
         profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
         profile.playlistUpdate();
+        profile.exposeUsersWhoRated();
 
 })
 $(document).on('click',".icon-wrapper[searchId='not-target']",async function(e){
