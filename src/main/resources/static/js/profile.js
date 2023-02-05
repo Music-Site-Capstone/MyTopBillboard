@@ -152,42 +152,39 @@ const profile = {
         })
     },
     exposeUsersWhoRated(){
-        // this is to push the user id values into
         let toxicUserIds = [];
         if (profile.dataF.rating.length > 0) {
             for (let i = 0; i < profile.dataF.rating.length; i++) {
                 let userId = profile.dataF.rating[i].userId;
                 if (!toxicUserIds.includes(userId)) {
                     toxicUserIds.push(userId);
-
-                    for (const value of toxicUserIds) {
-                        const exposingUsers = fetch(`/profile/playlist/${value}`)
-                            .then(response => response.json())
-                            .then(dataT => {
-                                console.log(dataT)
-                                console.log(dataT.username)
-                                $('#toxicUsers').append(`
-                    <div class="search-line border">
-                        <div class="song-container">
-                            <div class="toxicUsersScroll">
-                                <p class="title-color" th:id="toxicUsersIds" > ${profile.dataF.rating[i].userId} - ${dataT.username}</p>
-                            </div>
-                        </div>
-                    </div>`);
-                                // code for handling the fetch request
-                            })
-                            .catch(error => console.error(error));
-                    }
                 }
-
-
-
-
-
-
             }
+
+            Promise.resolve().then(() => {
+                for (const value of toxicUserIds) {
+                    console.log(toxicUserIds)
+                    console.log(value)
+                    const exposingUsers = fetch(`/profile/playlist/${value}`)
+                        .then(response => response.json())
+                        .then(dataT => {
+                            console.log(dataT)
+                            console.log(dataT.username)
+                            $('#toxicUsers').append(`
+                        <div class="search-line border">
+                            <div class="song-container">
+                                <div class="toxicUsersScroll">
+                                    <p class="title-color" th:id="toxicUsersIds" > ${dataT.username}</p>
+                                </div>
+                            </div>
+                        </div>`);
+                        })
+                        .catch(error => console.error(error));
+                }
+            });
         }
     }
+
 }
 
 
