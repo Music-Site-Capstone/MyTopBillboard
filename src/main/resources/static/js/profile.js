@@ -74,8 +74,7 @@ const profile = {
     graphUpdate(){
         //maps all ratings of a single playlist into an array
         let mappedArr = [];
-        // this is to push the user id values into
-        let toxicUserIds = [];
+
         // the following arrays will catch individual ratings from 1-5
         let mappedArrVal1 = [];
         let mappedArrVal2 = [];
@@ -88,16 +87,7 @@ const profile = {
         if (profile.dataF.rating.length > 0) {
             for (let i = 0; i < profile.dataF.rating.length; i++) {
                 mappedArr.push(profile.dataF.rating[i].score);
-                toxicUserIds.push(profile.dataF.rating[i].userId);
 
-                $('#toxicUsers').append(`
-                    <div class="search-line border">
-                        <div class="song-container">
-                            <div class="toxicUsersScroll">
-                                <p class="title-color" th:id="toxicUsersIds" th:value="${profile.dataF.rating[i].userId}" th:href="(profile/playlist/{ratedUsersIds}|${profile.dataF.rating[i].userId})"|> ${profile.dataF.rating[i].userId} </p>
-                            </div>
-                        </div>
-                    </div>`);
             }
             //ratings are checked and added to the appropriate array
             const filteredArray = mappedArr.filter(rating => {
@@ -113,7 +103,6 @@ const profile = {
                     mappedArrVal5.push(rating);
                 }
             })
-            // exposes the toxic users by displaying their username and their rating
         }
 
 
@@ -161,8 +150,46 @@ const profile = {
             e.preventDefault();
             myChart.destroy();
         })
+    },
+    exposeUsersWhoRated(){
+        // this is to push the user id values into
+        let toxicUserIds = [];
+        if (profile.dataF.rating.length > 0) {
+            for (let i = 0; i < profile.dataF.rating.length; i++) {
+                let userId = profile.dataF.rating[i].userId;
+                if (!toxicUserIds.includes(userId)) {
+                    toxicUserIds.push(userId);
+
+                    for (const value of toxicUserIds) {
+                        const exposingUsers = fetch(`/profile/playlist/${value}`)
+                            .then(response => response.json())
+                            .then(dataT => {
+                                console.log(dataT)
+                                console.log(dataT.username)
+                                $('#toxicUsers').append(`
+                    <div class="search-line border">
+                        <div class="song-container">
+                            <div class="toxicUsersScroll">
+                                <p class="title-color" th:id="toxicUsersIds" > ${profile.dataF.rating[i].userId} - ${dataT.username}</p>
+                            </div>
+                        </div>
+                    </div>`);
+                                // code for handling the fetch request
+                            })
+                            .catch(error => console.error(error));
+                    }
+                }
+
+
+
+
+
+
+            }
+        }
     }
 }
+
 
 $('.plName').on('click',async function () {
     profile.playlistId = $(this).attr("plId");
@@ -177,8 +204,14 @@ $('.plName').on('click',async function () {
     profile.playlistUpdate();
     profile.graphUpdate();
     console.log(profile.dataF);
+    profile.exposeUsersWhoRated();
+
+
 
 })
+
+
+
 
 //
 $(document).on('click',".icon-wrapper[searchId='target']",async function(e){
