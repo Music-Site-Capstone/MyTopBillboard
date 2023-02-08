@@ -155,17 +155,11 @@
                     </div>
                 </div>
             </div>
-            <div class="toxicUsersContainer col-sm-6 col-md-6 col-lg-6 mb-4 mt-2">
-                <div id="toxicUsers">
-                    users who rated playlist will be appended here
-                </div>
-                <div class="toxicUsersScroll">
-                    <ul th:each="user : ${allUsers}">
-                        <li th:if="${toxicUsersIds}">
+            <div class="toxicUsersContainer col-sm-6 col-md-6 col-lg-6 mb-4 mt-2 mx-auto">
 
-                        </li>
-                    </ul>
-                </div>
+                <div id="userContainerName" class="card-header"></div>
+                <div id="toxicUsers" class="usersScroll"></div>
+
             </div>
         </div>
     </div>

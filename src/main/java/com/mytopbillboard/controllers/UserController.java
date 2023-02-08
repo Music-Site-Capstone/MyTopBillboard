@@ -49,6 +49,7 @@ public class UserController {
         }
     }
 
+
     @GetMapping("/profile/{username}")
     public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();

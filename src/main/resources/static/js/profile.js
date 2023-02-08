@@ -17,6 +17,7 @@ const profile = {
         //this line clears the playlist search before loading in a new playlist
         $('#allPlaylistSongs').html('');
         $('#toxicUsers').html('');
+        $('#userContainerName').html('');
 
         //this loop loads in songs in a playlist
         for (let i = 0; i < playlistSongsLength; i++) {
@@ -162,6 +163,10 @@ const profile = {
             }
 
             Promise.resolve().then(() => {
+                $('#userContainerName').append(`
+                        <div class="search-line border" >
+                            Users Who Rated Playlist
+                        </div>`);
                 for (const value of toxicUserIds) {
                     console.log(toxicUserIds)
                     console.log(value)
@@ -171,11 +176,9 @@ const profile = {
                             console.log(dataT)
                             console.log(dataT.username)
                             $('#toxicUsers').append(`
-                        <div class="search-line border">
-                            <div class="song-container" id="showsUsersContainer">
-                                <div class="toxicUsersScroll">
-                                    <p class="title-color" th:id="toxicUsersIds" > ${dataT.username}</p>
-                                </div>
+                        <div class="search-line shadow">
+                            <div class="song-container shadow border" id="showsUsersContainer">                                                                                                 
+                                    <a class="userRaters" href="${dataT.username}"> ${dataT.username}</a>                    
                             </div>
                         </div>`);
                         })
@@ -234,6 +237,7 @@ $(document).on('click',".icon-wrapper[searchId='target']",async function(e){
         profile.playlistId = playlistIdToUpdate;
         profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
         profile.playlistUpdate();
+        $('#userContainerName').html('');
         profile.exposeUsersWhoRated();
 
 })

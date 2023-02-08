@@ -91,7 +91,7 @@ select#rating {
 
 .plName, .card-header {
     transition: all 200ms;
-    color:white;
+    color:whitesmoke;
 }
 
 .plName:hover {
@@ -181,6 +181,43 @@ ul > .displayedRating {
     color: saddlebrown;
 }
 
-#showsUserContainer {
+.usersScroll {
+    max-height: 15vh; /* Set the height of the container */
+    overflow-y: scroll; /* Enable scrolling on the y-axis */
+    display: flex;
+    flex-direction: column;
+}
 
+
+#userContainerName{
+    color: whitesmoke;
+    background-color: var(--login-gray);
+}
+
+#showsUsersContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: 1rem;
+    box-shadow: 2px 3px 5px 2px var(--vibecheck-purple);
+}
+.userRaters{
+    font-size: x-large;
+    letter-spacing: .2rem;
+    transform: scale3d(180%, 140%, 140%);
+    margin-bottom: .5rem;
+    color: whitesmoke;
+    text-decoration: none;
+}
+#toxicUsersContainer{
+    width: 50%;
+}
+.userRaters:hover{
+    font-size: x-large;
+    letter-spacing: .2rem;
+    margin-bottom: .5rem;
+    color: whitesmoke;
+    text-decoration: none;
+    transform: scale(2.0);
 }
