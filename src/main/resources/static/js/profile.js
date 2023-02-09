@@ -12,6 +12,8 @@ const profile = {
 
         //this line clears the playlist search before loading in a new playlist
         $('#allPlaylistSongs').html('');
+        $('#toxicUsers').html('');
+        $('#userContainerName').html('');
 
         //this loop loads in songs in a playlist
         for (let i = 0; i < playlistSongsLength; i++) {
@@ -65,19 +67,24 @@ const profile = {
             </a>`);
         }
     },
+
     graphUpdate(){
-        //mapps all ratings of a single playlist into an array
+        //maps all ratings of a single playlist into an array
         let mappedArr = [];
+
         // the following arrays will catch individual ratings from 1-5
         let mappedArrVal1 = [];
         let mappedArrVal2 = [];
         let mappedArrVal3 = [];
         let mappedArrVal4 = [];
         let mappedArrVal5 = [];
+        // let getUsernamesFromId =
+
         //only want loop to run if the playlist has ratings
         if (profile.dataF.rating.length > 0) {
             for (let i = 0; i < profile.dataF.rating.length; i++) {
                 mappedArr.push(profile.dataF.rating[i].score);
+
             }
             //ratings are checked and added to the appropriate array
             const filteredArray = mappedArr.filter(rating => {
@@ -140,8 +147,46 @@ const profile = {
             e.preventDefault();
             myChart.destroy();
         })
+    },
+    exposeUsersWhoRated(){
+        let toxicUserIds = [];
+        if (profile.dataF.rating.length > 0) {
+            for (let i = 0; i < profile.dataF.rating.length; i++) {
+                let userId = profile.dataF.rating[i].userId;
+                if (!toxicUserIds.includes(userId)) {
+                    toxicUserIds.push(userId);
+                }
+            }
+
+            Promise.resolve().then(() => {
+                $('#userContainerName').append(`
+                        <div class="search-line border" >
+                            Users Who Rated Playlist: ${profile.dataF.playlistName}
+                        </div>`);
+                for (const value of toxicUserIds) {
+                    // console.log(toxicUserIds)
+                    // console.log(value)
+                    const exposingUsers = fetch(`/profile/playlist/${value}`)
+                        .then(response => response.json())
+                        .then(dataT => {
+                            // console.log(dataT)
+                            // console.log(dataT.username)
+                            $('#toxicUsers').append(`
+                        <div class="search-line shadow">
+                            <div class="song-container shadow border" id="showsUsersContainer">                                                                                                 
+                                    <a class="userRaters" href="${dataT.username}"> ${dataT.username}</a>                    
+                            </div>
+                        </div>`);
+                        })
+                        .catch(error => console.error(error));
+                }
+            });
+        }
     }
+
 }
+
+
 
 // The following object handles all of the API methods
 const Spotify = {
@@ -245,6 +290,7 @@ $('.list-group-item').each(function(index) {
     }
 });
 
+
 $('.plName').on('click',async function () {
     profile.playlistId = $(this).attr("plId");
     profile.username = $(this).attr("activeUser");
@@ -257,9 +303,20 @@ $('.plName').on('click',async function () {
     theHiddenChartDiv.style.display = "block";
     profile.playlistUpdate();
     profile.graphUpdate();
+    profile.exposeUsersWhoRated();
+
+
+
 })
 
+
+
+
+
+//
+
 // The following two event handlers make the trash can delete (1) individual songs and (2) playlists.
+
 $(document).on('click',".icon-wrapper[searchId='target']",async function(e){
         // $(e.target.parentElement.parentElement.parentElement.parentElement).submit();
         let songId = $(e.target.parentElement.parentElement.parentElement.previousElementSibling).val();
@@ -283,6 +340,8 @@ $(document).on('click',".icon-wrapper[searchId='target']",async function(e){
         profile.playlistId = playlistIdToUpdate;
         profile.dataF = await fetch(`/profile/playlist/${profile.playlistId}/${profile.username}`).then(res => res.json());
         profile.playlistUpdate();
+        $('#userContainerName').html('');
+        profile.exposeUsersWhoRated();
 
 })
 $(document).on('click',".icon-wrapper[searchId='not-target']",async function(e){

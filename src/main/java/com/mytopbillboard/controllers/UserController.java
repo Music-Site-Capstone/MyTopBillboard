@@ -49,6 +49,7 @@ public class UserController {
         }
     }
 
+
     @GetMapping("/profile/{username}")
     public String usersProfile(Model model, @PathVariable("username") String username){
         long userId = Utils.currentUserProfile();
@@ -86,6 +87,7 @@ public class UserController {
         model.addAttribute("averageRating", Utils.averageRating(userDao.findByUsername(username)));
         model.addAttribute("ratingCheck", playlistIdList);
         model.addAttribute("rating", new Rating());
+        model.addAttribute("allUsers", userDao.findAll());
         //Adding a Keys Attribute and object for a hidden div in profile.html
         model.addAttribute("keys", keys );
         if(userDao.findByUsername(username) == null){
