@@ -36,22 +36,22 @@
             <i class="fas fa-bars text-white"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
+                <li class="nav-item mx-5">
                     <a class="nav-link" href="javascript:void(0);"th:href="@{/homepage}"><i class="fas fa-tachometer-alt"></i>Home</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="javascript:void(0);"th:href="@{/logout}"><i class="far fa-address-book"></i>Logout</a>
-                </li>
-                <li class="nav-item active">
+                <li class="nav-item active mx-5">
                     <a class="nav-link" href="javascript:void(0);"th:href="@{/about}"><i class="far fa-address-book"></i>About</a>
                 </li>
-                <li class="nav-item" id="search-bar">
+                <li class="nav-item mx-5" id="search-bar">
                     <form class="d-flex" role="search" name="codeForm">
                         <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">
-                        <button class="btn navbar-submit-button" id="submit" type="submit">Search</button>
+                        <button class="btn navbar-submit-button me-5" id="submit" type="submit">Search</button>
                     </form>
+                </li>
+                <li class="nav-item active ms-auto">
+                    <a class="nav-link" href="javascript:void(0);"th:href="@{/logout}"><i class="far fa-address-book"></i>Logout</a>
                 </li>
             </ul>
         </div>
@@ -192,7 +192,6 @@
 <!--Custom JS scripts-->
 
 <script th:src="@{/js/modal.js}"></script>
-<script th:src="@{/js/spotify_api.js}"></script>
 <script th:src="@{/js/profile.js}"></script>
 <script th:src="@{/js/navigationbar.js}"></script>
 <script th:src="@{/js/homepage.js}"></script>

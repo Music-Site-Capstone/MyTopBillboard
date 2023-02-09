@@ -28,19 +28,18 @@
         <button class="navbar-toggler bg-light" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
         <i class="fas fa-bars text-white"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"th:href="@{|/profile/${activeUser}|}"><i class="fas fa-tachometer-alt"></i>Profile</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"th:href="@{/logout}"><i class="far fa-address-book"></i>Logout</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"th:href="@{/about}"><i class="far fa-address-book"></i>About</a>
-            </li>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"th:href="@{|/profile/${activeUser}|}"><i class="fas fa-tachometer-alt"></i>Profile</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"th:href="@{/about}"><i class="far fa-address-book"></i>About</a>
+                </li>
+
                 <li class="nav-item" id="search-bar">
                     <form class="d-flex" role="search" name="codeForm">
                         <input class="form-control me-2" type="search" placeholder="Search for user..." aria-label="Search" id="code" name="code">
@@ -60,9 +59,19 @@
     <!--loop through playlists in database and display them inside div calls column-for-leaderboard-->
 
     <div class="homepage-container">
+        <div id="newDesktop" class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-newPlaylists">
+                <h1 id="newPlaylist-header" class="shadow">NewVibes</h1>
+                <div th:each="playlist:${newPlaylists}" id="newPlaylist-item" class="item-in-explore rounded-edges">
+                    <div class="item-in-explore-column">
+                        <a th:text="${playlist.getPlaylistName()}" th:href="@{|/profile/${playlist.getUser().getUsername()}|}" class="exploreUsers"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="ranked-row">
             <div class="column-for-leaderboard-rows" id="column-leaderboard">
-                <h1 id="leaderboard-header" class="shadow">LEADERBOARD</h1>
+                <h1 id="leaderboard-header" class="shadow">TopVibes</h1>
                 <!--  The following containsthe start of the rankings loop as well as the limiter of that loop to 10m entries  -->
                 <div class="leaderboardScroll">
                     <div th:each="user,i:${topRatedUsers}" class="item-in-leaderboard">
@@ -76,7 +85,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--row for Explore section-->
@@ -87,6 +95,16 @@
                 <div th:each="user:${users}" id="explore-item" class="item-in-explore rounded-edges">
                     <div class="item-in-explore-column">
                         <a th:text="${user.username}" th:href="@{|/profile/${user.username}|}" class="exploreUsers"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="newMobile" class="ranked-row">
+            <div class="column-for-leaderboard-rows" id="column-newPlaylists">
+                <h1 id="newPlaylist-header" class="shadow">NewVibes</h1>
+                <div th:each="playlist:${newPlaylists}" id="newPlaylist-item" class="item-in-explore rounded-edges">
+                    <div class="item-in-explore-column">
+                        <a th:text="${playlist.getPlaylistName()}" th:href="@{|/profile/${playlist.getUser().getUsername()}|}" class="exploreUsers"></a>
                     </div>
                 </div>
             </div>

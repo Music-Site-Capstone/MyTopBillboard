@@ -22,11 +22,22 @@ $('#forgotten').click(function(){
 });
 
 
+$(document).ready(function (){
+    $("input[type=submit]").prop("disabled", true);
+})
 $('.input2').on('keyup',function(){
     if (($('#username').val().length === 0)
         || ($('#email').val().length === 0)
-        || ($('#password').val().length === 0)){
+        || ($('#password').val().length === 0)
+        || ($('#confirmPassword').val().length === 0)
+        || ($('#password').val() !== $('#confirmPassword').val())){
         $("input[type=submit]").prop("disabled", true);
+        if ($('#password').val() !== $('#confirmPassword').val()){
+            $('#confirmPassword').css('border', '2px solid red');
+        } else{
+            $('#confirmPassword').css('border', 'none');
+
+        }
     } else{
         $("input[type=submit]").prop("disabled", false);
     }
