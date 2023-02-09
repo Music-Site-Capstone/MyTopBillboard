@@ -165,16 +165,16 @@ const profile = {
             Promise.resolve().then(() => {
                 $('#userContainerName').append(`
                         <div class="search-line border" >
-                            Users Who Rated Playlist
+                            Users Who Rated Playlist: ${profile.dataF.playlistName}
                         </div>`);
                 for (const value of toxicUserIds) {
-                    console.log(toxicUserIds)
-                    console.log(value)
+                    // console.log(toxicUserIds)
+                    // console.log(value)
                     const exposingUsers = fetch(`/profile/playlist/${value}`)
                         .then(response => response.json())
                         .then(dataT => {
-                            console.log(dataT)
-                            console.log(dataT.username)
+                            // console.log(dataT)
+                            // console.log(dataT.username)
                             $('#toxicUsers').append(`
                         <div class="search-line shadow">
                             <div class="song-container shadow border" id="showsUsersContainer">                                                                                                 
@@ -203,7 +203,6 @@ $('.plName').on('click',async function () {
     theHiddenChartDiv.style.display = "block";
     profile.playlistUpdate();
     profile.graphUpdate();
-    console.log(profile.dataF);
     profile.exposeUsersWhoRated();
 
 

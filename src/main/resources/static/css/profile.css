@@ -140,6 +140,7 @@ ul > .list-group-item {
 .songScroll{
     max-height: 40vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
+    overflow-x: hidden;
 }
 
 .user-rank-rating-container {
@@ -184,6 +185,7 @@ ul > .displayedRating {
 .usersScroll {
     max-height: 15vh; /* Set the height of the container */
     overflow-y: scroll; /* Enable scrolling on the y-axis */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
